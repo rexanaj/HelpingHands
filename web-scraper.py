@@ -1,6 +1,11 @@
 import bs4
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup as soup
+import json
+
+# load diseases and sydromes
+disease_list = json.load(open('disease_list.json'))
+syndrome_list = json.load(open('syndrome_list.json'))
 
 my_url = 'https://www.who.int/emergencies/disease-outbreak-news'
 
@@ -42,10 +47,18 @@ def get_data():
         main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
         article['main_text'] = main_text
         
-        # retrieve reports
+        article['reports'] = get_reports(main_text, disease_list, syndrome_list)
 
+        # retrieve reports
+        return
         results.append(article)
     return results
+
+def get_reports(text, disease_list, syndrome_list):
+    reports = []
+    
+
+    return reports
 
 def get_titles():
     titles = page_soup.findAll("span", {"class":"trimmed"})
