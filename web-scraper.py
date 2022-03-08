@@ -11,6 +11,45 @@ page_html = urlopen(req).read()
 # parse the html
 page_soup = soup(page_html, "html.parser")
 
-# TODO:find a class to grab the disease info
-titles = page_soup.findAll("span", {"class":"trimmed"})
-print(titles)
+containers = page_soup.findAll("a", {"class":"sf-list-vertical__item"})
+
+def get_data():
+    id = 0
+    results = []
+    for container in containers:
+        id += 1
+        article = {}
+
+        article['id'] = str(id)
+
+        # go into each article
+        article_link = container['href']
+        article['url'] = article_link
+        req = Request(article_link, headers={'User-Agent': 'Mozilla/5.0'})
+        article_html = urlopen(req).read()
+        article_soup = soup(article_html, "html.parser")
+        
+        # retrieve publication date - Date formatted as "Day Month Year" currently - can change later on if necessary
+        publication_date = article_soup.find("span", {"class":"timestamp"}).text
+        article['date_of_publication'] = publication_date
+
+        # retrieve headline
+        headline_div = article_soup.find("div", {"class":"sf-item-header-wrapper"})
+        headline = headline_div.h1.text.strip()
+        article['headline'] = headline
+
+        # retrieve main text
+        main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
+        article['main_text'] = main_text
+        
+        # retrieve reports
+
+        results.append(article)
+    return results
+
+def get_titles():
+    titles = page_soup.findAll("span", {"class":"trimmed"})
+    return titles
+
+if __name__=="__main__":
+    print(get_data())
