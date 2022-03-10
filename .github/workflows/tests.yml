@@ -11,8 +11,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: npm install
-      - run: npm test
+      - run: cd API/ && npm install
+      - run: cd API/ && npm test:ci
         
       - name: Tests ✅
         if: ${{ success() }}
