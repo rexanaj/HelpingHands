@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test:ci": "jest --ci --reporters='default' --reporters='./github-actions-reporter.js'"
   },
   "author": "",
   "license": "ISC",
