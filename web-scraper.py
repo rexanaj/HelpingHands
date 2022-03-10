@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup as soup
 import json
 
 # load diseases and sydromes
-disease_list = json.load(open('disease_list.json'))
-syndrome_list = json.load(open('syndrome_list.json'))
+disease_list = json.load(open('./Resources/disease_list.json'))
+syndrome_list = json.load(open('./Resources/syndrome_list.json'))
 
 my_url = 'https://www.who.int/emergencies/disease-outbreak-news'
 
