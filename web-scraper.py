@@ -62,6 +62,10 @@ def get_reports(text, disease_list, syndrome_list):
     
     date = re.findall(r'\d\d? [A-Z][a-z]+ \d\d\d\d', text)
     report = {}
+
+    report['diseases'] = ['unknown']
+    report['syndromes'] = ['unknown']
+
     for disease in disease_list:
         if disease['name'] in text:
             report['diseases'] = [disease['name']]
@@ -71,8 +75,9 @@ def get_reports(text, disease_list, syndrome_list):
         if syndrome['name'] in text:
             report['syndromes'] = [syndrome['name']]
             break
-        
+
     report['event_date'] = date[0]
+    report['locations'] = ['United Kingdom']
     reports.append(report)
     return reports
 
