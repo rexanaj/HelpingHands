@@ -10,10 +10,10 @@ jobs:
       - name: Test using Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
-      - run: cd API/ && npm install
-      - run: cd API/ && npm run test:ci
-        
+          node-version: "12"
+      - run: cd PHASE_1/API_SourceCode/App && npm install
+      - run: cd PHASE_1/API_SourceCode/App && npm run test:ci
+
       - name: Tests ✅
         if: ${{ success() }}
         run: |
