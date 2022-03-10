@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '12'
       - run: yarn install
-      - run: yarn install jest
+      - run: yarn add jest supertest
       - run: cd API/ && yarn test:ci
 
       - name: Tests ✅
