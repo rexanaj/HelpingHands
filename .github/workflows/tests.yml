@@ -6,14 +6,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
       - uses: actions/checkout@v2
-      - name: Set up node 
+      - name: Test using Node.js
         uses: actions/setup-node@v1
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests 
-        run: npm test:ci
+        with:
+          node-version: '12'
+      - run: npm install
+      - run: npm test:ci
         
       - name: Tests ✅
         if: ${{ success() }}
