@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 // Controller functions
-const { getExample } = require('../controllers/exampleController');
+const { getExample } = require("../controllers/exampleController");
 
-/** 
+/**
  * @swagger
  * /example:
  *  get:
@@ -15,7 +15,7 @@ const { getExample } = require('../controllers/exampleController');
  *    responses:
  *      '200':
  *        description: A successful response
-*/
-router.get('/', getExample);
+ */
+router.get("/", getExample);
 
 module.exports = router;

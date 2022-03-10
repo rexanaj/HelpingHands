@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server.js",
+    "lint": "eslint . --ext .js",
+    "format": "prettier-eslint --eslint-config-path ./.eslintrc.js --write '**/*.js'",
     "test:ci": "jest --ci --reporters='default' --reporters='./github-actions-reporter.js'"
   },
   "author": "",
@@ -18,7 +20,14 @@
     "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.3",
     "jest": "^27.5.1",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "prettier-eslint-cli": "^5.0.1",
     "supertest": "^6.2.2"
   }
 }
