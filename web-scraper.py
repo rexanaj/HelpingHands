@@ -2,6 +2,9 @@ import bs4
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup as soup
 import json
+import re
+
+import textblob
 
 # load diseases and sydromes
 disease_list = json.load(open('disease_list.json'))
@@ -47,17 +50,30 @@ def get_data():
         main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
         article['main_text'] = main_text
         
-        article['reports'] = get_reports(main_text, disease_list, syndrome_list)
+        article['reports'] = get_reports(page_soup.get_text(), disease_list, syndrome_list)
 
         # retrieve reports
-        return
+        # return
         results.append(article)
     return results
 
 def get_reports(text, disease_list, syndrome_list):
     reports = []
     
+    date = re.findall(r'\d\d? [A-Z][a-z]+ \d\d\d\d', text)
+    report = {}
+    for disease in disease_list:
+        if disease['name'] in text:
+            report['diseases'] = [disease['name']]
+            break
 
+    for syndrome in syndrome_list:
+        if syndrome['name'] in text:
+            report['syndromes'] = [syndrome['name']]
+            break
+        
+    report['event_date'] = date[0]
+    reports.append(report)
     return reports
 
 def get_titles():
