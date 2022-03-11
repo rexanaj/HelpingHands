@@ -28,6 +28,6 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Access api docs at /docs
 
 // Routes
-app.use("/example", exampleRoutes);
+app.use("/articles", exampleRoutes);
 
 module.exports = app;

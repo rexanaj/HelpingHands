@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Controller functions
-const { getExample } = require("../controllers/exampleController");
+const { getArticles } = require("../controllers/articlesController");
 
 /**
  * @swagger
@@ -16,6 +16,6 @@ const { getExample } = require("../controllers/exampleController");
  *      '200':
  *        description: A successful response
  */
-router.get("/", getExample);
+router.get("/", getArticles);
 
 module.exports = router;
