@@ -4,7 +4,7 @@ const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
 
 // Route imports
-const exampleRoutes = require("./api/routes/exampleRoute");
+const articlesRoutes = require("./api/routes/articlesRoutes");
 
 // Server info
 const app = express();
@@ -28,6 +28,6 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Access api docs at /docs
 
 // Routes
-app.use("/articles", exampleRoutes);
+app.use("/articles", articlesRoutes);
 
 module.exports = app;
