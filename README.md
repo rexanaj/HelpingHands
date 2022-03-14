@@ -1,3 +1,5 @@
+[![Pipeline](https://github.com/rexanaj/team-dwen/actions/workflows/tests.yml/badge.svg)](https://github.com/rexanaj/team-dwen/actions/workflows/tests.yml)
+
 # SENG3011 TEAM DWEN
 This is the team repository for Team Dwen's reports and code. 
 

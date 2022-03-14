@@ -13,6 +13,17 @@ jobs:
           node-version: "12"
       - run: cd PHASE_1/API_SourceCode/App && npm install
       - run: cd PHASE_1/API_SourceCode/App && npm run test:ci
+        env: 
+          FIRESTORE_TYPE: ${{ secrets.FIRESTORE_TYPE }}
+          FIRESTORE_PROJECT_ID: ${{ secrets.FIRESTORE_PROJECT_ID }}
+          FIRESTORE_PRIVATE_KEY_ID: ${{ secrets.FIRESTORE_PRIVATE_KEY_ID }}
+          FIRESTORE_PRIVATE_KEY: ${{ secrets.FIRESTORE_PRIVATE_KEY }}
+          FIRESTORE_CLIENT_EMAIL: ${{ secrets.FIRESTORE_CLIENT_EMAIL }}
+          FIRESTORE_CLIENT_ID: ${{ secrets.FIRESTORE_CLIENT_ID }}
+          FIRESTORE_AUTH_URI: ${{ secrets.FIRESTORE_AUTH_URI }}
+          FIRESTORE_TOKEN_URI: ${{ secrets.FIRESTORE_TOKEN_URI }}
+          FIRESTORE_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.FIRESTORE_AUTH_PROVIDER_X509_CERT_URL }}
+          FIRESTORE_CLIENT_X509_CERT_URL: ${{ secrets.FIRESTORE_CLIENT_X509_CERT_URL }}
 
       - name: Tests ✅
         if: ${{ success() }}
