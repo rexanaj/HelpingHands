@@ -5,6 +5,7 @@ const cors = require("cors");
 
 // Route imports
 const exampleRoutes = require("./api/routes/exampleRoute");
+const dbTestRoutes = require("./api/routes/dbTestRoute");
 
 // Server info
 const app = express();
@@ -29,5 +30,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Access api d
 
 // Routes
 app.use("/example", exampleRoutes);
+app.use("/dbTest", dbTestRoutes)
 
 module.exports = app;
