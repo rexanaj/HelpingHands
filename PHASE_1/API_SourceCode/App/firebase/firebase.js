@@ -1,4 +1,4 @@
-const { initializeApp, cert } = require('firebase-admin/app');
+const firebaseAdmin = require('firebase-admin');
 require('dotenv').config({ path: __dirname + '/../../../../.env.local' });
 
 // Setting up the Firebase Admin SDK 
@@ -18,6 +18,6 @@ const serviceAccount = {
 }
 
 // Initialse the Firebase app
-initializeApp({
-    credential: cert(serviceAccount)
+firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(serviceAccount)
 });

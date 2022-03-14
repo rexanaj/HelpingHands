@@ -1,7 +1,7 @@
 require('../../firebase/firebase') // Initialises the database
-const { getFirestore } = require('firebase-admin/firestore');
+const firebaseAdmin = require('firebase-admin');
 
-const db = getFirestore();
+const db = firebaseAdmin.firestore();
 const getArticleExample = async (req, res) => {
     const cityRef = await db.collection('articles').doc('article1');
     const doc = await cityRef.get();
