@@ -6,6 +6,7 @@ const cors = require("cors");
 // Route imports
 const exampleRoutes = require("./api/routes/exampleRoute");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
+const dbTestRoutes = require("./api/routes/dbTestRoute");
 
 // Server info
 const app = express();
@@ -14,15 +15,16 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // lets us parse JSON
 
+const port = process.env.PORT || 5555;
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
       title: "API",
       description: "API Information",
     },
-    servers: ["http:://localhost:5000"],
+    servers: ["http:://localhost:" + port],
   },
-  apis: ["./routes/*.js"],
+  apis: ["./api/routes/*.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -31,5 +33,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Access api d
 // Routes
 app.use("/example", exampleRoutes);
 app.use("/diseases", diseasesRoutes);
+app.use("/dbTest", dbTestRoutes)
 
 module.exports = app;
