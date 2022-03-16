@@ -4,12 +4,9 @@ const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
 
 // Route imports
-<<<<<<< HEAD
 const articlesRoutes = require("./api/routes/articlesRoutes");
-=======
 const exampleRoutes = require("./api/routes/exampleRoute");
 const dbTestRoutes = require("./api/routes/dbTestRoute");
->>>>>>> main
 
 // Server info
 const app = express();
