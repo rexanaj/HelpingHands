@@ -5,7 +5,6 @@ const cors = require("cors");
 
 // Route imports
 const articlesRoutes = require("./api/routes/articlesRoutes");
-const exampleRoutes = require("./api/routes/exampleRoute");
 const dbTestRoutes = require("./api/routes/dbTestRoute");
 
 // Server info
@@ -32,7 +31,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Access api d
 
 // Routes
 app.use("/articles", articlesRoutes);
-app.use("/example", exampleRoutes);
 app.use("/dbTest", dbTestRoutes)
 
 module.exports = app;

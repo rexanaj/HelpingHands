@@ -2,92 +2,78 @@ require('../../firebase/firebase') // Initialises the database
 const firebaseAdmin = require('firebase-admin');
 const db = firebaseAdmin.firestore();
 
-// Controller functions
-//retrieves summaries with respect to limit parameter
-const getArticles = (req, res) => {
-  try {
-    console.log("Getting articles equal to limit parameter provided");
-    //Collect all articles from the database
-    const articlesRef = await db.collection("articles").get();
-    const arr = [];
-    if (articleRef.empty) {
-      res.status(200).json({ message: "No articles found" });
+const { stringToDate } = require('./timestamp');
+
+/**
+ * Ensures a 'limit' param is passed in 
+ * Checks each other non-required param and if defined, adds to the query
+ */
+
+const getArticles = async (req, res) => {
+  console.log("Calling get articles with these params: ", req.query);
+
+  const limit = parseInt(req.query.limit);
+  // Check limit is passed in as a param
+  if (limit == undefined) {
+    res.status(400).json("Missing limit parameter");
+    return;
+  }
+
+  // Check if limit type is correct
+  if (Number.isNaN(limit)) {
+    res.status(400).json("Invalid parameter type");
+    return;
+  }
+
+  // Database query
+  var query = db.collection("articles");
+
+  // Check start_date
+  const startDate = req.query.start_date;
+  if (startDate != undefined) {
+    // Check if start date is valid 
+    if (Date.parse(startDate) != NaN) {
+      query = query.where("date_of_publication", ">=", stringToDate(startDate));
     } else {
-      let count = 0;
-      //Get the correct number of articles based on limit parameter
-      articlesRef.foreach(function (doc) {
-        while (count < req.query.limit) {
-          const article = new Article(
-            doc.data().title,
-            doc.data().main_text
-          );
-          arr.push(article);
-          count++;
-        }
-      });
-      res.status(200).json({
-        "Article Summaries": arr 
-      });
-    }
-  } catch (error) {
-    //check limit is parsed in parameter
-    if (req.query.limit == undefined) {
-      res.status(400).json("Missing limit parameter");
-      return;
-    }
-    
-    //check if parameter type is correct
-    let limit = parseInt(req.query.limit);
-    if (Number.isNaN(limit)) {
-      res.status(400).json("Invalid parameter type");
+      res.status(400).json({ message: "Timestamp is in an invalid format" });
       return;
     }
   }
-};
 
-//retrieves summaries with respect to start_date and end_date parameters
-const getArticlesDate = (req, res) => {
-  try {
-    const start_date = req.query.start_date;
-    const end_date = req.query.end_date;
-    console.log("Getting articles equal to start date" + start_date ,"and end date" + end_date);
-    //Collect all articles from the database
-    const articlesRef = await db.collection("articles").get();
-    const arr = [];
-
-    const date1 = new Date(start_date);
-    const date2 = new Date(end_date);
-    //Loop through all articles 
-    articlesRef.forEach(function (doc) {
-      //Get article summaries inbetween start date and end date parameter
-      doc.data().date_of_publication.forEach(function (date) {
-        const article_date = new Date(date);
-        //Check if date of publication is inbetween start date and end date
-        if (article_date >= start_date && article_date <= end_date) {
-          const article = new Article(
-            doc.data().title,
-            doc.data().main_text
-          );
-          arr.push(article);
-        }
-      })
-    });
-    res.status(200).json({
-      "Article Summaries": arr 
-    });
-  } catch (error) {
-    //check start_date and end_date are parsed in parameter
-    if (req.query.start_date == undefined || req.query.end_date == undefined) {
-      res.status(400).json("Missing start_date and end_date parameter");
-      return;
-    }
-
-    //check if parameter type is correct
-    if (typeof req.query.start_date !== 'string' || typeof req.query.end_date !== 'string') {
-      res.status(400).json("Invalid parameter type");
+  // Check if end date is valid 
+  const endDate = req.query.end_date;
+  if (endDate != undefined) {
+    // Check if start date is valid
+    if (Date.parse(endDate) != NaN) {
+      query = query.where("date_of_publication", "<=", stringToDate(endDate));
+    } else {
+      res.status(400).json({ message: "Timestamp is in an invalid format" });
       return;
     }
   }
+
+  // Check keyterms
+  const keyTerms = req.query.keyterms;
+  if (keyTerms != undefined) {
+    // TODO: Format key terms
+    // TODO: Add key terms to query 
+  }
+
+  // Check location 
+  const location = req.query.location;
+  if (location != undefined) {
+    // TODO: Format location - check my branch for the 'capitalisestring' function and use that
+    // TODO: Create a query that gets the given the locations
+  }
+
+  // Make the query to the database 
+  const articlesRef = await query.orderBy('date_of_publication').limit(limit).get();
+  var data = [];
+  console.log("Number of returned docs: ", articlesRef.size);
+  articlesRef.forEach((doc) => {
+    data.push(doc.data());
+  })
+  res.status(200).json(data);
 };
 
-module.exports = { getArticles, getArticlesDate };
+module.exports = { getArticles };
