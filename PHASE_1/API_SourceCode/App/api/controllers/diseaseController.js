@@ -1,13 +1,38 @@
 require('../../firebase/firebase') // Initialises the database
 const firebaseAdmin = require('firebase-admin');
-const { report } = require('superagent');
 const db = firebaseAdmin.firestore();
 
-const { capitaliseString } = require('../../helper/strings')
+const { capitaliseString } = require('../../helper/strings');
+const { addLog } = require('../../helper/log');
 
-// Retrieves all diseases 
-const getAllDiseases = async (req, res) => {
+// Retrieves all diseases alongside their information
+const getAllDiseasesInfo = async (req, res) => {
     console.log("Get all diseases called!");
+
+    // Gets all reports from the database
+    const reportsRef = await db.collection('reports').get();
+    if (reportsRef.empty) {
+        res.status(404).json("No reports found");
+    }
+
+    const data = [];
+    reportsRef.forEach(function (doc) {
+        // Loop through each disease in the report
+        data.push(doc.data());
+    });
+
+    if (data.length == 0) {
+        res.status(404).json("No diseases found.");
+        return;
+    }
+    res.json(addLog({
+        "diseaseInfo": data
+    }));
+};
+
+// Retrieves only the diseases field
+const getAllDiseaseNames = async (req, res) => {
+    console.log("Get all disease names called!");
 
     // Gets all reports from the database
     const reportsRef = await db.collection('reports').get();
@@ -31,7 +56,9 @@ const getAllDiseases = async (req, res) => {
         res.status(404).json("No diseases found.");
         return;
     }
-    res.json(allDiseases);
+    res.json(addLog({
+        "diseaseNames": allDiseases
+    }));
 };
 
 // Retrieves a information about a specified disease 
@@ -60,10 +87,10 @@ const getDisease = async (req, res) => {
         })
     });
 
-    res.json({
+    res.json(addLog({
         affected_areas: allLocations,
         number_of_cases: allLocations.length
-    });
+    }));
 }
 
-module.exports = { getAllDiseases, getDisease };
+module.exports = { getAllDiseasesInfo, getAllDiseaseNames, getDisease };

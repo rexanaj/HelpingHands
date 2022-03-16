@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Controller functions
-const { getAllDiseases, getDisease } = require("../controllers/diseaseController");
+const { getAllDiseasesInfo, getDisease, getAllDiseaseNames } = require("../controllers/diseaseController");
 
 /**
  * @swagger
@@ -16,7 +16,8 @@ const { getAllDiseases, getDisease } = require("../controllers/diseaseController
  *      '200':
  *        description: A successful response
  */
-router.get("/", getAllDiseases);
+router.get("/", getAllDiseasesInfo);
+router.get("/names", getAllDiseaseNames);
 router.get("/:disease", getDisease);
 
 module.exports = router;
