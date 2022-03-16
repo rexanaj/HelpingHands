@@ -1,14 +1,18 @@
+from importlib import resources
 import bs4
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup as soup
 import json
 import re
+import os
+import sys
 
 import textblob
 
 # load diseases and sydromes
-disease_list = json.load(open('./Resources/disease_list.json'))
-syndrome_list = json.load(open('./Resources/syndrome_list.json'))
+script_dir = os.path.dirname(__file__)
+disease_list = json.load(open(os.path.join(script_dir, 'disease_list.json')))
+syndrome_list = json.load(open(os.path.join(script_dir, 'syndrome_list.json')))
 
 my_url = 'https://www.who.int/emergencies/disease-outbreak-news'
 
@@ -55,7 +59,7 @@ def get_data():
         # retrieve reports
         # return
         results.append(article)
-    return results
+    return json.dumps(results)
 
 def get_reports(text, disease_list, syndrome_list):
     reports = []
