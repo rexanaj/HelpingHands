@@ -5,9 +5,8 @@ from bs4 import BeautifulSoup as soup
 import json
 import re
 import os
-import sys
-
-import textblob
+# run pip install https://github.com/elyase/geotext/archive/master.zip to install the below package
+from geotext import GeoText
 
 # load diseases and sydromes
 script_dir = os.path.dirname(__file__)
@@ -54,7 +53,8 @@ def get_data():
         main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
         article['main_text'] = main_text
         
-        article['reports'] = get_reports(page_soup.get_text(), disease_list, syndrome_list)
+        # passing in all the text in the page already
+        article['reports'] = get_reports(article_soup.get_text(), disease_list, syndrome_list)
 
         # retrieve reports
         # return
@@ -81,7 +81,17 @@ def get_reports(text, disease_list, syndrome_list):
             break
 
     report['event_date'] = date[0]
-    report['locations'] = ['United Kingdom']
+
+    cities = GeoText(text).cities
+    countries = GeoText(text).countries
+    
+    report['locations'] = []
+    if cities != '':
+        report['locations'].append(cities[0])
+    if countries != '':
+        report['locations'].append(countries[0])
+
+    
     reports.append(report)
     return reports
 
