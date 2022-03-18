@@ -2,11 +2,8 @@ require("../../firebase/firebase"); // Initialises the database
 const firebaseAdmin = require("firebase-admin");
 const db = firebaseAdmin.firestore();
 
-const stringToDate = (dateString) => {
-  const split = dateString.split("-");
-  const formattedEndDate = new Date(split[2], split[1] - 1, split[0]);
-  return formattedEndDate;
-};
+const { capitaliseString } = require('../../helper/strings');
+const { addLog } = require('../../helper/log');
 
 const getArticles = async (req, res) => {
   console.log("Calling get articles with these params: ", req.query);
@@ -36,22 +33,17 @@ const getArticles = async (req, res) => {
   if (startDate != undefined) {
     // Check if start date is valid
     const startDateObj = new Date(startDate);
-
     const startMonth = startDateObj.getUTCMonth() + 1;
     const startYear = startDateObj.getUTCFullYear();
-    console.log("Month: ", startMonth);
-    console.log("Year: ", startYear);
-    console.log("Date: ", startDateObj);
     //check correct start date format for eg. without year should be error
     if (!startMonth || !startYear) {
       res.status(400).json("Invalid start date");
       return;
     }
-    query = query.where("date_of_publication", ">=", stringToDate(startDate));
-    //query = await query.orderBy('date_of_publication').startAt(startDateObj);
+    query = query.where("date_of_publication", ">=", startDateObj);
   }
 
-  // Check if end date is valid
+  // Check if end_date
   const endDate = req.query.end_date;
   if (endDate != undefined) {
     // Check if end date is valid
@@ -64,25 +56,23 @@ const getArticles = async (req, res) => {
       res.status(400).json("Invalid end date");
       return;
     }
-    query = query.where("date_of_publication", "<=", stringToDate(endDate));
+    query = query.where("date_of_publication", "<=", endDate);
   }
 
   // Check keyterms
   const keyTerms = req.query.key_terms;
   if (keyTerms != undefined) {
     // Format key terms
-    //const keyTerms = capitaliseString(req.query.key_terms);
-    const keyTermsList = keyTerms.split(",");
+    const keyTermsList = keyTerms.split(",").map(capitaliseString);
+
     //Check that there are less than 10 key words
     if (keyTermsList.length > 10) {
       res.status(400).json("No more than 10 key terms allowed in the query");
+      return;
     }
 
-    //const results = [];
-    console.log("Get key terms: " + keyTerms);
-    // TODO: Add key terms to query
-    //Loop through key terms list and find articles containing ALL the key terms
-    query = query.where("key_terms", "array-contains", keyTermsList);
+    // Loop through key terms list and find articles containing any of the key terms
+    query = query.where("keywords", "array-contains-any", keyTermsList);
     if (query.empty) {
       res.status(404).json("No articles found with given key terms");
       return;
@@ -110,7 +100,7 @@ const getArticles = async (req, res) => {
   articlesRef.forEach((doc) => {
     data.push(doc.data());
   });
-  res.status(200).json(data);
+  res.status(200).json(addLog(data));
 };
 
 module.exports = { getArticles };
