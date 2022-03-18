@@ -85,7 +85,6 @@ def get_reports(text, disease_list, syndrome_list):
             continue
         if syndrome['name'].lower() in text.lower():
             report['syndromes'] = [syndrome['name'].title()]
-            break
 
     for keyword in keywords_list:
         if keyword['name'].lower() in text.lower():
