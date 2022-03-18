@@ -45,7 +45,9 @@ const getAllDiseaseNames = async (req, res) => {
   var allDiseases = [];
   reportsRef.forEach(function (doc) {
     // Loop through each disease in the report
-    doc.data().diseases.forEach(function (disease) {
+    // console.log("printing doc.data().diseases")
+    // console.log(doc.data());
+    doc.data().report[0].diseases.forEach(function (disease) {
       // Format string to ensure no duplicates
       const formattedDisease = capitaliseString(disease);
       if (!allDiseases.includes(formattedDisease)) {
