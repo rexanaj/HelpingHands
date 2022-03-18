@@ -5,7 +5,6 @@ const cors = require("cors");
 
 // Route imports
 const articlesRoutes = require("./api/routes/articlesRoutes");
-const dbTestRoutes = require("./api/routes/dbTestRoute");
 
 // Server info
 const app = express();
@@ -14,23 +13,51 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // lets us parse JSON
 
+// Swagger setup
 const port = process.env.PORT || 5555;
-const swaggerOptions = {
-  swaggerDefinition: {
+const options = {
+  definition: {
+    openapi: "3.0.0",
     info: {
       title: "API",
+      version: "1.0.0",
       description: "API Information",
     },
-    servers: ["http:://localhost:" + port],
+    servers: [
+      {
+        url: `http://localhost:${port}`,
+      },
+    ],
   },
-  apis: ["./api/routes/*.js"],
+  apis: ["./app.js", "./api/routes/*.js"],
 };
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs)); // Access api docs at /docs
+const specs = swaggerJsDoc(options);
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs)); // Access api docs at /docs
+
+/**
+ * @swagger
+ * components:
+ *  responses:
+ *    Success:
+ *      description: OK
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *    InputError:
+ *      description: Input error
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              error:
+ *                type: string
+ *                example: Invalid input
+ */
 
 // Routes
 app.use("/articles", articlesRoutes);
-app.use("/dbTest", dbTestRoutes)
 
 module.exports = app;
