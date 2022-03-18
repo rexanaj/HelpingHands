@@ -15,7 +15,7 @@ const getArticles = async (req, res) => {
 
   const limit = parseInt(req.query.limit);
   // Check limit is passed in as a param
-  if (limit == undefined) {
+  if (!req.query.limit) {
     res.status(400).json("Missing limit parameter");
     return;
   }
@@ -27,22 +27,26 @@ const getArticles = async (req, res) => {
   }
 
   // Database query
-  var query = db.collection("articles");
+  var query = await db.collection("articles");
 
   // Check start_date
   const startDate = req.query.start_date;
   if (startDate != undefined) {
     // Check if start date is valid
     const startDateObj = new Date(startDate);
+
     const startMonth = startDateObj.getUTCMonth() + 1;
     const startYear = startDateObj.getUTCFullYear();
-
+    console.log("Month: ", startMonth);
+    console.log("Year: ", startYear);
+    console.log("Date: ", startDateObj);
     //check correct start date format for eg. without year should be error
     if (!startMonth || !startYear) {
-        res.status(400).json({ message: "Invalid start date"});
+        res.status(400).json("Invalid start date");
         return;
     } 
     query = query.where("date_of_publication", ">=", stringToDate(startDate));
+    //query = await query.orderBy('date_of_publication').startAt(startDateObj);
   }
 
   // Check if end date is valid 
@@ -55,7 +59,7 @@ const getArticles = async (req, res) => {
 
     //check correct start date format for eg. without year should be error
     if (!endMonth || !endYear) {
-        res.status(400).json({ message: "Invalid end date"});
+        res.status(400).json("Invalid end date");
         return;
     } 
     query = query.where("date_of_publication", "<=", stringToDate(endDate));
@@ -68,17 +72,19 @@ const getArticles = async (req, res) => {
     //const keyTerms = capitaliseString(req.query.key_terms);
     const keyTermsList = keyTerms.split(",");
     //Check that there are less than 10 key words
+    if (keyTermsList.length > 10) {
+      res.status(400).json("No more than 10 key terms allowed in the query");
+    }
     
-    const results = [];
+    //const results = [];
     console.log("Get key terms: " + keyTerms);
     // TODO: Add key terms to query 
-    
-    /*
-    query = query.orderBy('main_text').startAt('fever').endAt('fever' + '\uf8ff');
+    //Loop through key terms list and find articles containing ALL the key terms
+    query = query.where('key_terms', 'array-contains', keyTermsList);
     if (query.empty) {
       res.status(404).json("No articles found with given key terms");
       return;
-    } */
+    }
   }
 
   // Check location 
