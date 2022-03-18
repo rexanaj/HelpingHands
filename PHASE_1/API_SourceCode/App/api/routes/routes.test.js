@@ -72,21 +72,8 @@ describe("Testing specified disease name", () => {
     expect(disease.log).toEqual(expect.anything());
   });
 
-  it("GET /:disease ==> return info for the specified disease", async () => {
-    const testDiseaseName = diseaseNames[0];
-    const res = await supertest(app).get("/diseases/" + testDiseaseName);
-
-    expect(res.statusCode).toEqual(200);
-    const disease = res.body;
-    // check if the fetched the disease is the same as the passed in disease
-    expect(disease.disease.toUpperCase()).toEqual(testDiseaseName);
-    // check if locations exist
-    expect(disease.locations).toEqual(expect.anything());
-    // check if syndromes are valid
-    expect(syndromes).toEqual(expect.arrayContaining(disease.syndromes));
-    // check if the number of cases is a valid number
-    expect(disease.number_of_cases).toBeGreaterThan(0);
-    // check if log exists
-    expect(disease.log).toEqual(expect.anything());
+  it("GET /:disease(invalid disease name) ==> return 400", async () => {
+    const res = await supertest(app).get("/diseases/some-invalid-disease");
+    expect(res.statusCode).toEqual(400);
   });
 });

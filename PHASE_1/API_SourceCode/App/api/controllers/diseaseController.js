@@ -5,6 +5,8 @@ const db = firebaseAdmin.firestore();
 const { capitaliseString } = require("../../helper/strings");
 const { addLog } = require("../../helper/log");
 
+const diseaseList = require("../../resources/disease_list.json");
+
 // Retrieves all diseases alongside their information
 const getAllDiseasesInfo = async (req, res) => {
     console.log("Get all diseases called!");
@@ -12,7 +14,7 @@ const getAllDiseasesInfo = async (req, res) => {
     // Gets all reports from the database
     const reportsRef = await db.collection("reports").get();
     if (reportsRef.empty) {
-        res.status(200);
+        res.status(200).json([]);
         return;
     }
 
@@ -72,7 +74,7 @@ const getAllDiseaseNames = async (req, res) => {
     // Gets all reports from the database
     const reportsRef = await db.collection("reports").get();
     if (reportsRef.empty) {
-        res.status(200);
+        res.status(200).json([]);
         return;
     }
 
@@ -106,10 +108,21 @@ const getDisease = async (req, res) => {
     const diseaseName = capitaliseString(req.params.disease);
     console.log("Get specified disease: " + diseaseName);
 
+    var found = false;
+    diseaseList.forEach((disease) => {
+        if (capitaliseString(disease.name) === diseaseName) {
+            found = true;
+        }
+    })
+    if (!found) {
+        res.status(404).json("Invalid disease name provided");
+        return;
+    }
+
     // Gets all reports from the database
     const reportsRef = await db.collection("reports").get();
     if (reportsRef.empty) {
-        res.status(200);
+        res.status(200).json([]);
         return;
     }
 
