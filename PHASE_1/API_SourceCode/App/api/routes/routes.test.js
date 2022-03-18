@@ -10,3 +10,15 @@ describe("Routes", () => {
     expect(res.body).toEqual("Hello World");
   });
 });
+
+
+describe("Testing disease route", () => {
+  it("GET / ==> return all diseases info", async () => {
+    const res = await supertest(app).get("/diseases");
+
+    
+
+    expect(res.statusCode).toEqual(200);
+
+  })
+});
