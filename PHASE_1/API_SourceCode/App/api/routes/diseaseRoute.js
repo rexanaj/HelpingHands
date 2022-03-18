@@ -3,9 +3,9 @@ const router = express.Router();
 
 // Controller functions
 const {
-  getAllDiseasesInfo,
-  getDisease,
-  getAllDiseaseNames,
+    getAllDiseasesInfo,
+    getDisease,
+    getAllDiseaseNames,
 } = require("../controllers/diseaseController");
 
 /**

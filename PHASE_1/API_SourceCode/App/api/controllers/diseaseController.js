@@ -5,6 +5,7 @@ const db = firebaseAdmin.firestore();
 const { capitaliseString } = require("../../helper/strings");
 const { addLog } = require("../../helper/log");
 
+
 // Retrieves all diseases alongside their information
 const getAllDiseasesInfo = async (req, res) => {
     console.log("Get all diseases called!");
@@ -12,7 +13,7 @@ const getAllDiseasesInfo = async (req, res) => {
     // Gets all reports from the database
     const reportsRef = await db.collection("reports").get();
     if (reportsRef.empty) {
-        res.status(200);
+        res.status(200).json([]);
         return;
     }
 
@@ -72,7 +73,7 @@ const getAllDiseaseNames = async (req, res) => {
     // Gets all reports from the database
     const reportsRef = await db.collection("reports").get();
     if (reportsRef.empty) {
-        res.status(200);
+        res.status(200).json([]);
         return;
     }
 
@@ -106,10 +107,11 @@ const getDisease = async (req, res) => {
     const diseaseName = capitaliseString(req.params.disease);
     console.log("Get specified disease: " + diseaseName);
 
+
     // Gets all reports from the database
     const reportsRef = await db.collection("reports").get();
     if (reportsRef.empty) {
-        res.status(200);
+        res.status(200).json([]);
         return;
     }
 
@@ -140,6 +142,11 @@ const getDisease = async (req, res) => {
             }
         });
     });
+
+    if (diseaseInfo["number_of_cases"] <= 0) {
+        res.status(404).json({ message: "Invalid disease name provided" });
+        return;
+    }
 
     res.json(addLog(diseaseInfo));
 };
