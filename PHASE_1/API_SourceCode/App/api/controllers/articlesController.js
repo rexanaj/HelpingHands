@@ -25,11 +25,22 @@ const getArticles = async (req, res) => {
     return;
   }
 
+  //Check limit value is larger than 0
+  if (req.query.limit <= 0) {
+    res.status(400).json("Invalid parameter value");
+    return;
+  } 
   // Database query
   var query = await db.collection("articles");
 
   // Check start_date
   const startDate = req.query.start_date;
+  //Type check parameter
+  if (isNaN(req.query.start_date)) {
+    res.status(400).json("Invalid parameter type");
+    return;
+  }
+
   if (startDate != undefined) {
     // Check if start date is valid
     const startDateObj = new Date(startDate);
@@ -46,6 +57,11 @@ const getArticles = async (req, res) => {
   // Check if end_date
   const endDate = req.query.end_date;
   if (endDate != undefined) {
+    //Type check parameter
+    if (isNaN(req.query.end_date)) {
+      res.status(400).json("Invalid parameter type");
+      return;
+    }
     // Check if end date is valid
     const endDateObj = new Date(endDate);
     const endMonth = endDateObj.getUTCMonth() + 1;
@@ -62,6 +78,12 @@ const getArticles = async (req, res) => {
   // Check keyterms
   const keyTerms = req.query.key_terms;
   if (keyTerms != undefined) {
+    //Type check parameter
+    if (!isNaN(req.query.key_terms)) {
+      res.status(400).json("Invalid parameter type");
+      return;
+    }
+
     // Format key terms
     const keyTermsList = keyTerms.split(",").map(capitaliseString);
 
@@ -82,6 +104,11 @@ const getArticles = async (req, res) => {
   // Check location
   const location = req.query.location;
   if (location != undefined) {
+    //Type check parameter
+    if (!isNaN(req.query.location)) {
+      res.status(400).json("Invalid parameter type");
+      return;
+    }
     //Format location
     const locationName = capitaliseString(req.query.location);
     console.log("Get location name: " + locationName);
