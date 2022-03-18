@@ -74,14 +74,17 @@ def get_reports(text, disease_list, syndrome_list):
     report['keywords'] = []
 
     for disease in disease_list:
+        if disease['name'] == "unknown" or disease['name'] == "other":
+            continue
         if disease['name'].lower() in text.lower():
-            report['diseases'] = [disease['name']]
+            report['diseases'] = [disease['name'].title()]
             break
 
     for syndrome in syndrome_list:
+        if syndrome['name'] == "unknown" or syndrome['name'] == "other":
+            continue
         if syndrome['name'].lower() in text.lower():
-            report['syndromes'] = [syndrome['name']]
-            break
+            report['syndromes'] = [syndrome['name'].title()]
 
     for keyword in keywords_list:
         if keyword['name'].lower() in text.lower():
