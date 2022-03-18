@@ -5,9 +5,8 @@ const cors = require("cors");
 const firebaseAdmin = require('firebase-admin');
 
 // Route imports
-const exampleRoutes = require("./api/routes/exampleRoute");
+const articlesRoutes = require("./api/routes/articlesRoutes");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
-const dbTestRoutes = require("./api/routes/dbTestRoute");
 
 // Server info
 const app = express();
@@ -61,9 +60,8 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs)); // Access api docs at
  */
 
 // Routes
-app.use("/example", exampleRoutes);
+app.use("/articles", articlesRoutes);
 app.use("/diseases", diseasesRoutes);
-app.use("/dbTest", dbTestRoutes);
 
 
 // sending scraper data to database
