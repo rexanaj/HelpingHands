@@ -35,11 +35,6 @@ const getArticles = async (req, res) => {
 
   // Check start_date
   const startDate = req.query.start_date;
-  //Type check parameter
-  if (isNaN(req.query.start_date)) {
-    res.status(400).json("Invalid parameter type");
-    return;
-  }
 
   if (startDate != undefined) {
     // Check if start date is valid
@@ -57,11 +52,6 @@ const getArticles = async (req, res) => {
   // Check if end_date
   const endDate = req.query.end_date;
   if (endDate != undefined) {
-    //Type check parameter
-    if (isNaN(req.query.end_date)) {
-      res.status(400).json("Invalid parameter type");
-      return;
-    }
     // Check if end date is valid
     const endDateObj = new Date(endDate);
     const endMonth = endDateObj.getUTCMonth() + 1;
