@@ -12,6 +12,8 @@ from geotext import GeoText
 script_dir = os.path.dirname(__file__)
 disease_list = json.load(open(os.path.join(script_dir, 'disease_list.json')))
 syndrome_list = json.load(open(os.path.join(script_dir, 'syndrome_list.json')))
+keywords_list = json.load(open(os.path.join(script_dir, 'keywords_list.json')))
+
 
 my_url = 'https://www.who.int/emergencies/disease-outbreak-news'
 
@@ -69,16 +71,21 @@ def get_reports(text, disease_list, syndrome_list):
 
     report['diseases'] = ['unknown']
     report['syndromes'] = ['unknown']
+    report['keywords'] = []
 
     for disease in disease_list:
-        if disease['name'] in text:
+        if disease['name'].lower() in text.lower():
             report['diseases'] = [disease['name']]
             break
 
     for syndrome in syndrome_list:
-        if syndrome['name'] in text:
+        if syndrome['name'].lower() in text.lower():
             report['syndromes'] = [syndrome['name']]
             break
+
+    for keyword in keywords_list:
+        if keyword['name'].lower() in text.lower():
+            report['keywords'].append(keyword['name'])
 
     report['event_date'] = date[0]
 

@@ -71,7 +71,7 @@ app.use('/load', (req, res) => {
           console.log(article['headline']);
 
           // enter into firestore
-          db.collection("test").doc().set({
+          db.collection("articles").doc().set({
             id: article['id'],
             url: article['url'],
             date_of_publication: article['date_of_publication'],
@@ -84,6 +84,16 @@ app.use('/load', (req, res) => {
           })
           .catch(function(error) {
             console.error("Error writing article: ", error);
+          });
+
+          db.collection("reports").doc().set({
+            report: article['reports']
+          })
+          .then(function() {
+            console.log("report added successfully!");
+          })
+          .catch(function(error) {
+            console.error("Error writing report: ", error);
           });
         }
     });
