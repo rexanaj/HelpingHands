@@ -7,6 +7,7 @@ import re
 import os
 # run pip install https://github.com/elyase/geotext/archive/master.zip to install the below package
 from geotext import GeoText
+from datetime import datetime
 
 # load diseases and sydromes
 script_dir = os.path.dirname(__file__)
@@ -44,7 +45,8 @@ def get_data():
         
         # retrieve publication date - Date formatted as "Day Month Year" currently - can change later on if necessary
         publication_date = article_soup.find("span", {"class":"timestamp"}).text
-        article['date_of_publication'] = publication_date
+        date_object = datetime.strptime(publication_date, '%d %B %Y')
+        article['date_of_publication'] = str(date_object.isoformat())
 
         # retrieve headline
         headline_div = article_soup.find("div", {"class":"sf-item-header-wrapper"})
@@ -85,12 +87,14 @@ def get_reports(text, disease_list, syndrome_list):
             continue
         if syndrome['name'].lower() in text.lower():
             report['syndromes'] = [syndrome['name'].title()]
+            break
 
     for keyword in keywords_list:
         if keyword['name'].lower() in text.lower():
             report['keywords'].append(keyword['name'])
 
-    report['event_date'] = date[0]
+    date_object = datetime.strptime(date[0], '%d %B %Y')
+    report['event_date'] = str(date_object.isoformat())
 
     cities = GeoText(text).cities
     countries = GeoText(text).countries
