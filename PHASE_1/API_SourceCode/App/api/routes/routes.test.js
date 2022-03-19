@@ -37,14 +37,13 @@ describe("Routes", () => {
     //convert start date query into unix timestamp
     var unixStartDate = Date.parse("2021-02-03 23:59:59") / 1000;
     //compare unix time in articles to start date unix time
-    console.log(res.body);
     res.body.forEach(function (item, index) {
       expect(item["date_of_publication"]["_seconds"]).toBeGreaterThanOrEqual(unixStartDate);
     });
 
     expect(res.statusCode).toEqual(200);
     //check that five articles are in the response
-    expect(res.body).toHaveLength(5);
+    expect(res.body).toHaveLength(10);
   });
 
   //Check all articles are returned when start date is earlier than
@@ -149,11 +148,11 @@ describe("Routes", () => {
   });
 
   //start date and end date contains all article dates
-  it("GET /articles?limit=36&start_date=2022-10-13&end_date=2022-03-03 ==> successful", async () => {
-    const res = await supertest(app).get("/articles?limit=36&start_date=2022-10-13&end_date=2022-03-03");
+  it("GET /articles?limit=36&start_date=2020-10-13&end_date=2022-03-03 ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=36&start_date=2020-10-13&end_date=2022-03-03");
     //12 articles in the database have dates between start date and end date
     //convert start date and end date query into unix timestamp
-    var unixStartDate = Date.parse("2022-10-13T00:00:00") / 1000;
+    var unixStartDate = Date.parse("2020-10-13T00:00:00") / 1000;
     var unixEndDate = Date.parse("2022-03-03T00:00:00") / 1000;
     //compare unix time in articles to start date and end date unix time
     res.body.forEach(function (item, index) {
@@ -224,8 +223,8 @@ describe("Routes", () => {
   it("GET /articles?limit=10&location=ukraine ==> successful", async () => {
     const res = await supertest(app).get("/articles?limit=10&location=ukraine");
     expect(res.statusCode).toEqual(200);
-    // Currently only one article with location = ukraine in database
-    expect(res.body).toHaveLength(5);
+    // Currently only two articles with location = ukraine in database
+    expect(res.body).toHaveLength(2);
   });
 
   // Test no articles with matching location
