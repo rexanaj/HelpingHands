@@ -69,7 +69,7 @@ const getArticles = async (req, res) => {
   const keyTerms = req.query.keyterms;
   if (keyTerms != undefined) {
     //Type check parameter
-    if (!isNaN(req.query.keyterms)) {
+    if (!isNaN(keyTerms)) {
       res.status(400).json("Invalid parameter type");
       return;
     }
@@ -117,6 +117,10 @@ const getArticles = async (req, res) => {
         }
       })
     });
+  } else {
+    articlesRef.forEach((doc) => {
+      data.push(doc.data());
+    })
   }
 
   if (data.length == 0) {
@@ -124,7 +128,13 @@ const getArticles = async (req, res) => {
     return;
   }
 
-  console.log("Number of returned docs: ", data.length);
+  var numDocs = 0;
+  data.forEach((doc) => {
+    if (doc.id != undefined) {
+      numDocs += 1;
+    }
+  })
+  console.log("Number of returned docs: ", numDocs);
   res.status(200).json(addLog(data));
 };
 
