@@ -106,7 +106,7 @@ const getAllDiseaseNames = async (req, res) => {
 // Including: symptoms, affected areas and number of cases
 const getDisease = async (req, res) => {
     const diseaseName = capitaliseString(req.params.disease);
-    console.log("Get specified disease: " + diseaseName);
+    // console.log("Get specified disease: " + diseaseName);
 
     var found = false;
     diseaseList.forEach((disease) => {
