@@ -18,8 +18,8 @@ const syndromes = [
   "Fatigue",
   "Fever",
   "Sore throat",
-  "unknown"
-]
+  "unknown",
+];
 
 describe("Testing all disease names", () => {
   it("GET /names ==> return all disease names", async () => {
@@ -29,7 +29,7 @@ describe("Testing all disease names", () => {
     // there should be a log object
     expect(res.body.log).toEqual(expect.anything());
     // record all the disease names for other test cases
-    diseaseNames = res.body.diseaseNames.map(n => n.toUpperCase()).sort();
+    diseaseNames = res.body.diseaseNames.map((n) => n.toUpperCase()).sort();
   });
 });
 
@@ -38,24 +38,41 @@ describe("Testing all diseases info", () => {
     const res = await supertest(app).get("/diseases");
 
     expect(res.statusCode).toEqual(200);
-    const diseaseDict = res.body.diseasesInfo
+    const diseaseDict = res.body.diseasesInfo;
     // the fetched diseases matched exactly the names fetched from "diseases/names"
-    const fetched_diseases = Object.keys(diseaseDict).map(n => n.toUpperCase()).sort();
+    const fetched_diseases = Object.keys(diseaseDict)
+      .map((n) => n.toUpperCase())
+      .sort();
     expect(fetched_diseases).toEqual(expect.arrayContaining(diseaseNames));
     expect(diseaseNames).toEqual(expect.arrayContaining(fetched_diseases));
     // for each disease we check if locations exist and syndromes are valid
-    Object.keys(diseaseDict).forEach(disease => {
+    Object.keys(diseaseDict).forEach((disease) => {
       expect(diseaseDict[disease].locations).toEqual(expect.anything());
-      expect(syndromes).toEqual(expect.arrayContaining(diseaseDict[disease].syndromes));
+      expect(syndromes).toEqual(
+        expect.arrayContaining(diseaseDict[disease].syndromes)
+      );
     });
     // there should be a log object
     expect(res.body.log).toEqual(expect.anything());
   });
 });
 
+describe("Testing all diseases reports", () => {
+  it("GET / ==> return all disease reports", async () => {
+    const res = await supertest(app).get("/diseases/reports");
+
+    expect(res.statusCode).toEqual(200);
+    const reportDict = res.body.reports;
+    // there should be a reports array returned (could be empty)
+    expect(reportDict).toEqual(expect.any(Array));
+    // there should be a log object
+    expect(res.body.log).toEqual(expect.any(Object));
+  });
+});
+
 describe("Testing specified disease name", () => {
   it("GET /:disease ==> return info for the specified disease", () => {
-    diseaseNames.forEach(async n => {
+    diseaseNames.forEach(async (n) => {
       const testDiseaseName = n;
       const res = await supertest(app).get("/diseases/" + testDiseaseName);
 
@@ -71,7 +88,7 @@ describe("Testing specified disease name", () => {
       expect(disease.number_of_cases).toBeGreaterThanOrEqual(0);
       // check if log exists
       expect(disease.log).toEqual(expect.anything());
-    })
+    });
   });
 
   it("GET /:disease(invalid disease name) ==> return 404", async () => {
