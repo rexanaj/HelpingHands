@@ -38,14 +38,8 @@ const getArticles = async (req, res) => {
 
   if (startDate != undefined) {
     // Check if start date is valid
-    const startDateObj = new Date(startDate);
-    const startMonth = startDateObj.getUTCMonth() + 1;
-    const startYear = startDateObj.getUTCFullYear();
-    //check correct start date format for eg. without year should be error
-    if (!startMonth || !startYear) {
-      res.status(400).json("Invalid start date");
-      return;
-    }
+    const split = startDate.split("/");
+    const startDateObj = new Date(split[2], --split[1], split[0]);
     query = query.where("date_of_publication", ">=", startDateObj);
   }
 
@@ -53,16 +47,9 @@ const getArticles = async (req, res) => {
   const endDate = req.query.end_date;
   if (endDate != undefined) {
     // Check if end date is valid
-    const endDateObj = new Date(endDate);
-    const endMonth = endDateObj.getUTCMonth() + 1;
-    const endYear = endDateObj.getUTCFullYear();
-
-    //check correct start date format for eg. without year should be error
-    if (!endMonth || !endYear) {
-      res.status(400).json("Invalid end date");
-      return;
-    }
-    query = query.where("date_of_publication", "<=", endDate);
+    const split = endDate.split("/");
+    const endDateObj = new Date(split[2], --split[1], split[0]);
+    query = query.where("date_of_publication", "<=", endDateObj);
   }
 
   // Check keyterms
