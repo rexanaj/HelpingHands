@@ -66,10 +66,10 @@ const getArticles = async (req, res) => {
   }
 
   // Check keyterms
-  const keyTerms = req.query.key_terms;
+  const keyTerms = req.query.keyterms;
   if (keyTerms != undefined) {
     //Type check parameter
-    if (!isNaN(req.query.key_terms)) {
+    if (!isNaN(req.query.keyterms)) {
       res.status(400).json("Invalid parameter type");
       return;
     }
