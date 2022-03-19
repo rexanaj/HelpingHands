@@ -43,7 +43,7 @@ const getArticles = async (req, res) => {
       res.status(400).json("Invalid start date");
       return;
     }
-    query = query.where("date_of_publication", ">=", startTimestamp);
+    query = query.where("date_of_publication", ">=", new Date(startDate));
   }
 
   // Check if end_date
@@ -55,7 +55,7 @@ const getArticles = async (req, res) => {
       res.status(400).json("Invalid end date");
       return;
     }
-    query = query.where("date_of_publication", "<=", endTimestamp);
+    query = query.where("date_of_publication", "<=", new Date(endDate));
   }
 
   // Check keyterms

@@ -149,12 +149,12 @@ describe("Routes", () => {
   });
 
   //start date and end date contains all article dates
-  it("GET /articles?limit=36&start_date=2021-10-13&end_date=2022-03-03 ==> successful", async () => {
-    const res = await supertest(app).get("/articles?limit=36&start_date=2021-10-13&end_date=2022-03-03");
+  it("GET /articles?limit=36&start_date=2022-10-13&end_date=2022-03-03 ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=36&start_date=2022-10-13&end_date=2022-03-03");
     //12 articles in the database have dates between start date and end date
     //convert start date and end date query into unix timestamp
-    var unixStartDate = Date.parse("13-Oct-2022 00:00:00") / 1000;
-    var unixEndDate = Date.parse("03-MAr-2022 00:00:00") / 1000;
+    var unixStartDate = Date.parse("2022-10-13T00:00:00") / 1000;
+    var unixEndDate = Date.parse("2022-03-03T00:00:00") / 1000;
     //compare unix time in articles to start date and end date unix time
     res.body.forEach(function (item, index) {
       expect(item["date_of_publication"]["_seconds"]).toBeGreaterThanOrEqual(unixStartDate);
