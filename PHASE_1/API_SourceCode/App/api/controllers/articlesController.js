@@ -29,7 +29,7 @@ const getArticles = async (req, res) => {
   if (req.query.limit <= 0) {
     res.status(400).json("Invalid parameter value");
     return;
-  } 
+  }
   // Database query
   var query = await db.collection("articles");
 
@@ -91,32 +91,40 @@ const getArticles = async (req, res) => {
     }
   }
 
-  // Check location
-  const location = req.query.location;
-  if (location != undefined) {
-    //Type check parameter
-    if (!isNaN(req.query.location)) {
-      res.status(400).json("Invalid parameter type");
-      return;
-    }
-    //Format location
-    const locationName = capitaliseString(req.query.location);
-    console.log("Get location name: " + locationName);
-    //Create a query that gets the given locations
-    query = query.where("locations", "array-contains", locationName);
-    if (query.empty) {
-      res.status(404).json("No matching locations found");
-      return;
-    }
-  }
 
   // Make the query to the database
   const articlesRef = await query.limit(limit).get();
   var data = [];
-  console.log("Number of returned docs: ", articlesRef.size);
-  articlesRef.forEach((doc) => {
-    data.push(doc.data());
-  });
+
+
+  // Manual location check
+  const location = req.query.location;
+  if (location != undefined) {
+
+    // Type check parameter
+    if (!isNaN(req.query.location)) {
+      res.status(400).json("Invalid parameter type");
+      return;
+    }
+
+    // Look through query results for matching locations 
+    articlesRef.forEach((doc) => {
+      const locationName = capitaliseString(req.query.location);
+      // For each location in each doc, check if it matches the given location
+      doc.data().locations.forEach((location) => {
+        if (location === locationName) {
+          data.push(doc.data());
+        }
+      })
+    });
+  }
+
+  if (data.length == 0) {
+    res.status(404).json("No matching locations found");
+    return;
+  }
+
+  console.log("Number of returned docs: ", data.length);
   res.status(200).json(addLog(data));
 };
 
