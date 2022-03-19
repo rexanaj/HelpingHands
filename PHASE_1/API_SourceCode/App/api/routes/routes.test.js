@@ -263,12 +263,12 @@ describe("Routes", () => {
  
   /////////////////////////////// ALL PARAMETERS TEST //////////////////////////////////////////////////////////////////
   //Test all parameters together
-  it("GET /articles?limit=4&start_date=2022-02-07&end_date=2022-03-01&location=&keyterms=fever,illness ==> successful", async () => {
-    const res = await supertest(app).get("/articles?limit=4&start_date=2022-02-07&end_date=2022-03-01&location=asia&keyterms=fever,illness");
+  it("GET /articles?limit=4&start_date=2022-03-02&end_date=2022-03-04&location=malawi&keyterms=outbreak,virus ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=4&start_date=2022-03-02&end_date=2022-03-04&location=malawi&keyterms=outbreak,virus");
     //1 article in the database satisfies all the parameters
     //convert start date and end date query into unix timestamp
-    var unixStartDate = Date.parse("07-Feb-2022 00:00:00")/1000;
-    var unixEndDate = Date.parse("01-Mar-2022 00:00:00")/1000;
+    var unixStartDate = Date.parse("02-Mar-2022 00:00:00")/1000;
+    var unixEndDate = Date.parse("04-Mar-2022 00:00:00")/1000;
     //compare unix time in articles to start date and end date unix time
     res.body.forEach(function (item, index) {
       expect(item["date_of_publication"]["_seconds"]).toBeGreaterThanOrEqual(unixStartDate);
