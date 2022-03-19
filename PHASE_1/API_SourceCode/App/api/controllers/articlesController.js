@@ -30,26 +30,32 @@ const getArticles = async (req, res) => {
     res.status(400).json("Invalid parameter value");
     return;
   }
+
   // Database query
   var query = await db.collection("articles");
 
   // Check start_date
   const startDate = req.query.start_date;
-
   if (startDate != undefined) {
     // Check if start date is valid
-    const split = startDate.split("/");
-    const startDateObj = new Date(split[2], --split[1], split[0]);
-    query = query.where("date_of_publication", ">=", startDateObj);
+    const startTimestamp = Date.parse(startDate, "yyyy/MM/ddTHH:mm:ss");
+    if (isNaN(startTimestamp)) {
+      res.status(400).json("Invalid start date");
+      return;
+    }
+    query = query.where("date_of_publication", ">=", startTimestamp);
   }
 
   // Check if end_date
   const endDate = req.query.end_date;
   if (endDate != undefined) {
     // Check if end date is valid
-    const split = endDate.split("/");
-    const endDateObj = new Date(split[2], --split[1], split[0]);
-    query = query.where("date_of_publication", "<=", endDateObj);
+    const endTimestamp = Date.parse(endDate, "yyyy/MM/ddTHH:mm:ss");
+    if (isNaN(endTimestamp)) {
+      res.status(400).json("Invalid end date");
+      return;
+    }
+    query = query.where("date_of_publication", "<=", endTimestamp);
   }
 
   // Check keyterms
@@ -111,7 +117,7 @@ const getArticles = async (req, res) => {
   }
 
   if (data.length == 0) {
-    res.status(404).json("No matching locations found");
+    res.status(404).json("No articles found with given parameters");
     return;
   }
 
