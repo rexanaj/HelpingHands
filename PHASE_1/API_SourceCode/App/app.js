@@ -2,12 +2,10 @@ const express = require("express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
-const firebaseAdmin = require('firebase-admin');
+const firebaseAdmin = require("firebase-admin");
 
 // Route imports
-const exampleRoutes = require("./api/routes/exampleRoute");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
-const dbTestRoutes = require("./api/routes/dbTestRoute");
 
 // Server info
 const app = express();
@@ -58,29 +56,37 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs)); // Access api docs at
  *              error:
  *                type: string
  *                example: Invalid input
+ *    NotFoundError:
+ *      description: Not found error
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              error:
+ *                type: string
+ *                example: Not found
  */
 
 // Routes
-app.use("/example", exampleRoutes);
 app.use("/diseases", diseasesRoutes);
-app.use("/dbTest", dbTestRoutes);
-
 
 // sending scraper data to database
 var db = firebaseAdmin.firestore();
-app.use('/load', (req, res) => {
-
+app.use("/load", (req, res) => {
   var dataset = [];
   var i = 0;
   // new child process to call python script
-  const { spawn } = require('child_process');
-  console.log(__dirname + '/resources/web-scraper.py')
-  const pythonShell = spawn('python', [__dirname + '/resources/web-scraper.py']);
+  const { spawn } = require("child_process");
+  console.log(__dirname + "/resources/web-scraper.py");
+  const pythonShell = spawn("python", [
+    __dirname + "/resources/web-scraper.py",
+  ]);
 
   // collect data from script
-  pythonShell.stdout.on('data', function (data) {
-    console.log('Pipe data from python script ...');
-    dataset.push(data)
+  pythonShell.stdout.on("data", function (data) {
+    console.log("Pipe data from python script ...");
+    dataset.push(data);
   });
   // in close event we are sure that stream from child process is closed
 
@@ -88,28 +94,28 @@ app.use('/load', (req, res) => {
   //   console.log(dataset[i]);
   // }
 
-
-
-  pythonShell.on('close', (code) => {
+  pythonShell.on("close", (code) => {
     console.log(`child process close all stdio with code ${code}`);
     // send data to browser
 
-    console.log(dataset.length)
+    console.log(dataset.length);
     // console.log(dataset.join(""))
-    var results = JSON.parse(dataset.join(""))
+    var results = JSON.parse(dataset.join(""));
     for (var i = 0; i < results.length; i++) {
-      var article = results[i]
-      console.log(article['headline']);
+      var article = results[i];
+      console.log(article["headline"]);
 
       // enter into firestore
-      db.collection("articles").doc().set({
-        id: article['id'],
-        url: article['url'],
-        date_of_publication: article['date_of_publication'],
-        headline: article['headline'],
-        main_text: article['main_text'],
-        reports: article['reports']
-      })
+      db.collection("articles")
+        .doc()
+        .set({
+          id: article["id"],
+          url: article["url"],
+          date_of_publication: article["date_of_publication"],
+          headline: article["headline"],
+          main_text: article["main_text"],
+          reports: article["reports"],
+        })
         .then(function () {
           console.log("Article added successfully!");
         })
@@ -117,9 +123,11 @@ app.use('/load', (req, res) => {
           console.error("Error writing article: ", error);
         });
 
-      db.collection("reports").doc().set({
-        report: article['reports']
-      })
+      db.collection("reports")
+        .doc()
+        .set({
+          report: article["reports"],
+        })
         .then(function () {
           console.log("report added successfully!");
         })
@@ -128,9 +136,6 @@ app.use('/load', (req, res) => {
         });
     }
   });
-
-
-
-})
+});
 
 module.exports = app;

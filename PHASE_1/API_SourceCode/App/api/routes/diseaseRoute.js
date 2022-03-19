@@ -3,9 +3,10 @@ const router = express.Router();
 
 // Controller functions
 const {
-    getAllDiseasesInfo,
-    getDisease,
-    getAllDiseaseNames,
+  getAllDiseasesInfo,
+  getAllDiseaseReports,
+  getDisease,
+  getAllDiseaseNames,
 } = require("../controllers/diseaseController");
 
 /**
@@ -24,46 +25,50 @@ const {
  *      description: The types of diseases found in the report
  *      items:
  *        type: string
- *      example: ["Lassa Fever", "Diphtheria", "Influenza"]
+ *      example: ["Lassa Fever", "Diphtheria", "Chikungunya", "Influenza", "Covid-19"]
  *    Event_date:
- *      type: object
- *      description: The timedate of when the report was published
- *      properties:
- *        _seconds:
- *          type: number
- *          example: 1644325200
- *        _nanoseconds:
- *          type: number
- *          example: 0
+ *      type: string
+ *      description: The date the report was published
+ *      example: "14 December 2021"
+ *    Keywords:
+ *      type: array
+ *      description: Key filter words for the report/article
+ *      example: ["Outbreak", "Virus", "Ebola"]
  *    Locations:
  *      type: array
  *      description: The locations where the disease cases were discovered
  *      items:
  *        type: string
- *      example: ["United Kingdom", "Mali"]
- *    Syndrome:
+ *      example: ["Asia", "Nigeria", "United Kingdom"]
+ *    Syndromes:
  *      type: array
  *      description: The major symtomatic indicators of the diseases
  *      items:
  *        type: string
  *      example: ["Haemorrhagic Fever"]
+ *    Number_of_cases:
+ *      type: number
+ *      description: The amount of cases of the disease (from references in the database)
+ *      example: 10
+ *    DiseaseName:
+ *      type: string
+ *      description: The name of the disease
+ *      example: "Lassa Fever"
  *
  *    Report:
  *      type: object
- *      required:
- *        - diseases
- *        - event_date
- *        - locations
- *        - syndrome
  *      properties:
  *        diseases:
- *          $ref: '#/components/schemas/Diseases'
- *        event_date:
- *          $ref: '#/components/schemas/Event_date'
+ *          type: string
+ *          example: "Lassa Fever"
  *        locations:
  *          $ref: '#/components/schemas/Locations'
- *        syndrome:
- *          $ref: '#/components/schemas/Syndrome'
+ *        syndromes:
+ *          $ref: '#/components/schemas/Syndromes'
+ *        event_date:
+ *          $ref: '#/components/schemas/Event_date'
+ *        keywords:
+ *          $ref: '#/components/schemas/Keywords'
  *    Reports:
  *      type: array
  *      description: Array containing all of the disease reports
@@ -72,15 +77,18 @@ const {
  *
  *    DiseaseInfo:
  *      type: object
- *      required:
- *        - affected_areas
- *        - number_of_cases
  *      properties:
- *        affected_areas:
+ *        locations:
  *          $ref: '#/components/schemas/Locations'
- *        number_of_cases:
- *          type: number
- *          exapmle: 2
+ *        syndromes:
+ *          $ref: '#/components/schemas/Syndromes'
+ *    DiseasesInfo:
+ *      type: object
+ *      properties:
+ *        "Lassa Fever":
+ *          $ref: '#/components/schemas/DiseaseInfo'
+ *      additionalProperties:
+ *        $ref: '#/components/schemas/DiseaseInfo'
  *
  *    Log:
  *      type: object
@@ -106,6 +114,56 @@ const {
  *  get:
  *    tags:
  *      - Diseases
+ *    summary: Gets a summary of all the diseases with corresponding reports in the database
+ *    description: Returns a summary of _all_ diseases referenced in at least on report in the database
+ *    responses:
+ *      '200':
+ *        description: OK
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                diseasesInfo:
+ *                  $ref: '#/components/schemas/DiseasesInfo'
+ *                log:
+ *                  $ref: '#/components/schemas/Log'
+ *      '400':
+ *        $ref: '#components/responses/InputError'
+ */
+router.get("/", getAllDiseasesInfo);
+
+/**
+ * @swagger
+ * /diseases/names:
+ *  get:
+ *    tags:
+ *      - Diseases
+ *    summary: Gets all disease type names in database
+ *    description: Returns _all_ disease type names which are referenced in at least one report in the database
+ *    responses:
+ *      '200':
+ *        description: OK
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                diseases:
+ *                  $ref: '#/components/schemas/Diseases'
+ *                log:
+ *                  $ref: '#/components/schemas/Log'
+ *      '400':
+ *        $ref: '#components/responses/InputError'
+ */
+router.get("/names", getAllDiseaseNames);
+
+/**
+ * @swagger
+ * /diseases/reports:
+ *  get:
+ *    tags:
+ *      - Diseases
  *    summary: Gets all disease reports from the database
  *    description: Returns _all_ disease reports from the database regardless of their contents
  *    responses:
@@ -120,43 +178,14 @@ const {
  *                  $ref: '#/components/schemas/Reports'
  *                log:
  *                  $ref: '#/components/schemas/Log'
- *      '204':
- *        description: OK with no content
  *      '400':
  *        $ref: '#components/responses/InputError'
  */
-router.get("/", getAllDiseasesInfo);
+router.get("/reports", getAllDiseaseReports);
 
 /**
  * @swagger
- * /diseases/names:
- *  get:
- *    tags:
- *      - Diseases
- *    summary: Gets all disease type names
- *    description: Returns _all_ disease type names from the reports database
- *    responses:
- *      '200':
- *        description: OK
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                diseases:
- *                  $ref: '#/components/schemas/Diseases'
- *                log:
- *                  $ref: '#/components/schemas/Log'
- *      '204':
- *        description: OK with no content
- *      '400':
- *        $ref: '#components/responses/InputError'
- */
-router.get("/names", getAllDiseaseNames);
-
-/**
- * @swagger
- * /diseases/:disease:
+ * /diseases/{disease}:
  *  get:
  *    tags:
  *      - Diseases
@@ -164,7 +193,7 @@ router.get("/names", getAllDiseaseNames);
  *    description: Returns information relating to a specific disease type, including symptoms, affected locations and the number of cases
  *    parameters:
  *      - in: path
- *        name: diseaseName
+ *        name: disease
  *        required: true
  *        schema:
  *          type: string
@@ -177,14 +206,20 @@ router.get("/names", getAllDiseaseNames);
  *            schema:
  *              type: object
  *              properties:
- *                diseaseInfo:
- *                  $ref: '#/components/schemas/DiseaseInfo'
+ *                disease:
+ *                  $ref: '#/components/schemas/DiseaseName'
+ *                locations:
+ *                  $ref: '#/components/schemas/Locations'
+ *                syndromes:
+ *                  $ref: '#/components/schemas/Syndromes'
+ *                number_of_cases:
+ *                  $ref: '#/components/schemas/Number_of_cases'
  *                log:
  *                  $ref: '#/components/schemas/Log'
  *      '400':
  *        $ref: '#components/responses/InputError'
  *      '404':
- *        $ref: '#components/responses/InputError'
+ *        $ref: '#components/responses/NotFoundError'
  */
 router.get("/:disease", getDisease);
 
