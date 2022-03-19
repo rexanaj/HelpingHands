@@ -33,6 +33,8 @@ const {
  *    Keywords:
  *      type: array
  *      description: Key filter words for the report/article
+ *      items:
+ *        type: string
  *      example: ["Outbreak", "Virus", "Ebola"]
  *    Locations:
  *      type: array
@@ -92,10 +94,6 @@ const {
  *
  *    Log:
  *      type: object
- *      required:
- *        - team_name
- *        - access_time
- *        - data_source
  *      properties:
  *        team_name:
  *          type: string
