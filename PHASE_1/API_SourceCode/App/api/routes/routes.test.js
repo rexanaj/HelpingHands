@@ -3,7 +3,7 @@ const supertest = require("supertest");
 
 // To run tests, use "npm test"
 describe("Routes", () => {
-  //Tests for start_date parameter
+  ///////////////////////////START DATE PARAMETER TESTS////////////////////////////////////////////////////////////////////////
   //Test error codes
   //Check correct format of start date (missing month and year)
   it("GET /articles/limit=1/start_date=29 ==> Invalid start date", async () => {
@@ -36,7 +36,7 @@ describe("Routes", () => {
     expect(res.body).toHaveLength(5);
   });
 
-  //Tests for limit parameter
+  ///////////////////////////////LIMIT PARAMETER TESTS////////////////////////////////////////////////////////////////////////
   //Test error codes
   //no limit parameter
   it("GET /articles ==> missing limit parameter", async () => {
@@ -80,4 +80,66 @@ describe("Routes", () => {
     //check that three article are in the response
     expect(res.body).toHaveLength(3);
   });
+
+  /////////////////////////////// LOCATION PARAMETER TESTS ////////////////////////////////////////////////////////////////////////
+  // Test successful location
+  it("GET /articles/limit=10/location=nigeria ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?location=nigeria");
+    expect(res.statusCode).toEqual(200);
+    // Currently only one article with location = nigeria in database
+    expect(res.body).toHaveLength(1);
+  });
+
+  // Test location with multiple articles
+  it("GET /articles/limit=10/location=ukraine ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?location=ukraine");
+    expect(res.statusCode).toEqual(200);
+    // Currently only one article with location = ukraine in database
+    expect(res.body).toHaveLength(5);
+  });
+
+  // Test invalid parameter type
+  it("GET /articles/limit=10/location=12 ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?location=12");
+    expect(res.statusCode).toEqual(400);
+    expect(res.body).toEqual("Invalid parameter value");
+  });
+
+  // Test no articles with matching location
+  it("GET /articles/limit=10/location=australia ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?location=australia");
+    expect(res.statusCode).toEqual(404);
+    expect(res.body).toEqual("No matching locations found");
+  });
+
+  /////////////////////////////// KEYWORDS PARAMETER TESTS ////////////////////////////////////////////////////////////////////////
+  // Test successful keywords
+  it("GET /articles/limit=10/keyterms=outbreak ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?keyterms=outbreak");
+    expect(res.statusCode).toEqual(200);
+    // Currently more than 10 articles with outbreak keyterms
+    expect(res.body).toHaveLength(10);
+  });
+
+  // Test less keywords
+  it("GET /articles/limit=10/keyterms=lassa%20fever ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?keyterms=lassa%20fever");
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveLength(2);
+  });
+
+  // Test too many keywords
+  it("GET /articles/limit=10/keyterms=lassa%20fever,fever,zika,virus,ebola,epidemic,outbreak,mes,illness,bacteria,emerging ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?keyterms=lassa%20fever,fever,zika,virus,ebola,epidemic,outbreak,mes,illness,bacteria,emerging");
+    expect(res.statusCode).toEqual(400);
+    expect(res.body).toEqual("No more than 10 key terms allowed in the query");
+  });
+
+  // Test multiple keywords search
+  it("GET /articles/limit=10/keyterms=outbreak,infection ==> successful", async () => {
+    const res = await supertest(app).get("/articles?limit=10?location=australia");
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveLength(10);
+  });
+
 });
