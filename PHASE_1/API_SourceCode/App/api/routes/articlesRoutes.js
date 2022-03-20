@@ -20,46 +20,52 @@ const { getArticles } = require("../controllers/articlesController");
  *      description: The types of diseases found in the report
  *      items:
  *        type: string
- *      example: ["Lassa Fever", "Diphtheria", "Influenza"]
+ *      example: ["Lassa Fever", "Diphtheria", "Chikungunya", "Influenza", "Covid-19"]
  *    Event_date:
- *      type: object
- *      description: The timedate of when the report was published
- *      properties:
- *        _seconds:
- *          type: number
- *          example: 1644325200
- *        _nanoseconds:
- *          type: number
- *          example: 0
+ *      type: string
+ *      description: The date the report was published
+ *      example: "14 December 2021"
+ *    Keywords:
+ *      type: array
+ *      description: Key filter words for the report/article
+ *      items:
+ *        type: string
+ *      example: ["Outbreak", "Virus", "Ebola"]
  *    Locations:
  *      type: array
  *      description: The locations where the disease cases were discovered
  *      items:
  *        type: string
- *      example: ["United Kingdom", "Mali"]
- *    Syndrome:
+ *      example: ["Asia", "Nigeria", "United Kingdom"]
+ *    Syndromes:
  *      type: array
  *      description: The major symtomatic indicators of the diseases
  *      items:
  *        type: string
  *      example: ["Haemorrhagic Fever"]
+ *    Number_of_cases:
+ *      type: number
+ *      description: The amount of cases of the disease (from references in the database)
+ *      example: 10
+ *    DiseaseName:
+ *      type: string
+ *      description: The name of the disease
+ *      example: "Lassa Fever"
  *
  *    Report:
  *      type: object
- *      required:
- *        - diseases
- *        - event_date
- *        - locations
- *        - syndrome
  *      properties:
  *        diseases:
- *          $ref: '#/components/schemas/Diseases'
- *        event_date:
- *          $ref: '#/components/schemas/Event_date'
+ *          type: string
+ *          example: "Lassa Fever"
  *        locations:
  *          $ref: '#/components/schemas/Locations'
- *        syndrome:
- *          $ref: '#/components/schemas/Syndrome'
+ *        syndromes:
+ *          $ref: '#/components/schemas/Syndromes'
+ *        event_date:
+ *          $ref: '#/components/schemas/Event_date'
+ *        keywords:
+ *          $ref: '#/components/schemas/Keywords'
  *    Reports:
  *      type: array
  *      description: Array containing all of the disease reports
@@ -72,39 +78,39 @@ const { getArticles } = require("../controllers/articlesController");
  * components:
  *  schemas:
  *    Date_of_publication:
- *      type: date
- *      description: Date the article was published
- *      example: "25 November 2021"
+ *      type: object
+ *      description: Date and time the article was published
+ *      properties:
+ *        "_seconds":
+ *          type: number
+ *          example: 1644757200
+ *        "_nanoseconds":
+ *          type: number
+ *          example: 0
  *    Headline:
  *      type: string
  *      description: The article title
- *      example: "Monkeypox - United States of America"
+ *      example: "Circulating vaccine-derived poliovirus type 2 (cVDPV2) – Yemen"
  *    Id:
  *      type: number
  *      description: The article id (in the database)
- *      example: 17
+ *      example: 15
  *    Main_text:
  *      type: string
  *      description: The main article body
  *      example:
- *        "On 16 November 2021, the IHR National Focal Point of the United States of America (USA) notified PAHO/WHO of an imported
- *         case of human monkeypox in Maryland, USA. The patient is an adult, resident of the USA, with recent travel history to
- *         Nigeria."
+ *        "On 22 November 2021, the International Health Regulations national focal point (IHR NFP) for Yemen notified WHO of
+ *         the detection of circulating vaccine-derived poliovirus type 2 (cVDPV2) in stool samples from two children with acute
+ *         flaccid paralysis (AFP) in Yemen."
  *    Url:
  *      type: string
  *      description: Url from which the article was sourced
- *      example: "https://www.who.int/emergencies/disease-outbreak-news/item/2021-DON344"
+ *      example: "https://www.who.int/emergencies/disease-outbreak-news/item/hepatitis-e-virus-republic-of-south-sudan"
  *
  *    Article:
  *      type: object
  *      description: Disease article
  *      required:
- *        - date_of_publication
- *        - headline
- *        - id
- *        - main_text
- *        - reports
- *        - url
  *      properties:
  *        date_of_publication:
  *          $ref: '#/components/schemas/Date_of_publication'
@@ -126,10 +132,6 @@ const { getArticles } = require("../controllers/articlesController");
  *
  *    Log:
  *      type: object
- *      required:
- *        - team_name
- *        - access_time
- *        - data_source
  *      properties:
  *        team_name:
  *          type: string
@@ -144,7 +146,7 @@ const { getArticles } = require("../controllers/articlesController");
 
 /**
  * @swagger
- * /articles/:
+ * /articles:
  *  get:
  *    tags:
  *      - Articles
@@ -162,13 +164,13 @@ const { getArticles } = require("../controllers/articlesController");
  *        required: false
  *        schema:
  *          type: date
- *          example: "13 October 2021"
+ *          example: "2021-01-10"
  *      - name: end_date
  *        in: query
  *        required: false
  *        schema:
  *          type: date
- *          example: "20 November 2021"
+ *          example: "2021-10-20"
  *      - name: key_terms
  *        in: query
  *        required: false
@@ -189,6 +191,8 @@ const { getArticles } = require("../controllers/articlesController");
  *                  $ref: '#/components/schemas/Log'
  *      '400':
  *        $ref: '#components/responses/InputError'
+ *      '404':
+ *        $ref: '#components/responses/NotFoundError'
  */
 router.get("/", getArticles);
 
