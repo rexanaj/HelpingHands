@@ -25,6 +25,12 @@ const getArticles = async (req, res) => {
     return;
   }
 
+  //Check limit value is larger than 0
+  if (req.query.limit <= 0) {
+    res.status(400).json("Invalid parameter value");
+    return;
+  }
+
   // Database query
   var query = await db.collection("articles");
 
@@ -32,36 +38,35 @@ const getArticles = async (req, res) => {
   const startDate = req.query.start_date;
   if (startDate != undefined) {
     // Check if start date is valid
-    const startDateObj = new Date(startDate);
-    const startMonth = startDateObj.getUTCMonth() + 1;
-    const startYear = startDateObj.getUTCFullYear();
-    //check correct start date format for eg. without year should be error
-    if (!startMonth || !startYear) {
+    const startTimestamp = Date.parse(startDate, "yyyy/MM/ddTHH:mm:ss");
+    if (isNaN(startTimestamp)) {
       res.status(400).json("Invalid start date");
       return;
     }
-    query = query.where("date_of_publication", ">=", startDateObj);
+    query = query.where("date_of_publication", ">=", new Date(startDate));
   }
 
   // Check if end_date
   const endDate = req.query.end_date;
   if (endDate != undefined) {
     // Check if end date is valid
-    const endDateObj = new Date(endDate);
-    const endMonth = endDateObj.getUTCMonth() + 1;
-    const endYear = endDateObj.getUTCFullYear();
-
-    //check correct start date format for eg. without year should be error
-    if (!endMonth || !endYear) {
+    const endTimestamp = Date.parse(endDate, "yyyy/MM/ddTHH:mm:ss");
+    if (isNaN(endTimestamp)) {
       res.status(400).json("Invalid end date");
       return;
     }
-    query = query.where("date_of_publication", "<=", endDate);
+    query = query.where("date_of_publication", "<=", new Date(endDate));
   }
 
   // Check keyterms
-  const keyTerms = req.query.key_terms;
+  const keyTerms = req.query.keyterms;
   if (keyTerms != undefined) {
+    //Type check parameter
+    if (!isNaN(keyTerms)) {
+      res.status(400).json("Invalid parameter type");
+      return;
+    }
+
     // Format key terms
     const keyTermsList = keyTerms.split(",").map(capitaliseString);
 
@@ -79,27 +84,50 @@ const getArticles = async (req, res) => {
     }
   }
 
-  // Check location
-  const location = req.query.location;
-  if (location != undefined) {
-    //Format location
-    const locationName = capitaliseString(req.query.location);
-    console.log("Get location name: " + locationName);
-    //Create a query that gets the given locations
-    query = query.where("locations", "array-contains", locationName);
-    if (query.empty) {
-      res.status(404).json("No matching locations found");
-      return;
-    }
-  }
 
   // Make the query to the database
   const articlesRef = await query.limit(limit).get();
   var data = [];
-  console.log("Number of returned docs: ", articlesRef.size);
-  articlesRef.forEach((doc) => {
-    data.push(doc.data());
-  });
+
+
+  // Manual location check
+  const location = req.query.location;
+  if (location != undefined) {
+
+    // Type check parameter
+    if (!isNaN(req.query.location)) {
+      res.status(400).json("Invalid parameter type");
+      return;
+    }
+
+    // Look through query results for matching locations 
+    articlesRef.forEach((doc) => {
+      const locationName = capitaliseString(req.query.location);
+      // For each location in each doc, check if it matches the given location
+      doc.data().locations.forEach((location) => {
+        if (location === locationName) {
+          data.push(doc.data());
+        }
+      })
+    });
+  } else {
+    articlesRef.forEach((doc) => {
+      data.push(doc.data());
+    })
+  }
+
+  if (data.length == 0) {
+    res.status(404).json("No articles found with given parameters");
+    return;
+  }
+
+  var numDocs = 0;
+  data.forEach((doc) => {
+    if (doc.id != undefined) {
+      numDocs += 1;
+    }
+  })
+  console.log("Number of returned docs: ", numDocs);
   res.status(200).json(addLog(data));
 };
 
