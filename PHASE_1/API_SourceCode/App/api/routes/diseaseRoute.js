@@ -108,7 +108,7 @@ const {
 
 /**
  * @swagger
- * /diseases/:
+ * /diseases:
  *  get:
  *    tags:
  *      - Diseases
@@ -147,7 +147,7 @@ router.get("/", getAllDiseasesInfo);
  *            schema:
  *              type: object
  *              properties:
- *                diseases:
+ *                diseaseNames:
  *                  $ref: '#/components/schemas/Diseases'
  *                log:
  *                  $ref: '#/components/schemas/Log'
