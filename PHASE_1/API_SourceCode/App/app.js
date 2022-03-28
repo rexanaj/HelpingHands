@@ -27,6 +27,9 @@ const options = {
     },
     servers: [
       {
+        url: `https://seng3011-dwen.herokuapp.com`,
+      },
+      {
         url: `http://localhost:${port}`,
       },
     ],
