@@ -21,3 +21,4 @@ const serviceAccount = {
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount)
 });
+

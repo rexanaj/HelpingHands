@@ -1,14 +1,20 @@
+from importlib import resources
 import bs4
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup as soup
 import json
 import re
-
-import textblob
+import os
+# run pip install https://github.com/elyase/geotext/archive/master.zip to install the below package
+from geotext import GeoText
+from datetime import datetime
 
 # load diseases and sydromes
-disease_list = json.load(open('./Resources/disease_list.json'))
-syndrome_list = json.load(open('./Resources/syndrome_list.json'))
+script_dir = os.path.dirname(__file__)
+disease_list = json.load(open(os.path.join(script_dir, 'disease_list.json')))
+syndrome_list = json.load(open(os.path.join(script_dir, 'syndrome_list.json')))
+keywords_list = json.load(open(os.path.join(script_dir, 'keywords_list.json')))
+
 
 my_url = 'https://www.who.int/emergencies/disease-outbreak-news'
 
@@ -39,7 +45,8 @@ def get_data():
         
         # retrieve publication date - Date formatted as "Day Month Year" currently - can change later on if necessary
         publication_date = article_soup.find("span", {"class":"timestamp"}).text
-        article['date_of_publication'] = publication_date
+        date_object = datetime.strptime(publication_date, '%d %B %Y')
+        article['date_of_publication'] = str(date_object.isoformat())
 
         # retrieve headline
         headline_div = article_soup.find("div", {"class":"sf-item-header-wrapper"})
@@ -50,12 +57,13 @@ def get_data():
         main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
         article['main_text'] = main_text
         
-        article['reports'] = get_reports(page_soup.get_text(), disease_list, syndrome_list)
+        # passing in all the text in the page already
+        article['reports'] = get_reports(article_soup.get_text(), disease_list, syndrome_list)
 
         # retrieve reports
         # return
         results.append(article)
-    return results
+    return json.dumps(results)
 
 def get_reports(text, disease_list, syndrome_list):
     reports = []
@@ -65,19 +73,39 @@ def get_reports(text, disease_list, syndrome_list):
 
     report['diseases'] = ['unknown']
     report['syndromes'] = ['unknown']
+    report['keywords'] = []
 
     for disease in disease_list:
-        if disease['name'] in text:
-            report['diseases'] = [disease['name']]
+        if disease['name'] == "unknown" or disease['name'] == "other":
+            continue
+        if disease['name'].lower() in text.lower():
+            report['diseases'] = [disease['name'].title()]
             break
 
     for syndrome in syndrome_list:
-        if syndrome['name'] in text:
-            report['syndromes'] = [syndrome['name']]
+        if syndrome['name'] == "unknown" or syndrome['name'] == "other":
+            continue
+        if syndrome['name'].lower() in text.lower():
+            report['syndromes'] = [syndrome['name'].title()]
             break
 
-    report['event_date'] = date[0]
-    report['locations'] = ['United Kingdom']
+    for keyword in keywords_list:
+        if keyword['name'].lower() in text.lower():
+            report['keywords'].append(keyword['name'])
+
+    date_object = datetime.strptime(date[0], '%d %B %Y')
+    report['event_date'] = str(date_object.isoformat())
+
+    cities = GeoText(text).cities
+    countries = GeoText(text).countries
+    
+    report['locations'] = []
+    if cities != '':
+        report['locations'].append(cities[0])
+    if countries != '':
+        report['locations'].append(countries[0])
+
+    
     reports.append(report)
     return reports
 
