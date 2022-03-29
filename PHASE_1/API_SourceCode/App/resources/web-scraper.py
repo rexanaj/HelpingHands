@@ -1,6 +1,7 @@
 from importlib import resources
 import bs4
 from urllib.request import urlopen, Request
+from urllib.parse import quote;
 from bs4 import BeautifulSoup as soup
 import json
 import re
@@ -15,19 +16,29 @@ disease_list = json.load(open(os.path.join(script_dir, 'disease_list.json')))
 syndrome_list = json.load(open(os.path.join(script_dir, 'syndrome_list.json')))
 keywords_list = json.load(open(os.path.join(script_dir, 'keywords_list.json')))
 
+def get_data_multiple_pages():
+    results = []
+    page_no = 1
+    for page_no in range(1, 50):
+        print(page_no)
+        my_url = 'https://www.who.int/emergencies/disease-outbreak-news/{}'.format(page_no)
+        # my_url = my_url.encode('utf-8')
+        print(my_url)
+        results += get_data(my_url)
+    return results
 
-my_url = 'https://www.who.int/emergencies/disease-outbreak-news'
 
-# open a connection and grab the page
-req = Request(my_url, headers={'User-Agent': 'Mozilla/5.0'})
-page_html = urlopen(req).read()
 
-# parse the html
-page_soup = soup(page_html, "html.parser")
 
-containers = page_soup.findAll("a", {"class":"sf-list-vertical__item"})
+def get_data(my_url):
+    # open a connection and grab the page
+    # my_url = my_url.encode('utf-8')
+    req = Request(my_url, headers={'User-Agent': 'Mozilla/5.0'})
+    page_html = urlopen(req).read()
 
-def get_data():
+    # parse the html
+    page_soup = soup(page_html, "html.parser")
+    containers = page_soup.findAll("a", {"class":"sf-list-vertical__item"})
     id = 0
     results = []
     for container in containers:
@@ -35,9 +46,12 @@ def get_data():
         article = {}
 
         article['id'] = str(id)
-
         # go into each article
         article_link = container['href']
+
+        # encode the article
+        article_link = quote(article_link, safe=':/()', encoding=None, errors=None)
+
         article['url'] = article_link
         req = Request(article_link, headers={'User-Agent': 'Mozilla/5.0'})
         article_html = urlopen(req).read()
@@ -57,18 +71,23 @@ def get_data():
         main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
         article['main_text'] = main_text
         
+        # get all paragraphs
+        paragraphs_data = article_soup.find_all("p")
+        text = ""
+        for paragraph in paragraphs_data:
+            text += paragraph.get_text() 
         # passing in all the text in the page already
-        article['reports'] = get_reports(article_soup.get_text(), disease_list, syndrome_list)
-
+        article['reports'] = get_reports(article_soup.get_text(), text, disease_list, syndrome_list)
         # retrieve reports
         # return
         results.append(article)
-    return json.dumps(results)
+    # return json.dumps(results)
+    return results
 
-def get_reports(text, disease_list, syndrome_list):
+def get_reports(all_text, text, disease_list, syndrome_list):
     reports = []
     
-    date = re.findall(r'\d\d? [A-Z][a-z]+ \d\d\d\d', text)
+    date = re.findall(r'\d\d? [A-Z][a-z]+ \d\d\d\d', all_text)
     report = {}
 
     report['diseases'] = ['unknown']
@@ -100,18 +119,16 @@ def get_reports(text, disease_list, syndrome_list):
     countries = GeoText(text).countries
     
     report['locations'] = []
-    if cities != '':
+    if len(cities) != 0:
         report['locations'].append(cities[0])
-    if countries != '':
+    if len(countries) != 0:
         report['locations'].append(countries[0])
 
     
     reports.append(report)
     return reports
 
-def get_titles():
-    titles = page_soup.findAll("span", {"class":"trimmed"})
-    return titles
 
 if __name__=="__main__":
-    print(get_data())
+    # print(get_data('https://www.who.int/emergencies/disease-outbreak-news'))
+    print(get_data_multiple_pages())
