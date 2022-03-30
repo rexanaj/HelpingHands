@@ -5,14 +5,8 @@ const cors = require("cors");
 const firebaseAdmin = require("firebase-admin");
 
 // Route imports
-<<<<<<< HEAD
-const exampleRoutes = require("./api/routes/exampleRoute");
-const diseasesRoutes = require("./api/routes/diseaseRoute");
-const dbTestRoutes = require("./api/routes/dbTestRoute");
-=======
 const articlesRoutes = require("./api/routes/articlesRoutes");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
->>>>>>> 487db6da8fb672c6905fef9eab93d815683ec54d
 
 // Server info
 const app = express();
