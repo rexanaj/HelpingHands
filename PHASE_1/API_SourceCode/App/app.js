@@ -73,11 +73,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs)); // Access api docs at
  */
 
 // Routes
-<<<<<<< HEAD
-app.use("/example", exampleRoutes);
-app.use("/diseases", diseasesRoutes);
-app.use("/dbTest", dbTestRoutes)
-=======
 app.use("/articles", articlesRoutes);
 app.use("/diseases", diseasesRoutes);
 
@@ -147,6 +142,5 @@ app.use("/load", (req, res) => {
     }
   });
 });
->>>>>>> 487db6da8fb672c6905fef9eab93d815683ec54d
 
 module.exports = app;
