@@ -20,12 +20,10 @@ def get_data_multiple_pages():
     results = []
     page_no = 1
     for page_no in range(1, 50):
-        print(page_no)
         my_url = 'https://www.who.int/emergencies/disease-outbreak-news/{}'.format(page_no)
         # my_url = my_url.encode('utf-8')
-        print(my_url)
         results += get_data(my_url)
-    return results
+    return json.dumps(results)
 
 
 
@@ -67,15 +65,21 @@ def get_data(my_url):
         headline = headline_div.h1.text.strip()
         article['headline'] = headline
 
-        # retrieve main text
-        main_text = article_soup.find("article", {"class":"sf-detail-body-wrapper"}).p.text
-        article['main_text'] = main_text
+        
         
         # get all paragraphs
         paragraphs_data = article_soup.find_all("p")
         text = ""
         for paragraph in paragraphs_data:
             text += paragraph.get_text() 
+
+        # retrieve main text
+        main_text = ""
+        main_text += paragraphs_data[0].get_text()
+        if len(main_text) < 25:
+            main_text += paragraphs_data[1].get_text()
+        article['main_text'] = main_text
+    
         # passing in all the text in the page already
         article['reports'] = get_reports(article_soup.get_text(), text, disease_list, syndrome_list)
         # retrieve reports
@@ -119,9 +123,9 @@ def get_reports(all_text, text, disease_list, syndrome_list):
     countries = GeoText(text).countries
     
     report['locations'] = []
-    if len(cities) != 0:
+    if len(cities) != 0 and cities[0] != "March" and cities[0] != "Of":
         report['locations'].append(cities[0])
-    if len(countries) != 0:
+    if len(countries) != 0 and countries[0] != "March" and countries[0] != "Of":
         report['locations'].append(countries[0])
 
     
