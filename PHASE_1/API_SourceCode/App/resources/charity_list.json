@@ -1,0 +1,514 @@
+[
+    {
+        "name": "Against Malaria Foundation",
+        "type": "charity",
+        "url": "https://www.againstmalaria.com/",
+        "mission": "We protect people from malaria. We fund nets and ensure they are distributed and used. We show you where the nets go. We monitor and report their use and impact.",
+        "logo": "https://www.againstmalaria.com/images/logo_AMF.gif",
+        "image": "https://www.againstmalaria.com/images/homepageSlider_Proof2.jpg",
+        "rating": 5,
+        "keywords": [
+            "Malaria"
+        ],
+        "locations": [
+            "Angola",
+            "Botswana",
+            "Burkina Faso",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Chad",
+            "Congo",
+            "Ethiopia",
+            "Gabon",
+            "Gambia",
+            "Ghana",
+            "Guinea",
+            "Haiti",
+            "India",
+            "Indonesia",
+            "Kenya",
+            "Liberia",
+            "Madagascar",
+            "Malawi",
+            "Mali",
+            "Namibia",
+            "Nepal",
+            "Nicaragua",
+            "Nigeria",
+            "Papua New Guinea",
+            "Peru",
+            "Rwanda",
+            "Sierra Leone",
+            "South Sudan",
+            "Tanzania",
+            "Togo",
+            "Uganda",
+            "Zambia",
+            "Zimbabwe"
+        ],
+        "num_active_locations": 36,
+        "launch_year": 2004,
+        "quote": "...when you put it all together, it can make a really big difference."
+    },
+    {
+        "name": "Equalize Health",
+        "type": "charity,",
+        "url": "https://equalizehealth.org/,",
+        "mission": "We believe in a world where we all have access to world-class medical treatment, no matter where we live. Millions of people suffer and die from preventable or treatable conditions. Equalize Health is a not-for-profit medical technology company on a mission to change that. Here is how.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/1/11/EH_Logo_black_RGB_72.png,",
+        "image": "https://img2.storyblok.com/500x500/smart/filters:quality(100):format(webp)/f/95584/1919x1920/c369ff6a4b/eh_patient_mother3_rubine.jpg",
+        "rating": 5,
+        "keywords": [
+            "Jaundice",
+            "Kernicterus"
+        ],
+        "locations": [
+            "India",
+            "Nepal",
+            "Pakistan",
+            "Bangladesh",
+            "Sri Lanka",
+            "Uganda",
+            "Kenya",
+            "Tanzania",
+            "Malawi",
+            "Nigeria",
+            "Botswana",
+            "Senegal",
+            "South Africa",
+            "Colombia",
+            "Ecuador",
+            "Guatemala",
+            "Fiji",
+            "Indonesia",
+            "Iraq"
+        ],
+        "num_active_locations": 73,
+        "launch_year": 2012,
+        "quote": "As a global society, we have universally felt the significance of access to quality healthcare, and yet this still largely depends on where you live - particularly for women and children."
+    },
+    {
+        "name": "Evidence Action",
+        "type": "charity",
+        "url": "https://www.evidenceaction.org/",
+        "mission": "We measurably reduce the burden of poverty for hundreds of millions of people and we have the data to prove it.",
+        "logo": "https://media-exp1.licdn.com/dms/image/C4E0BAQFAyYKQxP9iVQ/company-logo_200_200/0/1548862644019?e=1656547200&v=beta&t=9i1DZfOBZ1mx1rYVLwTaN3y7_AB1eihnCLZ9Zw039DA",
+        "image": "https://media-exp1.licdn.com/dms/image/C4E1BAQFjfB09lqOTuw/company-background_10000/0/1548862721356?e=1648692000&v=beta&t=-PKl5tT1zH5gzX69uUaUOTIinBv6Uk7nB3I2HOYMWSs",
+        "rating": 5,
+        "keywords": [
+            "Syphilis",
+            "Safe water",
+            "Deworming",
+            "Extreme poverty"
+        ],
+        "locations": [
+            "India",
+            "Nigeria",
+            "Pakistan"
+        ],
+        "num_active_locations": 6,
+        "launch_year": 2013,
+        "quote": "supporting our vision for a world where hundreds of millions of people in the poorest places have better opportunities and their lives are measurably improved."
+    },
+    {
+        "name": "GiveDirectly",
+        "type": "charity",
+        "url": "https://www.givedirectly.org/",
+        "mission": "GiveDirectly is a nonprofit that lets donors like you send money directly to the world’s poorest households. We believe people living in poverty deserve the dignity to choose for themselves how best to improve their lives — cash enables that choice.",
+        "logo": "https://media-exp1.licdn.com/dms/image/C560BAQHbBy8wi5gnyA/company-logo_200_200/0/1581021918655?e=2147483647&v=beta&t=Eb4bhSlsmvuKUMX6U0H4utEGNzIXPc_jnDUukJJvysg",
+        "image": "https://media-exp1.licdn.com/dms/image/C561BAQFTngdzappICA/company-background_10000/0/1581023945622?e=2147483647&v=beta&t=yZdzPYcGD90JiCAYv5WpnBX5tBjAWfD1BSIJ2KiTriY",
+        "rating": 3.5,
+        "keywords": [
+            "Extreme poverty"
+        ],
+        "locations": [
+            "Kenya",
+            "Uganda",
+            "Rwanda"
+        ],
+        "num_active_locations": 3,
+        "launch_year": 2009,
+        "quote": "I am now hoping to live a better life because I have more than one source of income."
+    },
+    {
+        "name": "Malaria Consortium",
+        "type": "charity",
+        "url": "https://www.malariaconsortium.org/",
+        "mission": "We explore beyond current practice, to try out innovative ways – through research, implementation and policy development – to achieve effective and sustainable disease management and control. ",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Malaria_Consortium.svg/375px-Malaria_Consortium.svg.png",
+        "image": "https://www.malariaconsortium.org/gallery-image/width-1280/05111147-68-uganda2013inscalevhtalinaitwestephentinefrank.jpg",
+        "rating": 5,
+        "keywords": [
+            "Malaria",
+            "Pneumonia",
+            "Diarrhoea",
+            "Dengue",
+            "Tropical diseases"
+        ],
+        "locations": [
+            "Ethiopia",
+            "Mozambique",
+            "Nigeria",
+            "South Sudan",
+            "Uganda",
+            "Burkina Faso",
+            "Chad",
+            "Cambodia",
+            "Myanmar",
+            "Thailand",
+            "Togo"
+        ],
+        "num_active_locations": 3,
+        "launch_year": 2003,
+        "quote": "When my own baby boy got sick, I used the skills I had learnt from the training… saved his life."
+    },
+    {
+        "name": "New Incentives",
+        "type": "charity",
+        "url": "https://www.newincentives.org/",
+        "mission": "No child should die of a preventable disease. Small cash incentives are a proven, cost-effective way to boost vaccination rates and save lives.",
+        "logo": "https://media-exp1.licdn.com/dms/image/C4E0BAQGBfay7zJHBLA/company-logo_200_200/0/1603488054957?e=1656547200&v=beta&t=1P_p3XRSpuBzFn_0vKV4Ia9QNBditggRIbF7_hplfh8",
+        "image": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/12/child-covid-vaccine-bandaid-1296x728-header-1296x729.jpg?w=1575",
+        "rating": 3.5,
+        "keywords": [
+            "Anemia",
+            "Hepatitis",
+            "Tuberculosis",
+            "HIV",
+            "Influenza e",
+            "Tetanus",
+            "Diphtheria",
+            "Measles"
+        ],
+        "locations": [
+            "Nigeria"
+        ],
+        "num_active_locations": 1,
+        "launch_year": 2011,
+        "quote": ""
+    },
+    {
+        "name": "Oxfam International",
+        "type": "charity",
+        "url": "https://www.oxfam.org/en",
+        "mission": "Oxfam is a confederation of 20 national organizations working together to fight poverty, its causes, and its effects. Oxfam’s work focuses on long-term development programs, emergency assistance, and political advocacy on issues including agriculture, education, health, climate change, emergency response, and more.",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Oxfam_logo_vertical.svg/135px-Oxfam_logo_vertical.svg.png?20181007194154",
+        "image": "https://oi-files-d8-prod.s3.eu-west-2.amazonaws.com/s3fs-public/styles/hero_image_extra_large/public/2019-11/40565scr.jpg?itok=YHewNOfX",
+        "rating": 4,
+        "keywords": [
+            "All"
+        ],
+        "locations": [
+            "All"
+        ],
+        "num_active_locations": 90,
+        "launch_year": 1951,
+        "quote": "With the right tools, change movements can start to shift the narrative and tell a new story."
+    },
+    {
+        "name": "Population Services International",
+        "type": "charity",
+        "url": "https://www.psi.org/",
+        "mission": "Not only are we helping to build sustainable solutions for the world’s most serious health issues, but we’re also creating a healthcare experience that treats beneficiaries like consumers—starting with putting more care and control directly in consumers’ hands.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Population_Services_International_logo.svg/330px-Population_Services_International_logo.svg.png",
+        "image": "https://media-exp1.licdn.com/dms/image/C561BAQFnKIXG-ZRt6g/company-background_10000/0/1613690616211?e=2147483647&v=beta&t=pfopL-LBHBoKbcBYE4zDjeHe5WVX1ubxpSfJ2bVQHE4",
+        "rating": 4.5,
+        "keywords": [
+            "HIV",
+            "Malaria"
+        ],
+        "locations": [
+            "El Salvador",
+            "Ghana",
+            "Laos",
+            "Malawi",
+            "Rwanda",
+            "South Africa",
+            "Cambodia",
+            "Guatemala",
+            "Nepal",
+            "Tanzania",
+            "Zimbabwe",
+            "Ethiopia",
+            "Haiti",
+            "Kenya",
+            "Mozambique",
+            "Uganda"
+        ],
+        "num_active_locations": 50,
+        "launch_year": 1970,
+        "quote": "I used to stay up all night chasing away mosquitoes. But it seemed like whatever I did, my children and I would get sick."
+    },
+    {
+        "name": "National Organisation for Rare Disorders",
+        "type": "charity",
+        "url": "https://rarediseases.org/",
+        "mission": "NORD is a patient advocacy organization dedicated to individuals with rare diseases and the organizations that serve them.",
+        "logo": "https://rarediseases.org/wp-content/uploads/2022/01/NORD_Logo_Wide_Web_RGB.png",
+        "image": "https://rarediseases.org/wp-content/uploads/2021/10/ODTC-Sticky.png",
+        "rating": 3.5,
+        "keywords": [
+            "All"
+        ],
+        "locations": [
+            "All"
+        ],
+        "num_active_locations": 0,
+        "launch_year": 1983,
+        "quote": "...[those] living with a rare disease are more often fighting for recognition rather than the cures they deserve."
+    },
+    {
+        "name": "World Mosquito Program",
+        "type": "organisation",
+        "url": "https://www.worldmosquitoprogram.org/",
+        "mission": "The World Mosquito Program (WMP) is a not-for-profit group of companies owned by Monash University that works to protect the global community from mosquito-borne diseases such as dengue, Zika, yellow fever and chikungunya.",
+        "logo": "https://media-exp1.licdn.com/dms/image/C4E0BAQEHouZUUTfwMg/company-logo_200_200/0/1535000751605?e=1656547200&v=beta&t=kc5sf1v51_oUd3ChSCjFxI9xvR5xZKsPldy1xjJrAtc",
+        "image": "https://media-exp1.licdn.com/dms/image/C561BAQEAGmimPheX5g/company-background_10000/0/1634720440064?e=1648782000&v=beta&t=QxRPFud37s1o6_iediII2U_Mdl1pc3mpFEUGD1exF34",
+        "rating": 4,
+        "keywords": [
+            "Dengue",
+            "Zika",
+            "Yellow fever",
+            "Chikungunya"
+        ],
+        "locations": [
+            "Sri Lanka",
+            "Vietnam",
+            "Indonesia",
+            "Australia",
+            "New Caledonia",
+            "Vanuatu",
+            "Fiji",
+            "Kiribati"
+        ],
+        "num_active_locations": 8,
+        "launch_year": 2011,
+        "quote": "Our day-to-day life is badly affected by [mosquitoes]. Children struggle to go to school while people can’t get to work if sick."
+    },
+    {
+        "name": "Doctors Without Borders",
+        "type": "organisation",
+        "url": "https://www.msf.org/",
+        "mission": "We provide medical assistance to people affected by conflict, epidemics, disasters, or exclusion from healthcare.",
+        "logo": "https://probonoaustralia.com.au/wp-content/uploads/2021/03/MSF_dual_English_RGB-scaled.jpg",
+        "image": "https://pbs.twimg.com/profile_banners/14755492/1602084709/600x200",
+        "rating": 4.5,
+        "keywords": [
+            "Cholera",
+            "COVID-19",
+            "Ebola",
+            "Hepatitis",
+            "HIV/AIDs Malaria",
+            "Measles",
+            "Meningitis",
+            "Tuberculosis",
+            "Yellow fever"
+        ],
+        "locations": [
+            "All"
+        ],
+        "num_active_locations": 70,
+        "launch_year": 1971,
+        "quote": "We are human beings in need."
+    },
+    {
+        "name": "Global Ebola Response",
+        "type": "organisation",
+        "url": "https://ebolaresponse.un.org/",
+        "mission": "The entire UN system, the governments of the affected countries, partners and NGOs are mobilized to help the region to reach -- and remain -- at zero cases and support long-term recovery. ",
+        "logo": "https://ebolaresponse.un.org/sites/default/files/banner_img_1.png",
+        "image": "https://ebolaresponse.un.org/sites/default/files/styles/full_width_image/public/field/image/sr_20150108_1649.jpg?itok=HCvyBHDV",
+        "rating": 5,
+        "keywords": [
+            "Ebola",
+            "COVID-19"
+        ],
+        "locations": [
+            "Guinea",
+            "Liberia",
+            "Sierra Leone",
+            "Nigeria",
+            "Mali",
+            "Senegal"
+        ],
+        "num_active_locations": 0,
+        "launch_year": 2014,
+        "quote": "The United Nations remains steadfast in its commitment to supporting the Governments of Guinea, Liberia and Sierra Leone in getting to and staying at zero cases."
+    },
+    {
+        "name": "PLAN International",
+        "type": "charity",
+        "url": "https://plan-uk.org/",
+        "mission": "At PLAN International, we strive for a just world that advances children’s rights and equality for girls.",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/49/Plan_International_logo.png/375px-Plan_International_logo.png",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Niger%2C_Niamey%2C_Country_office_of_Plan_International.jpg/1200px-Niger%2C_Niamey%2C_Country_office_of_Plan_International.jpg",
+        "rating": 4,
+        "keywords": [
+            "Ebola"
+        ],
+        "locations": [
+            "All"
+        ],
+        "num_active_locations": 0,
+        "launch_year": 1937,
+        "quote": "We respond in the areas we can serve most effectively and build communities to be more resilient."
+    },
+    {
+        "name": "UNICEF",
+        "type": "charity",
+        "url": "https://www.unicef.org/",
+        "mission": "UNICEF works in over 190 countries and territories to save children’s lives, to defend their rights, and to help them fulfil their potential, from early childhood through adolescence. And we never give up.",
+        "logo": "https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png?itok=GBWmwWnr",
+        "image": "https://www.unicef.org/sites/default/files/styles/media_banner/public/UN0343538_1.jpg?itok=O6IZaOQ1",
+        "rating": 5,
+        "keywords": [
+            "Ebola",
+            "COVID-19",
+            "Malaria",
+            "Pneumonia",
+            "Diarrhoea",
+            "HIV",
+            "Tuberculosis",
+            "Poliovirus",
+            "Hepatitis",
+            "Diphtheria",
+            "Tetanus",
+            "Pertussis",
+            "Pneumococcal diseases",
+            "Rotavirus",
+            "Measles",
+            "Mumps",
+            "Rubella",
+            "HPV"
+        ],
+        "locations": [
+            "All"
+        ],
+        "num_active_locations": 0,
+        "launch_year": 1946,
+        "quote": "There's enough on this planet for everyone's needs but not for everyone's greed."
+    },
+    {
+        "name": "World Vision",
+        "type": "charity",
+        "url": "https://www.worldvision.com.au/",
+        "mission": "We go where the need is greatest to help the most vulnerable children around the world. We’re dedicated to working with children, families and communities to overcome poverty and injustice.",
+        "logo": "https://media-exp1.licdn.com/dms/image/C4D0BAQG9dkbDAHv3Fg/company-logo_200_200/0/1519856421202?e=1656547200&v=beta&t=dwihUll-7sAg42Va7I5nGC43n__bM77ET0aGi9v9Gv8",
+        "image": "https://media-exp1.licdn.com/dms/image/C561BAQEJhKCSeIw6sw/company-background_10000/0/1645572960027?e=1648782000&v=beta&t=wq5ZvW_3hGw32VpMDPrI9Vp2gBA_0QYPcYLgEgPz2T4",
+        "rating": 5,
+        "keywords": [
+            "Ebola",
+            "COVID-19",
+            "Malaria",
+            "HIV/AIDs",
+            "Tuberculosis",
+            "Polio",
+            "Zika"
+        ],
+        "locations": [
+            "All"
+        ],
+        "num_active_locations": 100,
+        "launch_year": 1950,
+        "quote": ""
+    },
+    {
+        "name": "One Disease",
+        "type": "charity",
+        "url": "https://www.onedisease.org/",
+        "mission": "To eliminate Crusted Scabies as a public health concern in Australia by 2022",
+        "logo": "https://images.squarespace-cdn.com/content/v1/5ea65cab24179d3deae3df47/1589161190906-E748G1J037YY60ZMVTO3/OD_LOGO.png?format=1500w",
+        "image": "https://images.squarespace-cdn.com/content/v1/5ea65cab24179d3deae3df47/1597637361089-KNA00E6JITQGDIMS9W13/PassingBaby.png",
+        "rating": 4,
+        "keywords": [
+            "Scabies",
+            "Infectious diseases",
+            "Indigenous"
+        ],
+        "locations": [
+            "Australia"
+        ],
+        "num_active_locations": 7,
+        "launch_year": 2020,
+        "quote": "Specific, targeted programs with a narrow focus which are not holistic but have contextual sensitivity may have flow-on results in other areas, and at least help to loosen the tangle of disadvantage. The One Disease organisation, whose present focus is the prevention and treatment of scabies in Aboriginal communities, is an example of that kind of program."
+    },
+    {
+        "name": "Innovations for Poverty Action",
+        "type": "charity",
+        "url": "https://www.poverty-action.org/",
+        "mission": "We discover and promote effective solutions to global poverty problems.",
+        "logo": "https://www.poverty-action.org/sites/default/files/poverty_action_logo.jpg,",
+        "image": "https://www.poverty-action.org/sites/default/files/featured-images.jpg",
+        "rating": 4,
+        "keywords": [
+            "Covid-19",
+            "Infectious diseases",
+            "Research",
+            "Zika",
+            "Hepatitis"
+        ],
+        "locations": [
+            "Bangladesh",
+            "Malawi",
+            "Liberia",
+            "Philippines",
+            "Thailand",
+            "Burkina Faso",
+            "Ghana",
+            "Myanmar",
+            "Peru",
+            "Kenya",
+            "Rwanda",
+            "Uganda",
+            "Ethiopia",
+            "Nigeria",
+            "Cambodia",
+            "Mexico",
+            "Dominican Republic",
+            "Paraguay",
+            "Bolivia"
+        ],
+        "num_active_locations": 22,
+        "launch_year": 2002,
+        "quote": "Specific, targeted programs with a narrow focus which are not holistic but have contextual sensitivity may have flow-on results in other areas, and at least help to loosen the tangle of disadvantage. The One Disease organisation, whose present focus is the prevention and treatment of scabies in Aboriginal communities, is an example of that kind of program."
+    },
+    {
+        "name": "Save The Children",
+        "type": "charity",
+        "url": "https://www.savethechildren.org/",
+        "mission": "Save the Children believes every child deserves a future.",
+        "logo": "https://www.savethechildren.org/etc/clientlibs/us/clientlib-site/images/icons/stc-logo.svg",
+        "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSse8jUKG2VmzgTa8Y_lPNO6fjKmERnoz62PNcyTkQD6F6FffQx",
+        "rating": 5,
+        "keywords": [
+            "Children",
+            "Global",
+            "Zika",
+            "Covid-19",
+            "Health"
+        ],
+        "locations": [
+            "China",
+            "Australia",
+            "United States",
+            "United Kingdom",
+            "Brazil",
+            "India",
+            "Kenya",
+            "Canada",
+            "Japan",
+            "Italy",
+            "Spain",
+            "New Zealand",
+            "Russia",
+            "Mongolia",
+            "Turkey",
+            "Greenland",
+            "Sweden"
+        ],
+        "num_active_locations": 168,
+        "launch_year": 1919,
+        "quote": "Save the Children is often told that its aims are impossible - that there has always been child suffering and there always will be. We know. It's impossible only if we make it so. It's impossible only if we refuse to attempt it."
+    }
+]
