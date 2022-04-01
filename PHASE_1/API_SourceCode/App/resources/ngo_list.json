@@ -8,44 +8,44 @@
         "image": "https://www.againstmalaria.com/images/homepageSlider_Proof2.jpg",
         "rating": 5,
         "keywords": [
-            "Malaria"
+            "malaria"
         ],
         "locations": [
-            "Angola",
-            "Botswana",
-            "Burkina Faso",
-            "Burundi",
-            "Cambodia",
-            "Cameroon",
-            "Chad",
-            "Congo",
-            "Ethiopia",
-            "Gabon",
-            "Gambia",
-            "Ghana",
-            "Guinea",
-            "Haiti",
-            "India",
-            "Indonesia",
-            "Kenya",
-            "Liberia",
-            "Madagascar",
-            "Malawi",
-            "Mali",
-            "Namibia",
-            "Nepal",
-            "Nicaragua",
-            "Nigeria",
-            "Papua New Guinea",
-            "Peru",
-            "Rwanda",
-            "Sierra Leone",
-            "South Sudan",
-            "Tanzania",
-            "Togo",
-            "Uganda",
-            "Zambia",
-            "Zimbabwe"
+            "angola",
+            "botswana",
+            "burkina faso",
+            "burundi",
+            "cambodia",
+            "cameroon",
+            "chad",
+            "congo",
+            "ethiopia",
+            "gabon",
+            "gambia",
+            "ghana",
+            "guinea",
+            "haiti",
+            "india",
+            "indonesia",
+            "kenya",
+            "liberia",
+            "madagascar",
+            "malawi",
+            "mali",
+            "namibia",
+            "nepal",
+            "nicaragua",
+            "nigeria",
+            "papua new guinea",
+            "peru",
+            "rwanda",
+            "sierra leone",
+            "south sudan",
+            "tanzania",
+            "togo",
+            "uganda",
+            "zambia",
+            "zimbabwe"
         ],
         "num_active_locations": 36,
         "launch_year": 2004,
@@ -60,29 +60,29 @@
         "image": "https://img2.storyblok.com/500x500/smart/filters:quality(100):format(webp)/f/95584/1919x1920/c369ff6a4b/eh_patient_mother3_rubine.jpg",
         "rating": 5,
         "keywords": [
-            "Jaundice",
-            "Kernicterus"
+            "jaundice",
+            "kernicterus"
         ],
         "locations": [
-            "India",
-            "Nepal",
-            "Pakistan",
-            "Bangladesh",
-            "Sri Lanka",
-            "Uganda",
-            "Kenya",
-            "Tanzania",
-            "Malawi",
-            "Nigeria",
-            "Botswana",
-            "Senegal",
-            "South Africa",
-            "Colombia",
-            "Ecuador",
-            "Guatemala",
-            "Fiji",
-            "Indonesia",
-            "Iraq"
+            "india",
+            "nepal",
+            "pakistan",
+            "bangladesh",
+            "sri lanka",
+            "uganda",
+            "kenya",
+            "tanzania",
+            "malawi",
+            "nigeria",
+            "botswana",
+            "senegal",
+            "south africa",
+            "colombia",
+            "ecuador",
+            "guatemala",
+            "fiji",
+            "indonesia",
+            "iraq"
         ],
         "num_active_locations": 73,
         "launch_year": 2012,
@@ -97,15 +97,14 @@
         "image": "https://media-exp1.licdn.com/dms/image/C4E1BAQFjfB09lqOTuw/company-background_10000/0/1548862721356?e=1648692000&v=beta&t=-PKl5tT1zH5gzX69uUaUOTIinBv6Uk7nB3I2HOYMWSs",
         "rating": 5,
         "keywords": [
-            "Syphilis",
-            "Safe water",
-            "Deworming",
-            "Extreme poverty"
+            "syphilis",
+            "safe water",
+            "extreme poverty"
         ],
         "locations": [
-            "India",
-            "Nigeria",
-            "Pakistan"
+            "india",
+            "nigeria",
+            "pakistan"
         ],
         "num_active_locations": 6,
         "launch_year": 2013,
@@ -120,12 +119,12 @@
         "image": "https://media-exp1.licdn.com/dms/image/C561BAQFTngdzappICA/company-background_10000/0/1581023945622?e=2147483647&v=beta&t=yZdzPYcGD90JiCAYv5WpnBX5tBjAWfD1BSIJ2KiTriY",
         "rating": 3.5,
         "keywords": [
-            "Extreme poverty"
+            "extreme poverty"
         ],
         "locations": [
-            "Kenya",
-            "Uganda",
-            "Rwanda"
+            "kenya",
+            "uganda",
+            "rwanda"
         ],
         "num_active_locations": 3,
         "launch_year": 2009,
@@ -140,24 +139,24 @@
         "image": "https://www.malariaconsortium.org/gallery-image/width-1280/05111147-68-uganda2013inscalevhtalinaitwestephentinefrank.jpg",
         "rating": 5,
         "keywords": [
-            "Malaria",
-            "Pneumonia",
-            "Diarrhoea",
-            "Dengue",
-            "Tropical diseases"
+            "malaria",
+            "pneumonia",
+            "diarrhoea",
+            "dengue",
+            "tropical diseases"
         ],
         "locations": [
-            "Ethiopia",
-            "Mozambique",
-            "Nigeria",
-            "South Sudan",
-            "Uganda",
-            "Burkina Faso",
-            "Chad",
-            "Cambodia",
-            "Myanmar",
-            "Thailand",
-            "Togo"
+            "ethiopia",
+            "mozambique",
+            "nigeria",
+            "south sudan",
+            "uganda",
+            "burkina faso",
+            "chad",
+            "cambodia",
+            "myanmar",
+            "thailand",
+            "togo"
         ],
         "num_active_locations": 3,
         "launch_year": 2003,
@@ -172,17 +171,17 @@
         "image": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/12/child-covid-vaccine-bandaid-1296x728-header-1296x729.jpg?w=1575",
         "rating": 3.5,
         "keywords": [
-            "Anemia",
-            "Hepatitis",
-            "Tuberculosis",
-            "HIV",
-            "Influenza e",
-            "Tetanus",
-            "Diphtheria",
-            "Measles"
+            "anemia",
+            "hepatitis",
+            "tuberculosis",
+            "hiv",
+            "influenza e",
+            "tetanus",
+            "diphtheria",
+            "measles"
         ],
         "locations": [
-            "Nigeria"
+            "nigeria"
         ],
         "num_active_locations": 1,
         "launch_year": 2011,
@@ -197,10 +196,10 @@
         "image": "https://oi-files-d8-prod.s3.eu-west-2.amazonaws.com/s3fs-public/styles/hero_image_extra_large/public/2019-11/40565scr.jpg?itok=YHewNOfX",
         "rating": 4,
         "keywords": [
-            "All"
+            "all"
         ],
         "locations": [
-            "All"
+            "all"
         ],
         "num_active_locations": 90,
         "launch_year": 1951,
@@ -215,26 +214,26 @@
         "image": "https://media-exp1.licdn.com/dms/image/C561BAQFnKIXG-ZRt6g/company-background_10000/0/1613690616211?e=2147483647&v=beta&t=pfopL-LBHBoKbcBYE4zDjeHe5WVX1ubxpSfJ2bVQHE4",
         "rating": 4.5,
         "keywords": [
-            "HIV",
-            "Malaria"
+            "hiv",
+            "malaria"
         ],
         "locations": [
-            "El Salvador",
-            "Ghana",
-            "Laos",
-            "Malawi",
-            "Rwanda",
-            "South Africa",
-            "Cambodia",
-            "Guatemala",
-            "Nepal",
-            "Tanzania",
-            "Zimbabwe",
-            "Ethiopia",
-            "Haiti",
-            "Kenya",
-            "Mozambique",
-            "Uganda"
+            "el salvador",
+            "ghana",
+            "laos",
+            "malawi",
+            "rwanda",
+            "south africa",
+            "cambodia",
+            "guatemala",
+            "nepal",
+            "tanzania",
+            "zimbabwe",
+            "ethiopia",
+            "haiti",
+            "kenya",
+            "mozambique",
+            "uganda"
         ],
         "num_active_locations": 50,
         "launch_year": 1970,
@@ -249,10 +248,10 @@
         "image": "https://rarediseases.org/wp-content/uploads/2021/10/ODTC-Sticky.png",
         "rating": 3.5,
         "keywords": [
-            "All"
+            "all"
         ],
         "locations": [
-            "All"
+            "all"
         ],
         "num_active_locations": 0,
         "launch_year": 1983,
@@ -267,20 +266,20 @@
         "image": "https://media-exp1.licdn.com/dms/image/C561BAQEAGmimPheX5g/company-background_10000/0/1634720440064?e=1648782000&v=beta&t=QxRPFud37s1o6_iediII2U_Mdl1pc3mpFEUGD1exF34",
         "rating": 4,
         "keywords": [
-            "Dengue",
-            "Zika",
-            "Yellow fever",
-            "Chikungunya"
+            "dengue",
+            "zika",
+            "yellow fever",
+            "chikungunya"
         ],
         "locations": [
-            "Sri Lanka",
-            "Vietnam",
-            "Indonesia",
-            "Australia",
-            "New Caledonia",
-            "Vanuatu",
-            "Fiji",
-            "Kiribati"
+            "sri lanka",
+            "vietnam",
+            "indonesia",
+            "australia",
+            "new caledonia",
+            "vanuatu",
+            "fiji",
+            "kiribati"
         ],
         "num_active_locations": 8,
         "launch_year": 2011,
@@ -295,18 +294,20 @@
         "image": "https://pbs.twimg.com/profile_banners/14755492/1602084709/600x200",
         "rating": 4.5,
         "keywords": [
-            "Cholera",
-            "COVID-19",
-            "Ebola",
-            "Hepatitis",
-            "HIV/AIDs Malaria",
-            "Measles",
-            "Meningitis",
-            "Tuberculosis",
-            "Yellow fever"
+            "cholera",
+            "covid-19",
+            "ebola",
+            "hepatitis",
+            "hiv/aids",
+            "malaria",
+            "measles",
+            "meningitis",
+            "tuberculosis",
+            "yellow fever",
+            "plague"
         ],
         "locations": [
-            "All"
+            "all"
         ],
         "num_active_locations": 70,
         "launch_year": 1971,
@@ -321,16 +322,17 @@
         "image": "https://ebolaresponse.un.org/sites/default/files/styles/full_width_image/public/field/image/sr_20150108_1649.jpg?itok=HCvyBHDV",
         "rating": 5,
         "keywords": [
-            "Ebola",
-            "COVID-19"
+            "ebola",
+            "covid-19",
+            "plague"
         ],
         "locations": [
-            "Guinea",
-            "Liberia",
-            "Sierra Leone",
-            "Nigeria",
-            "Mali",
-            "Senegal"
+            "guinea",
+            "liberia",
+            "sierra leone",
+            "nigeria",
+            "mali",
+            "senegal"
         ],
         "num_active_locations": 0,
         "launch_year": 2014,
@@ -345,10 +347,10 @@
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Niger%2C_Niamey%2C_Country_office_of_Plan_International.jpg/1200px-Niger%2C_Niamey%2C_Country_office_of_Plan_International.jpg",
         "rating": 4,
         "keywords": [
-            "Ebola"
+            "ebola"
         ],
         "locations": [
-            "All"
+            "all"
         ],
         "num_active_locations": 0,
         "launch_year": 1937,
@@ -363,27 +365,27 @@
         "image": "https://www.unicef.org/sites/default/files/styles/media_banner/public/UN0343538_1.jpg?itok=O6IZaOQ1",
         "rating": 5,
         "keywords": [
-            "Ebola",
-            "COVID-19",
-            "Malaria",
-            "Pneumonia",
-            "Diarrhoea",
-            "HIV",
-            "Tuberculosis",
-            "Poliovirus",
-            "Hepatitis",
-            "Diphtheria",
-            "Tetanus",
-            "Pertussis",
-            "Pneumococcal diseases",
-            "Rotavirus",
-            "Measles",
-            "Mumps",
-            "Rubella",
-            "HPV"
+            "ebola",
+            "covid-19",
+            "malaria",
+            "pneumonia",
+            "diarrhoea",
+            "hiv/aids",
+            "tuberculosis",
+            "poliovirus",
+            "hepatitis",
+            "diphtheria",
+            "tetanus",
+            "pertussis",
+            "pneumococcal diseases",
+            "rotavirus",
+            "measles",
+            "mumps",
+            "rubella",
+            "plague"
         ],
         "locations": [
-            "All"
+            "all"
         ],
         "num_active_locations": 0,
         "launch_year": 1946,
@@ -398,16 +400,17 @@
         "image": "https://media-exp1.licdn.com/dms/image/C561BAQEJhKCSeIw6sw/company-background_10000/0/1645572960027?e=1648782000&v=beta&t=wq5ZvW_3hGw32VpMDPrI9Vp2gBA_0QYPcYLgEgPz2T4",
         "rating": 5,
         "keywords": [
-            "Ebola",
-            "COVID-19",
-            "Malaria",
-            "HIV/AIDs",
-            "Tuberculosis",
-            "Polio",
-            "Zika"
+            "ebola",
+            "covid-19",
+            "malaria",
+            "hiv/aids",
+            "tuberculosis",
+            "poliovirus",
+            "zika",
+            "plague"
         ],
         "locations": [
-            "All"
+            "all"
         ],
         "num_active_locations": 100,
         "launch_year": 1950,
@@ -422,12 +425,10 @@
         "image": "https://images.squarespace-cdn.com/content/v1/5ea65cab24179d3deae3df47/1597637361089-KNA00E6JITQGDIMS9W13/PassingBaby.png",
         "rating": 4,
         "keywords": [
-            "Scabies",
-            "Infectious diseases",
-            "Indigenous"
+            "scabies"
         ],
         "locations": [
-            "Australia"
+            "australia"
         ],
         "num_active_locations": 7,
         "launch_year": 2020,
@@ -442,32 +443,31 @@
         "image": "https://www.poverty-action.org/sites/default/files/featured-images.jpg",
         "rating": 4,
         "keywords": [
-            "Covid-19",
-            "Infectious diseases",
-            "Research",
-            "Zika",
-            "Hepatitis"
+            "covid-19",
+            "zika",
+            "hepatitis",
+            "plague"
         ],
         "locations": [
-            "Bangladesh",
-            "Malawi",
-            "Liberia",
-            "Philippines",
-            "Thailand",
-            "Burkina Faso",
-            "Ghana",
-            "Myanmar",
-            "Peru",
-            "Kenya",
-            "Rwanda",
-            "Uganda",
-            "Ethiopia",
-            "Nigeria",
-            "Cambodia",
-            "Mexico",
-            "Dominican Republic",
-            "Paraguay",
-            "Bolivia"
+            "bangladesh",
+            "malawi",
+            "liberia",
+            "philippines",
+            "thailand",
+            "burkina faso",
+            "ghana",
+            "myanmar",
+            "peru",
+            "kenya",
+            "rwanda",
+            "uganda",
+            "ethiopia",
+            "nigeria",
+            "cambodia",
+            "mexico",
+            "dominican republic",
+            "paraguay",
+            "bolivia"
         ],
         "num_active_locations": 22,
         "launch_year": 2002,
@@ -482,30 +482,28 @@
         "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSse8jUKG2VmzgTa8Y_lPNO6fjKmERnoz62PNcyTkQD6F6FffQx",
         "rating": 5,
         "keywords": [
-            "Children",
-            "Global",
-            "Zika",
-            "Covid-19",
-            "Health"
+            "zika",
+            "covid-19",
+            "plague"
         ],
         "locations": [
-            "China",
-            "Australia",
-            "United States",
-            "United Kingdom",
-            "Brazil",
-            "India",
-            "Kenya",
-            "Canada",
-            "Japan",
-            "Italy",
-            "Spain",
-            "New Zealand",
-            "Russia",
-            "Mongolia",
-            "Turkey",
-            "Greenland",
-            "Sweden"
+            "china",
+            "australia",
+            "united states",
+            "united kingdom",
+            "brazil",
+            "india",
+            "kenya",
+            "canada",
+            "japan",
+            "italy",
+            "spain",
+            "new zealand",
+            "russia",
+            "mongolia",
+            "turkey",
+            "greenland",
+            "sweden"
         ],
         "num_active_locations": 168,
         "launch_year": 1919,
