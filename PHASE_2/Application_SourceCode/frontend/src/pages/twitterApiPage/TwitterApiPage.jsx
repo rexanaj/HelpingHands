@@ -1,9 +1,8 @@
 import React, { } from "react";
 
 export default function TwitterApiPage() {
-    // const [query, setQuery] = useState("");
-    let query = "";
-    let v = 10;
+    const [query, setQuery] = useState("");
+    // let v = 10;
 
     const fetch_tweets = () => {
         // api code goes here
@@ -14,7 +13,8 @@ export default function TwitterApiPage() {
         <div>
             <input type="text" onChange={t => {
                 query = t.target.value;
-                console.log(v);
+                
+                // console.log(v);
             }} />
             <button onClick={fetch_tweets}>Fetch</button>
             <ol>
