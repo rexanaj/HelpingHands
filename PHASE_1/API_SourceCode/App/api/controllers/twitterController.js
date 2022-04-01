@@ -3,7 +3,7 @@ const needle = require('needle');
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const token = process.env.BEARER_TOKEN;
+const token = "AAAAAAAAAAAAAAAAAAAAADOOawEAAAAAJ3y3WbTi4hwFxW3PxWUHVINx1dk%3DE64YEkGaST3ts9WfrA2sq9h5Fe8mYTUzjYO021aaN0qLoA2DvR";
 
 const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";
 
@@ -13,8 +13,9 @@ async function getRequest() {
     // specify a search query, and any additional fields that are required
     // by default, only the Tweet ID and text fields are returned
     const params = {
-        'query': 'from:twitterdev -is:retweet',
-        'tweet.fields': 'author_id'
+        'query': '#disease -is:retweet has:media has:images',
+        'media.fields': 'url',
+        'expansions': 'attachments.media_keys',
     }
 
     const res = await needle('get', endpointUrl, params, {
@@ -46,3 +47,8 @@ async function getRequest() {
     }
     process.exit();
 })();
+
+
+module.exports = {
+    getRequest,
+  };
