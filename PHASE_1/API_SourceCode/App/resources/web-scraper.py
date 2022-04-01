@@ -19,7 +19,7 @@ keywords_list = json.load(open(os.path.join(script_dir, 'keywords_list.json')))
 def get_data_multiple_pages():
     results = []
     page_no = 1
-    for page_no in range(1, 50):
+    for page_no in range(1, 9):
         my_url = 'https://www.who.int/emergencies/disease-outbreak-news/{}'.format(page_no)
         # my_url = my_url.encode('utf-8')
         results += get_data(my_url)
