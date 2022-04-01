@@ -42,7 +42,10 @@
         "name": "diphtheria"
     },
     {
-        "name": "ebola haemorrhagic fever"
+        "name": "ebola"
+    },
+    {
+        "name": "haemorrhagic fever"
     },
     {
         "name": "ehec (e.coli)"
