@@ -5,10 +5,10 @@ import { Route, Routes } from "react-router-dom";
 
 /////////// COMPONENTS /////////////
 import ExamplePage from "../pages/examplePage/ExamplePage.jsx";
-import HomePage from "../pages/home/HomePage";
+import HomePage from "../pages/homePage/HomePage.jsx";
 ////////////////////////////////////
 
-export default function App() {
+export default function App () {
   return (
     <div className="App">
       <Routes>
