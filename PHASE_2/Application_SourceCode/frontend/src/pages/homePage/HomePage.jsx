@@ -4,7 +4,7 @@ import { FrontPageButton } from "../../components/frontPageButtons/FrontPageButt
 export default function HomePage () {
   return (
     <div className="HomePage">
-      <FrontPageButton buttonText="This is my button text" onClick={() => { console.log("Give help") }} />
+      <FrontPageButton buttonText="This is my button text" buttonOnClick={() => { console.log("Give help") }} />
     </div>
   );
 }
