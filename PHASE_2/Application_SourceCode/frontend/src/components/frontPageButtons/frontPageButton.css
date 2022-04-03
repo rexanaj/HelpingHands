@@ -1,14 +1,18 @@
-.Button {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 400;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    background-color: blueviolet;
-    color: antiquewhite;
-    border: none;
+.startButton {
+    border: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; 
 }
 
-.Button:hover {
+.startButton::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.startButton:hover {
     transform: translateY(-3px);
 }
