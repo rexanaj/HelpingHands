@@ -3,28 +3,13 @@ import React from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import { CardMedia } from "@mui/material";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 export default function NewsCard(props) {
     return (
-      // <div>
-      //   <div className="DiseaseSyndromes">
-      //     {syndromes.map((value, index) => (
-      //       <div key={index}>{value}</div>
-      //     ))}
-      //   </div>
-      //   This is an example page. The passed in prop is: {props.word}
-      // </div>
       <Card sx={{ minWidth: 275 }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 151 }}
-            image=""
-            alt="Live from space album cover"
-        />
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {props.publication}
