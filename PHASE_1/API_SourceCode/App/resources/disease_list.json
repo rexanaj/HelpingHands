@@ -39,10 +39,13 @@
         "name": "dengue"
     },
     {
-        "name": "diphteria"
+        "name": "diphtheria"
     },
     {
-        "name": "ebola haemorrhagic fever"
+        "name": "ebola"
+    },
+    {
+        "name": "haemorrhagic fever"
     },
     {
         "name": "ehec (e.coli)"
@@ -132,10 +135,16 @@
         "name": "plague"
     },
     {
-        "name": "pneumococcus pneumonia"
+        "name": "pneumococcus diseases"
+    },
+    {
+        "name": "pneumonia"
     },
     {
         "name": "poliomyelitis"
+    },
+    {
+        "name": "poliovirus"
     },
     {
         "name": "q fever"
@@ -147,7 +156,7 @@
         "name": "rift valley fever"
     },
     {
-        "name": "rotavirus infection"
+        "name": "rotavirus"
     },
     {
         "name": "rubella"
@@ -157,6 +166,9 @@
     },
     {
         "name": "sars"
+    },
+    {
+        "name": "scabies"
     },
     {
         "name": "shigellosis"
@@ -169,6 +181,9 @@
     },
     {
         "name": "thypoid fever"
+    },
+    {
+        "name": "tetanus"
     },
     {
         "name": "tuberculosis"
@@ -204,6 +219,12 @@
         "name": "monkeypox"
     },
     {
-        "name": "COVID-19"
+        "name": "covid-19"
+    },
+    {
+        "name": "meningitis"
+    },
+    {
+        "name": "meningitis"
     }
 ]
