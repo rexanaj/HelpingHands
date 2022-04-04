@@ -1,48 +1,39 @@
 const needle = require('needle');
 
-// The code below sets the bearer token from your environment variables
-// To set environment variables on macOS or Linux, run the export command below from the terminal:
-// export BEARER_TOKEN='YOUR-TOKEN'
-const token = process.env.BEARER_TOKEN;
-
+// for now we're querying the most recent tweets
 const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";
+const token = "AAAAAAAAAAAAAAAAAAAAADOOawEAAAAAJ3y3WbTi4hwFxW3PxWUHVINx1dk%3DE64YEkGaST3ts9WfrA2sq9h5Fe8mYTUzjYO021aaN0qLoA2DvR";
 
-async function getRequest() {
+// retrieves 10 tweets at a time that contains "#{keyword}"
+// all 10 tweets include an image URL
+const getTweets = async (req, res) => {
+    console.log("Get tweets!");
 
-    // Edit query parameters below
-    // specify a search query, and any additional fields that are required
+    const keyword = req.params.hashtag;
+
     // by default, only the Tweet ID and text fields are returned
     const params = {
-        'query': 'from:twitterdev -is:retweet',
-        'tweet.fields': 'author_id'
+        'query': `#${keyword} -is:retweet has:media has:images`,
+        'media.fields': 'url',
+        'expansions': 'attachments.media_keys',
     }
 
-    const res = await needle('get', endpointUrl, params, {
+    const tweets = await needle('get', endpointUrl, params, {
         headers: {
             "User-Agent": "v2RecentSearchJS",
             "authorization": `Bearer ${token}`
         }
-    })
+    });
 
-    if (res.body) {
-        return res.body;
+    if (tweets.body) {
+        return res.status(200).json(tweets.body);
     } else {
-        throw new Error('Unsuccessful request');
+        return res.status(404).json("Invalid disease name provided");
     }
-}
 
-(async () => {
 
-    try {
-        // Make request
-        const response = await getRequest();
-        console.dir(response, {
-            depth: null
-        });
+};
 
-    } catch (e) {
-        console.log(e);
-        process.exit(-1);
-    }
-    process.exit();
-})();
+module.exports = {
+    getTweets,
+};

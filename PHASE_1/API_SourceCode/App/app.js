@@ -7,6 +7,7 @@ const firebaseAdmin = require("firebase-admin");
 // Route imports
 const articlesRoutes = require("./api/routes/articlesRoutes");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
+const twitterRoutes = require("./api/routes/twitterRoutes");
 const ngoRoutes = require("./api/routes/ngoRoute");
 
 // Server info
@@ -76,6 +77,7 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs)); // Access api docs at
 // Routes
 app.use("/articles", articlesRoutes);
 app.use("/diseases", diseasesRoutes);
+app.use("/twitter", twitterRoutes);
 app.use("/ngos", ngoRoutes);
 
 // sending scraper data to database
