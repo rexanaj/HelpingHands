@@ -1,14 +1,17 @@
 /* Global fonts */
 @font-face {
-  font-family: 'sans-serif';
-  src: url('../assets/fonts/authentic-webfont.woff2') format('woff2'),
-       url('../assets/fonts/authentic-webfont.woff') format('woff');
+  font-family: "sans-serif";
+  src: url("../assets/fonts/authentic-webfont.woff2") format("woff2"),
+    url("../assets/fonts/authentic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
-
 .App {
   text-align: center;
-  font-family: 'sans-serif', Arial, Helvetica, sans-serif;
+  font-family: "sans-serif", Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin-left: 20px;
 }
