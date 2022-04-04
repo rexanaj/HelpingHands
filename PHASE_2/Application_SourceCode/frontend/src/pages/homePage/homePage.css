@@ -17,13 +17,13 @@ body {
 /* Control the left side */
 .left {
     left: 0;
-    background-image: BgGiveHelp;
+    background-image: url("../../assets/bggivehelp.jpg");
 }
   
 /* Control the right side */
 .right {
     right: 0;
-    background-image: BgGetHelp;
+    background-image: url("../../assets/bggethelp.jpg");
 }
   
 /* If you want the content centered horizontally and vertically */
