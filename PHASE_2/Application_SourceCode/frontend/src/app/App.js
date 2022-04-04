@@ -15,8 +15,7 @@ export default function App() {
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />
-          <Route path="/example" element={<ExamplePage word="DWEN" />} />
-          <Route path="/toHelp" element={<GiveHelpPage word="DWEN" />} />
+          <Route path="/giveHelp" element={<GiveHelpPage word="DWEN" />} />
         </Route>
       </Routes>
     </div>
