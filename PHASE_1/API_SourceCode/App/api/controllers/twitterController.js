@@ -4,8 +4,8 @@ const needle = require('needle');
 const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";
 const token = "AAAAAAAAAAAAAAAAAAAAADOOawEAAAAAJ3y3WbTi4hwFxW3PxWUHVINx1dk%3DE64YEkGaST3ts9WfrA2sq9h5Fe8mYTUzjYO021aaN0qLoA2DvR";
 
-// retrieves 6 tweets at a time that contains "#{keyword}"
-// all 6 tweets include an image URL
+// retrieves 10 tweets at a time that contains "#{keyword}"
+// all 10 tweets include an image URL
 const getTweets = async (req, res) => {
     console.log("Get tweets!");
 

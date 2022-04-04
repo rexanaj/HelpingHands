@@ -81,14 +81,14 @@ def get_data(my_url):
         article['main_text'] = main_text
     
         # passing in all the text in the page already
-        article['reports'] = get_reports(article_soup.get_text(), text, disease_list, syndrome_list)
+        article['reports'] = get_reports(article_soup.get_text(), text, disease_list, syndrome_list, headline)
         # retrieve reports
         # return
         results.append(article)
     # return json.dumps(results)
     return results
 
-def get_reports(all_text, text, disease_list, syndrome_list):
+def get_reports(all_text, text, disease_list, syndrome_list, headline):
     reports = []
     
     date = re.findall(r'\d\d? [A-Z][a-z]+ \d\d\d\d', all_text)
@@ -101,8 +101,9 @@ def get_reports(all_text, text, disease_list, syndrome_list):
     for disease in disease_list:
         if disease['name'] == "unknown" or disease['name'] == "other":
             continue
-        if disease['name'].lower() in text.lower():
+        if disease['name'].lower() in headline.lower():
             report['diseases'] = [disease['name'].title()]
+            report['keywords'].append(disease['name'])
             break
 
     for syndrome in syndrome_list:
@@ -113,7 +114,7 @@ def get_reports(all_text, text, disease_list, syndrome_list):
             break
 
     for keyword in keywords_list:
-        if keyword['name'].lower() in text.lower():
+        if keyword['name'].lower() in headline.lower():
             report['keywords'].append(keyword['name'])
 
     date_object = datetime.strptime(date[0], '%d %B %Y')
