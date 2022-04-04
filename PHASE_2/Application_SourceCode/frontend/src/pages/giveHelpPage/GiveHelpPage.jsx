@@ -8,10 +8,12 @@ import options from "../../components/Diseases"
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Spinner from 'react-bootstrap/Spinner';
+import Typography from '@mui/material/Typography';
+import "./GiveHelpPage.css"
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
-export default function ToHelpPage(props) {
+export default function GiveHelpPage(props) {
     const [ disease, setDisease ] = useState('');
     const [ articles, setArticles ] = useState([]);
     const [ loading, setLoading ] = useState(false);
@@ -57,28 +59,40 @@ export default function ToHelpPage(props) {
         let publication = `${day}/${month}/${year}`;
         console.log(publication)
         // const headline = articles[index]
+        let main_text = articles[index].main_text
+        main_text = main_text.slice(0, 300);
+        main_text += " ..."
         articles_holder.push(
             <Grid key={i} item xs={3}>
                 {/* headline={articles[i].headline} mainText={articles[i].main_text} publication={publication} */}
-                <NewsCard headline={articles[index].headline} mainText={articles[index].main_text} publication={publication} url={articles[index].url} />
+                <NewsCard className="article" headline={articles[index].headline} mainText={main_text} publication={publication} url={articles[index].url} />
             </Grid>
         );
         i += 1;
     }
   return (
     <div>
-        <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                value={disease}
-                options={options}
-                onChange={(event, value) => setDisease(value)}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Select your disease" />}
-        />
-        <Button variant="contained" onClick={submitDisease}>Search For Disease</Button>
+        <div className="searchBar">
+            <Autocomplete
+                    disablePortal
+                    id="search"
+                    value={disease}
+                    options={options}
+                    onChange={(event, value) => setDisease(value)}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Select your disease" />}
+            />
+            <Button id="searchButton" variant="contained" onClick={submitDisease}>Search For Disease</Button>
+        </div>
+        
         <div>
-            {loading ? <Grid container spacing={3}>{articles_holder}</Grid> : (
+            {loading ? 
+            <div>
+                <Typography className="heading" variant="h5" component="body" gutterBottom>
+                    WHO Articles
+                </Typography>
+                <Grid container spacing={3}>{articles_holder}</Grid>
+            </div> : (
                     <Button className="spinner" variant="success" disabled>
                         <Spinner
                         as="span"
@@ -87,7 +101,7 @@ export default function ToHelpPage(props) {
                         role="status"
                         aria-hidden="true"
                         />
-                        Loading WHO articles...
+                        Please enter a disease
                     </Button>
             )}
         </div>

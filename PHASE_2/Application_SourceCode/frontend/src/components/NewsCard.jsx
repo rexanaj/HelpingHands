@@ -18,14 +18,14 @@ export default function NewsCard(props) {
             {props.headline}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            WHO
+            WHO Report
           </Typography>
           <Typography variant="body2">
             {props.mainText}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" href={props.url}>Learn More</Button>
+          <Button size="small" href={props.url} target="_blank" rel="noopener noreferrer">Read More</Button>
         </CardActions>
       </Card>
     );
