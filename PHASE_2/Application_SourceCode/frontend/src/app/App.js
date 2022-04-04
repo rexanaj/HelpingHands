@@ -4,7 +4,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 /////////// COMPONENTS /////////////
-import ExamplePage from "../pages/examplePage/ExamplePage.jsx";
+import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage.jsx"
 import HomePage from "../pages/homePage/HomePage.jsx";
 ////////////////////////////////////
 
@@ -14,7 +14,7 @@ export default function App () {
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />
-          <Route path="/example" element={<ExamplePage word="DWEN" />} />
+          <Route path="/giveHelp" element={<GiveHelpPage word="DWEN" />} />
         </Route>
       </Routes>
     </div>
