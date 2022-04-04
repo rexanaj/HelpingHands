@@ -1,27 +1,10 @@
 import React, { } from "react";
+import { Carousel } from "./Carousel";
+
+
 
 export default function TwitterApiPage() {
-    const [query, setQuery] = useState("");
-    // let v = 10;
-
-    const fetch_tweets = () => {
-        // api code goes here
-        console.log(query);
-    };
-
     return (
-        <div>
-            <input type="text" onChange={t => {
-                query = t.target.value;
-                
-                // console.log(v);
-            }} />
-            <button onClick={fetch_tweets}>Fetch</button>
-            <ol>
-                <li>tweet1</li>
-                <li>tweet1</li>
-                <li>...</li>
-            </ol>
-        </div>
+        <h1>hi</h1>
     );
 }

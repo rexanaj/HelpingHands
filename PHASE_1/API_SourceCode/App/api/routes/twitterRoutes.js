@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 // Controller functions
-const { getRequest } = require("../controllers/twitterController");
+const { getTweets } = require("../controllers/twitterController");
 
-router.get("/", getRequest);
+router.get("/:hashtag", getTweets);
 
 module.exports = router;
