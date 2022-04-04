@@ -1,4 +1,10 @@
-.startButton {
+.frontPageButtonImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.frontPageButton {
     border: 0;
     border-radius: 50%;
     display: flex;
@@ -7,13 +13,13 @@
     padding: 0;
 }
 
-.startButton::after {
+.frontPageButton::after {
     content: "";
     display: block;
     padding-bottom: 100%;
 }
 
-.startButton:hover {
+.frontPageButton:hover {
     cursor: pointer;
     transform: translateY(-3px);
 }
