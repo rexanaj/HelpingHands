@@ -7,6 +7,8 @@ const firebaseAdmin = require("firebase-admin");
 // Route imports
 const articlesRoutes = require("./api/routes/articlesRoutes");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
+const twitterRoutes = require("./api/routes/twitterRoutes");
+const ngoRoutes = require("./api/routes/ngoRoute");
 
 // Server info
 const app = express();
@@ -75,6 +77,8 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs)); // Access api docs at
 // Routes
 app.use("/articles", articlesRoutes);
 app.use("/diseases", diseasesRoutes);
+app.use("/twitter", twitterRoutes);
+app.use("/ngos", ngoRoutes);
 
 // sending scraper data to database
 var db = firebaseAdmin.firestore();
@@ -114,12 +118,14 @@ app.use("/load", (req, res) => {
       db.collection("articles")
         .doc()
         .set({
-          id: article["id"],
-          url: article["url"],
-          date_of_publication: article["date_of_publication"],
-          headline: article["headline"],
-          main_text: article["main_text"],
-          reports: article["reports"],
+          id: article['id'],
+          url: article['url'],
+          date_of_publication: firebaseAdmin.firestore.Timestamp.fromDate(new Date(article['date_of_publication'])),
+          headline: article['headline'],
+          main_text: article['main_text'],
+          keywords: article['reports'][0]['keywords'],
+          locations: article['reports'][0]['locations'],
+          reports: article['reports']
         })
         .then(function () {
           console.log("Article added successfully!");

@@ -1,3 +1,30 @@
+/* Global fonts */
+@font-face {
+  font-family: 'sans-serif';
+  src: url('../assets/fonts/authentic-webfont.woff2') format('woff2'),
+    url('../assets/fonts/authentic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'arita';
+  src: url('../assets/fonts/arita-burib-webfont.woff2') format('woff2'),
+    url('../assets/fonts/arita-burib-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+* {
+  margin: 0px;
+}
+
 .App {
   text-align: center;
+  font-family: "sans-serif", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #e9f6f2;
 }

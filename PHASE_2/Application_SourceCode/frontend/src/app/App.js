@@ -4,19 +4,23 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 /////////// COMPONENTS /////////////
-import ExamplePage from "../pages/examplePage/ExamplePage.jsx";
-import HomePage from "../pages/home/HomePage";
+import HomePage from "../pages/homePage/HomePage";
+import { Header } from "../components/header/Header";
+import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage.jsx";
+import GetHelpPage from "../pages/getHelpPage/GetHelpPage";
 ////////////////////////////////////
 
-export default function App() {
+export default function App () {
   return (
     <div className="App">
+      <Header />
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />
-          <Route path="/example" element={<ExamplePage word="DWEN" />} />
-        </Route>
-      </Routes>
-    </div>
+          <Route path="/giveHelp" element={<GiveHelpPage />} />
+          <Route path="/getHelp" element={<GetHelpPage />} />
+        </Route >
+      </Routes >
+    </div >
   );
 }

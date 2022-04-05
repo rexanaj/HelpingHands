@@ -1,0 +1,33 @@
+#twitter-carousel img {
+  width: fit-content;
+  height: 250px;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: green;
+}
+
+#tweet-text {
+  color: black;
+}
+
+#twitter-carousel {
+  width: 90%;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#twitter-carousel #carousel-container {
+  width: 50%;
+}
+
+#twitter-carousel #tweet-text {
+  width: 50%;
+}
+
+.react-3d-carousel .slider-container .slider-right div,
+.react-3d-carousel .slider-container .slider-left div {
+  border: none;
+  color: green;
+}
