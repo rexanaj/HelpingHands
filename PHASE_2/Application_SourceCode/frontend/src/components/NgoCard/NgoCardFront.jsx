@@ -44,11 +44,15 @@ export default function NgoCardFront(props) {
               <span>Rating</span>
             </div>
             <span id="vDivider" />
-            <div className="tableItem">
-              <div>{cardDetails.num_active_locations}</div>
-              <span>Active Locations</span>
-            </div>
-            <span id="vDivider" />
+            {cardDetails.num_active_locations !== 0 && (
+              <>
+                <div className="tableItem">
+                  <div>{cardDetails.num_active_locations}</div>
+                  <span>Active Locations</span>
+                </div>
+                <span id="vDivider" />
+              </>
+            )}
             <div className="tableItem">
               <div>{cardDetails.launch_year}</div>
               <span>Launch Year</span>

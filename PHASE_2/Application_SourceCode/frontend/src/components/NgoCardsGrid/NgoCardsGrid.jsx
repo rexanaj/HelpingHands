@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { Grid } from "@mui/material";
 import FlipCard from "../FlipCard/FlipCard";
 import "./NgoCardsGrid.css";
 
-export default function NgoCardsGrid() {
+export default function NgoCardsGrid({ diseases, locations }) {
   const [ngos, setNgos] = useState([]);
-  const [searchParams] = useSearchParams();
-  const diseases = searchParams.get("diseases");
-  const locations = searchParams.get("locations");
   console.log(diseases);
-  console.log(locations);
 
   useEffect(() => {
     const fetchNgos = async () => {
       const res = await fetch(
-        `http://localhost:5555/ngos?diseases=${diseases}&locations=${locations}`
+        `http://localhost:5555/ngos?diseases=${diseases}`
       );
       const body = await res.json();
 
@@ -38,3 +34,8 @@ export default function NgoCardsGrid() {
     </Grid>
   );
 }
+
+NgoCardsGrid.propTypes = {
+  diseases: PropTypes.string,
+  locations: PropTypes.array,
+};
