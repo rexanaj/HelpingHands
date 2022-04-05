@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 /////////// COMPONENTS /////////////
 import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage.jsx"
 import HomePage from "../pages/homePage/HomePage.jsx";
+import GetHelpPage from "../pages/getHelpPage/GetHelpPage";
 ////////////////////////////////////
 
 export default function App () {
@@ -14,7 +15,8 @@ export default function App () {
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />
-          <Route path="/giveHelp" element={<GiveHelpPage word="DWEN" />} />
+          <Route path="/giveHelp" element={<GiveHelpPage/>} />
+          <Route path="/getHelp" element={<GetHelpPage/>} />
         </Route>
       </Routes>
     </div>

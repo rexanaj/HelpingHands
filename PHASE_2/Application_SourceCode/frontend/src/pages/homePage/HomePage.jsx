@@ -17,7 +17,9 @@ export default function HomePage() {
 
       <div className="right">
           <div className="centered">
+            <Link to={"/getHelp"}>
               <GetHelpButton buttonOnClick={() => { console.log("Get help") }} />
+            </Link>
               <h2>Get Help</h2>
           </div>
       </div>
