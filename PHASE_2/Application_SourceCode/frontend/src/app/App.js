@@ -5,9 +5,10 @@ import { Route, Routes } from "react-router-dom";
 
 /////////// COMPONENTS /////////////
 import HomePage from "../pages/home/HomePage";
+import { Header } from "../components/header/Header";
 import NgoCardsGrid from "../components/NgoCardsGrid/NgoCardsGrid.jsx";
 import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage.jsx"
-import { Header } from "../components/header/Header";
+import GetHelpPage from "../pages/getHelpPage/GetHelpPage";
 ////////////////////////////////////
 
 export default function App () {
@@ -17,11 +18,11 @@ export default function App () {
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />
-          <Route path="/example" element={<ExamplePage word="DWEN" />} />
+          <Route path="/giveHelp" element={<GiveHelpPage />} />
+          <Route path="/getHelp" element={<GetHelpPage />} />
           <Route path="/ngos" element={<NgoCardsGrid />} />
-          <Route path="/giveHelp" element={<GiveHelpPage word="DWEN" />} />
-        </Route>
-      </Routes>
-    </div>
+        </Route >
+      </Routes >
+    </div >
   );
 }
