@@ -11,7 +11,7 @@
     color: #378e70;
     font-family: 'arita';
     text-align: center;
-    padding: 36px 0px 10px 5%;
+    padding-top: 64px;
 }
 
 .subtitle {
@@ -44,6 +44,10 @@
     margin-bottom: 25px;
 }
 
+.gethelp-card-container {
+    padding-bottom: 50px;
+}
+
 
 #gethelp-who-articles {
     width: 90%;
@@ -55,20 +59,16 @@
 
 #enterForm {
     width: 30%;
-    margin:auto;
+    margin: auto;
 }
 
-.textField  {
-    margin-bottom:50px;
-    margin:auto;
+.textField {
+    margin-bottom: 50px;
+    margin: auto;
 }
 
 #adviceButton {
     height: 54px;
     background-color: #378e70;
-    margin-top:30px;
+    margin-top: 30px;
 }
-
-body {
-    background-color: #e9f6f2;
-  }
