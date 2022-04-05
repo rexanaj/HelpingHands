@@ -22,8 +22,8 @@ const theme = createTheme();
 export default function GetHelpPage() {
     
 	var cards = [1, 2, 3, 4, 5, 6];
-	var cardTitle = ["Heart Foundation", "Cancer Council", "Joint United Nations Programme on HIV/AIDS", "International Society for Infectious Diseases", "United Nations Children's Fund", "World Food Programme"]
-	var cardBody = ["fill1", "2", "3", "4", "5", "6"]
+	var cardTitle = ["Adam Smith", "Dr Ahmad Fawad Masomi", "Noor Hassanien", "Shoker Khan", "Dr Luo Dapeng", "Michael Baker"]
+	var cardBody = ["My children all had a severe fever and my daughter developed a severe infection. We lost hope, she fell unconscious for three days and three nights. She's recovered now after being admitted to a Save the Children clinic. Stay safe everyone.", "The international community needs to segregate funding for medical and humanitarian services from politics. They need to provide immediate technical and financial support for the healthcare system in Afghanistan", "The rise of malnutrition among Afghan children is weakening their immune system to measles and also making them a lot more vulnerable to complications, like pneumonia and brain damage.", "Measles has always been something seasonal, we had some cases last year too, for example. But, in my whole life I have never seen so many cases at once, as this year", "We are seeing this epidemic of measles because there is not enough money to do vaccination campaigns or provide services for those who contract the disease.", "The rise in measles cases in Afghanistan is especially concerning because of the extremely high levels of malnutrition"]
 
     const [loading, setLoading] = useState(false);
 	const [name, setName] = useState('');
@@ -66,7 +66,7 @@ export default function GetHelpPage() {
               Find Help Here
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph >
-              Contact one of these charitable organisations if you are currently struggling in your situation.
+              See what others in your situation are saying.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -110,26 +110,31 @@ export default function GetHelpPage() {
               </Grid>
             ))}
           </Grid>
+          <h1 className="gethelp-header">Add some advice for anybody affected</h1>
+            <div id="enterForm">
+                <h2 className="subtitle">Enter your name</h2>
+                <TextField
+                    className="textField"
+                    value={name}
+                    id="outlined-textarea"
+                    label="Username"
+                    placeholder="Enter your name"
+                    onChange={(e)=>{setName(e.target.value)}}
+                />
+                <h2 className="subtitle">Enter some advice</h2>
+                <TextField
+                    className="textField"
+                    value={advice}
+                    fullWidth
+                    id="outlined-multiline-static"
+                    rows={4}
+                    label="add some advice"
+                    onChange={(e)=>{setAdvice(e.target.value)}}
+                />
+                <Button variant="contained" onClick={addAdvice} id="adviceButton">Add advice</Button>
+            </div>
         </Container> : <div></div>}
-	<h1 className="gethelp-header">Add some advice for anybody affected</h1>
-    <div id="enterForm">
-        <TextField
-			value={name}
-			id="outlined-textarea"
-			label="Username"
-			placeholder="Enter your name"
-			onChange={(e)=>{setName(e.target.value)}}
-        />
-        <TextField
-			value={advice}
-			fullWidth
-			id="outlined-multiline-static"
-			rows={4}
-			label="add some advice"
-			onChange={(e)=>{setAdvice(e.target.value)}}
-        />
-		<Button variant="contained" onClick={addAdvice}>Add advice</Button>
-    </div>
+	
       
       {/* Footer */}
       

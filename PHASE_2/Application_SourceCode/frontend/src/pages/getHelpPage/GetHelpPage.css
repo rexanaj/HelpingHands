@@ -10,7 +10,14 @@
     font-size: 28px;
     color: #378e70;
     font-family: 'arita';
-    text-align: left;
+    text-align: center;
+    padding: 36px 0px 10px 5%;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #378e70;
+    font-family: 'arita';
     padding: 36px 0px 10px 5%;
 }
 
@@ -48,5 +55,20 @@
 
 #enterForm {
     width: 30%;
-    
+    margin:auto;
 }
+
+.textField  {
+    margin-bottom:50px;
+    margin:auto;
+}
+
+#adviceButton {
+    height: 54px;
+    background-color: #378e70;
+    margin-top:30px;
+}
+
+body {
+    background-color: #e9f6f2;
+  }
