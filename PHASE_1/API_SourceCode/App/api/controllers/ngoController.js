@@ -80,17 +80,6 @@ const getNGOs = (req, res) => {
     }
   }
 
-  // ngoList.forEach((ngo) => {
-
-  // if (ngo.keywords[0] === "all") {
-  //     // These NGOs match all diseases and should always be displayed
-  //     matches.push(ngo);
-  //     // Next iteration of the loop
-  //     return;
-  // }
-
-  // });
-
   res.send(matches);
 };
 
