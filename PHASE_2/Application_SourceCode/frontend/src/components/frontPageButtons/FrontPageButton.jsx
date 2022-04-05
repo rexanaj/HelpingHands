@@ -1,31 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import "./frontPageButton.css";
-import GiveHelp from "../../assets/givehelp.jpg";
-import GetHelp from "../../assets/gethelp.jpg";
+import GiveHelp from "../../assets/img/givehelp.jpg";
+import GetHelp from "../../assets/img/gethelp.jpg";
+import { Link } from 'react-router-dom';
 
-export const GiveHelpButton = ({ buttonOnClick }) => {
+export const GiveHelpButton = () => {
     return (
-        <button className="startButton">
-            <img src={ GiveHelp } alt="Give Help" onClick={buttonOnClick}/>
-        </button>
+        <Link to={"/giveHelp"}>
+            <button className="frontPageButton">
+                <img className="frontPageButtonImage" src={GiveHelp} alt="Give help" />
+            </button>
+        </Link>
     );
 };
 
-export const GetHelpButton = ({ buttonOnClick }) => {
+export const GetHelpButton = () => {
     return (
-        <button className="startButton">
-            <img src={ GetHelp } alt="Give Help" onClick={buttonOnClick}/>
-        </button>
+        <Link to={"/getHelp"}>
+            <button className="frontPageButton">
+                <img className="frontPageButtonImage" src={GetHelp} alt="Get help" />
+            </button>
+        </Link>
     );
-};
-
-GiveHelpButton.propTypes = {
-    buttonText: PropTypes.string.isRequired,
-    buttonOnClick: PropTypes.func.isRequired
-};
-
-GetHelpButton.propTypes = {
-    buttonText: PropTypes.string.isRequired,
-    buttonOnClick: PropTypes.func.isRequired
 };

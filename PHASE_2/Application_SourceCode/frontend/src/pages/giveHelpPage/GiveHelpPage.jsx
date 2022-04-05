@@ -8,7 +8,6 @@ import options from "../../components/Diseases"
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Spinner from 'react-bootstrap/Spinner';
-import Typography from '@mui/material/Typography';
 import "./GiveHelpPage.css"
 import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
 
@@ -72,7 +71,8 @@ export default function GiveHelpPage (props) {
         i += 1;
     }
     return (
-        <div>
+        <div id="givehelp-container">
+            <h1 id="givehelp-title">Support those in need</h1>
             <div className="searchBar">
                 <Autocomplete
                     disablePortal
@@ -81,20 +81,29 @@ export default function GiveHelpPage (props) {
                     options={options}
                     onChange={(event, value) => setDisease(value)}
                     sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Select your disease" />}
+                    renderInput={(params) => <TextField {...params} label="Select a disease" />}
                 />
-                <Button id="searchButton" variant="contained" onClick={submitDisease}>Search For Disease</Button>
+                <Button id="searchButton" variant="contained" onClick={submitDisease}>Give help</Button>
             </div>
 
             <div>
                 {loading ?
                     <div>
-                        <Typography className="heading" variant="h5" component="body" gutterBottom>
-                            WHO Articles
-                        </Typography>
-                        <Grid container spacing={3}>{articles_holder}</Grid>
-                        <TwitterCarousel keyword={disease} />
-                    </div> : (
+                        <h1 className="givehelp-header">Find the most recent news from WHO</h1>
+                        <div className="givehelp-content">
+                            <Grid id="givehelp-who-articles" container spacing={3}>{articles_holder}</Grid>
+                        </div>
+                        <h1 className="givehelp-header">See what people are saying on Twitter</h1>
+                        <div className="givehelp-content">
+                            <TwitterCarousel keyword={disease} />
+                        </div>
+                        <h1 className="givehelp-header">Make a difference and donate today</h1>
+                        <div className="givehelp-content" id="givehelp-charities">
+
+                        </div>
+                    </div>
+
+                    : (
                         <Button className="spinner" variant="success" disabled>
                             <Spinner
                                 as="span"
@@ -103,7 +112,6 @@ export default function GiveHelpPage (props) {
                                 role="status"
                                 aria-hidden="true"
                             />
-                            Please enter a disease
                         </Button>
                     )}
             </div>
