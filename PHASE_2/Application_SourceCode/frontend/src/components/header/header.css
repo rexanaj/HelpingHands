@@ -1,0 +1,22 @@
+#header-container {
+    background: #378e70;
+}
+
+#header-link {
+    text-decoration: none;
+}
+
+#header-text {
+    font-family: 'arita', 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 28px;
+    color: #e9f6f2;
+    text-align: left;
+    transition: color 0.08s ease-in;
+    line-height: 30px;
+    padding: 15px 5%;
+}
+
+#header-text:hover {
+    color: #8fbfb1;
+}

@@ -1,12 +1,12 @@
-#givehelp-title {
+#gethelp-title {
     font-size: 34px;
     color: #378e70;
     font-family: 'arita';
     text-align: center;
-    padding-top: 96px;
+    padding-top: 30px;
 }
 
-.givehelp-header {
+.gethelp-header {
     font-size: 28px;
     color: #378e70;
     font-family: 'arita';
@@ -29,7 +29,7 @@
     background-color: #378e70;
 }
 
-.givehelp-content {
+.gethelp-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,10 +38,15 @@
 }
 
 
-#givehelp-who-articles {
+#gethelp-who-articles {
     width: 90%;
 }
 
-#givehelp-charities {
+#gethelp-charities {
     padding-bottom: 250px;
+}
+
+#enterForm {
+    width: 30%;
+    
 }

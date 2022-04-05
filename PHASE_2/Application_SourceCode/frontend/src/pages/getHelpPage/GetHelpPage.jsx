@@ -1,50 +1,51 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+import React, { useState } from "react";
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom'
+import options from "../../components/Diseases"
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import "./GetHelpPage.css"
+    
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-const cards = [1, 2, 3, 4, 5, 6];
-const cardTitle = ["Heart Foundation", "Cancer Council", "Joint United Nations Programme on HIV/AIDS", "International Society for Infectious Diseases", "United Nations Children's Fund", "World Food Programme"]
-// const cardBody = ["The National Heart Foundation of Australia is a charity established in 1959. Its activities have been funding cardiovascular research, supporting health professionals in their practice, developing health promotion activities, informing and educating the public and assisting people with cardiovascular disease.", "Cancer Council Australia is a national, nonprofit organisation which aims to promote cancer-control policies and to reduce the illness caused by cancer in Australia.", "The Joint United Nations Programme on HIV and AIDS is the main advocate for accelerated, comprehensive and coordinated global action on the HIV/AIDS pandemic.", "The International Society for Infectious Diseases, established in 1986, is a nonprofit organization that works to control infectious disease outbreaks and improve the care of patients afflicted with these conditions."]
 const theme = createTheme();
 
-export default function Album() {
+export default function GetHelpPage() {
+    
+	var cards = [1, 2, 3, 4, 5, 6];
+	var cardTitle = ["Heart Foundation", "Cancer Council", "Joint United Nations Programme on HIV/AIDS", "International Society for Infectious Diseases", "United Nations Children's Fund", "World Food Programme"]
+	var cardBody = ["fill1", "2", "3", "4", "5", "6"]
+
+    const [loading, setLoading] = useState(false);
+	const [name, setName] = useState('');
+	const [advice, setAdvice] = useState('');
+    const submitDisease = () => {
+        console.log("test")
+        setLoading(true);
+    };
+
+	const addAdvice = () => {
+		console.log(name);
+		console.log(advice)
+		cards.push(cards.length + 1)
+		cardTitle.push(name);
+		cardBody.push(advice)
+	}
+	
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Find Help Here
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <main>
+      
         {/* Hero unit */}
         <Box
           sx={{
@@ -60,10 +61,11 @@ export default function Album() {
               align="center"
               color="text.primary"
               gutterBottom
+              id="gethelp-title"
             >
               Find Help Here
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph >
               Contact one of these charitable organisations if you are currently struggling in your situation.
             </Typography>
             <Stack
@@ -72,13 +74,20 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-                <Link to={"/"}>
-                    <Button variant="outlined">Go back</Button>
-                </Link>
+                <Autocomplete
+                    disablePortal
+                    id="search"
+                    // value={disease}
+                    options={options}
+                    
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Select a disease" />}
+                />
+                <Button id="searchButton" variant="contained" onClick={submitDisease}>Get help</Button>
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        {loading ? <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
@@ -86,22 +95,12 @@ export default function Album() {
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {cardTitle[card-1]}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      {cardBody[card-1]}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -111,23 +110,29 @@ export default function Album() {
               </Grid>
             ))}
           </Grid>
-        </Container>
-      </main>
+        </Container> : <div></div>}
+	<h1 className="gethelp-header">Add some advice for anybody affected</h1>
+    <div id="enterForm">
+        <TextField
+			value={name}
+			id="outlined-textarea"
+			label="Username"
+			placeholder="Enter your name"
+			onChange={(e)=>{setName(e.target.value)}}
+        />
+        <TextField
+			value={advice}
+			fullWidth
+			id="outlined-multiline-static"
+			rows={4}
+			label="add some advice"
+			onChange={(e)=>{setAdvice(e.target.value)}}
+        />
+		<Button variant="contained" onClick={addAdvice}>Add advice</Button>
+    </div>
+      
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
+      
       {/* End footer */}
     </ThemeProvider>
   );
