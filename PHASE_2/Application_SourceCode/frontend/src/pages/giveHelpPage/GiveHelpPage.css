@@ -1,0 +1,47 @@
+#givehelp-title {
+    font-size: 34px;
+    color: #378e70;
+    font-family: 'arita';
+    text-align: center;
+    padding-top: 96px;
+}
+
+.givehelp-header {
+    font-size: 28px;
+    color: #378e70;
+    font-family: 'arita';
+    text-align: left;
+    padding: 36px 0px 10px 5%;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+#searchButton {
+    height: 54px;
+    background-color: #378e70;
+}
+
+.givehelp-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+#givehelp-who-articles {
+    width: 90%;
+}
+
+#givehelp-charities {
+    padding-bottom: 250px;
+}
