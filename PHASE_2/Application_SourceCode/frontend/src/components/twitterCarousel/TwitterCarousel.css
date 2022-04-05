@@ -1,6 +1,6 @@
 img {
-  width: 100%;
-  height: 300px;
+  width: fit-content;
+  height: 250px;
   border-radius: 5px;
   padding: 3px;
   background-color: green;
@@ -11,7 +11,7 @@ img {
 }
 
 #twitter-carousel {
-  width: 100vw;
+  width: 90%;
   height: 300px;
   display: flex;
   flex-direction: row;
