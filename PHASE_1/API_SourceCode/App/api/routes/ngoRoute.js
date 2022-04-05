@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getNGOs } = require('../controllers/ngoController');
+const { getNGOs } = require("../controllers/ngoController");
 
 router.get("/", getNGOs);
 

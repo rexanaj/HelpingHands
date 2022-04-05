@@ -1,0 +1,47 @@
+#ngoBackImage {
+  filter: brightness(0.5);
+}
+
+#ngoQuote {
+  width: 350px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  color: white;
+  text-shadow: 0 1px 0 black;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#cardBody #cardLists {
+  display: flex;
+  padding-top: 60px;
+  justify-content: space-evenly;
+  text-align: start;
+}
+
+#cardLists .cardListsTitle {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#cardLists ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+#cardLists li {
+  text-align: start;
+  margin: 10px;
+  font-size: 18px;
+}
+
+#ngoKeywords li {
+  list-style-image: url("../../assets/images/virus-svgrepo-com.svg");
+}
+
+#ngoLocations li {
+  list-style-image: url("../../assets/images/location-2955.svg");
+}
