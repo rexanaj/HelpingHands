@@ -18,17 +18,6 @@
   object-fit: cover;
 }
 
-#ngoQuote {
-  width: 250px;
-  position: absolute;
-  top: 40%;
-  left: 75px;
-  color: white;
-  text-shadow: 0 1px 0 black;
-  font-weight: bold;
-  font-style: italic;
-}
-
 #ngoLogo {
   width: 100px;
   height: 100px;

@@ -9,12 +9,31 @@ export default function NgoCardBack(props) {
   return (
     <div id="cardContainer">
       <div id="ngoImage">
-        <img src={cardDetails.image} id="ngoBackImage" alt="NGO" />
-        <div id="ngoQuote">&quot;{cardDetails.quote}&quot;</div>
+        <img
+          id="ngoBackImage"
+          src={cardDetails.image}
+          alt="NGO"
+          onError={(event) => {
+            event.target.src =
+              "https://i0.wp.com/www.giveindia.org/blog/wp-content/uploads/2021/02/banner-1.jpg?fit=1200%2C675&ssl=1";
+            event.onerror = null;
+          }}
+        />
+        {cardDetails.quote !== "" && (
+          <div id="ngoQuote">&quot;{cardDetails.quote}&quot;</div>
+        )}
       </div>
       <div id="ngoLogo">
         <a href={cardDetails.url}>
-          <img src={cardDetails.logo} alt="NGO logo" />
+          <img
+            src={cardDetails.logo}
+            alt="NGO logo"
+            onError={(event) => {
+              event.target.src =
+                "https://upload.wikimedia.org/wikipedia/commons/7/71/Earth_icon_2.png";
+              event.onerror = null;
+            }}
+          />
         </a>
       </div>
       <div id="cardBody">
