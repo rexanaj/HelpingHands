@@ -9,6 +9,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Spinner from "react-bootstrap/Spinner";
 import "./GiveHelpPage.css";
 import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
+import WhoCarousel from "../../components/WhoCarousel";
 import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
@@ -94,8 +95,9 @@ export default function GiveHelpPage(props) {
         <Button id="searchButton" variant="contained" onClick={submitDisease}>
           Give help
         </Button>
+        
       </div>
-
+      {!loading ? (<WhoCarousel></WhoCarousel>) : (<div>BYE</div>)}
       <div>
         {loading ? (
           <div>
