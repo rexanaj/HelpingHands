@@ -1,7 +1,7 @@
 // Green colour palette 
 export const COLOURS = {
-    primary: '#378e70',    // Medium green
-    secondary: '#016a45',  // Dark green
-    highlight: '#e9f6f2',  // Light green 
+    medium_green: '#378e70',    // Medium green
+    dark_green: '#0E7762',  // Dark green
+    light_blue: '#A5C3FF',  // Light green 
     background: '#FFFFFF'  // White
 };

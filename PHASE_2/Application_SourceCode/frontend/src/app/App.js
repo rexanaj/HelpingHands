@@ -4,8 +4,8 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 /////////// COMPONENTS /////////////
-import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage.jsx"
-import HomePage from "../pages/homePage/HomePage.jsx";
+import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage"
+import HomePage from "../pages/giveHelpPage";
 import { Header } from "../components/header/Header";
 ////////////////////////////////////
 
