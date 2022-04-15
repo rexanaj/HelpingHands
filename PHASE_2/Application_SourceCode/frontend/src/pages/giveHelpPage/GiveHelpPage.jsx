@@ -97,7 +97,7 @@ export default function GiveHelpPage(props) {
         </Button>
         
       </div>
-      {!loading ? (<WhoCarousel></WhoCarousel>) : (<div>BYE</div>)}
+      {!loading ? (<div><WhoCarousel></WhoCarousel><NgoCardsGrid keyword={'measles'}/></div>) : (<div></div>)}
       <div>
         {loading ? (
           <div>
