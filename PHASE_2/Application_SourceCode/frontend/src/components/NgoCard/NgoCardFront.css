@@ -1,0 +1,112 @@
+#cardContainer {
+  width: 400px;
+  height: 550px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+#ngoImage {
+  width: 400px;
+  height: 250px;
+  position: relative;
+}
+
+#ngoImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#ngoLogo {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 200px;
+  left: 150px;
+  background-image: linear-gradient(
+    to bottom right,
+    #aafaa6,
+    rgb(25, 167, 108)
+  );
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+#ngoLogo a {
+  height: 90px;
+  width: 90px;
+}
+
+#ngoLogo img {
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+}
+
+#cardBody {
+  background-color: rgb(245, 245, 245);
+  height: 300px;
+}
+
+#cardBody #ngoTitle {
+  padding-top: 60px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#cardBody #ngoType {
+  font-size: 14px;
+  color: rgb(131, 131, 131);
+}
+
+#cardBody #ngoMission {
+  margin: 20px 25px 35px 7%;
+  font-size: 14px;
+  text-align: start;
+  color: rgb(73, 73, 73);
+}
+
+#cardBottom {
+  position: absolute;
+  width: 100%;
+  bottom: 5px;
+}
+
+#cardBody #hDivider {
+  width: 85%;
+  border: 1px solid rgb(68, 207, 149);
+  margin-bottom: 0;
+  margin: auto;
+}
+
+#cardBody #cardTable {
+  width: 85%;
+  height: 45px;
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#cardBody #cardTable div {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#cardBody #cardTable span {
+  font-size: 14px;
+  color: rgb(131, 131, 131);
+}
+
+#cardBody #vDivider {
+  display: inline-block;
+  height: 100%;
+  border: 1px solid rgb(68, 207, 149);
+  margin: 0;
+}

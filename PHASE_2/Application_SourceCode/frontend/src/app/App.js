@@ -16,9 +16,10 @@ export default function App () {
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />
-          <Route path="/giveHelp" element={<GiveHelpPage word="DWEN" />} />
-        </Route>
-      </Routes>
-    </div>
+          <Route path="/giveHelp" element={<GiveHelpPage />} />
+          <Route path="/getHelp" element={<GetHelpPage />} />
+        </Route >
+      </Routes >
+    </div >
   );
 }
