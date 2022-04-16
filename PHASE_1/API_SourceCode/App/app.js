@@ -9,6 +9,7 @@ const articlesRoutes = require("./api/routes/articlesRoutes");
 const diseasesRoutes = require("./api/routes/diseaseRoute");
 const twitterRoutes = require("./api/routes/twitterRoutes");
 const ngoRoutes = require("./api/routes/ngoRoute");
+const crowdsourceRoutes = require("./api/routes/crowdsourceRoutes")
 
 // Server info
 const app = express();
@@ -79,6 +80,7 @@ app.use("/articles", articlesRoutes);
 app.use("/diseases", diseasesRoutes);
 app.use("/twitter", twitterRoutes);
 app.use("/ngos", ngoRoutes);
+app.use("/posts", crowdsourceRoutes);
 
 // sending scraper data to database
 var db = firebaseAdmin.firestore();
@@ -98,10 +100,6 @@ app.use("/load", (req, res) => {
     dataset.push(data);
   });
   // in close event we are sure that stream from child process is closed
-
-  // for (var i = 0; i < dataset.length; i++) {
-  //   console.log(dataset[i]);
-  // }
 
   pythonShell.on("close", (code) => {
     console.log(`child process close all stdio with code ${code}`);
