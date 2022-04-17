@@ -24,17 +24,34 @@ export default function GetHelpPage () {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [advice, setAdvice] = useState('');
+  const [disease, setDisease] = useState('');
   const submitDisease = () => {
     console.log("test")
     setLoading(true);
   };
 
-  const addAdvice = () => {
+  const addAdvice = async () => {
     console.log(name);
     console.log(advice)
-    cards.push(cards.length + 1)
-    cardTitle.push(name);
-    cardBody.push(advice)
+    console.log(disease)
+    const res = await fetch(`http://localhost:5555/posts/makePost`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        content: advice,
+        disease: disease,
+      })
+    });
+
+    const body = await res.json();
+    if (body.error) {
+      alert(body.error)
+    } else {
+      console.log("Success")
+    }
   }
 
 
@@ -70,9 +87,9 @@ export default function GetHelpPage () {
             <Autocomplete
               disablePortal
               id="search"
-              // value={disease}
+              value={disease}
               options={options}
-
+              onChange={(event, value)=>{setDisease(value)}}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} label="Select a disease" />}
             />
