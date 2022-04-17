@@ -8,8 +8,8 @@ const uniforms = {
     bigElevation: { value: 0.2 },
     bigFrequency: { value: new THREE.Vector2(0.8, 1) },
     bigSpeed: { value: 0.2 },
-    smallSpeed: {value: 0.3},
-    smallElevation: {value: 1},
+    smallSpeed: { value: 0.3 },
+    smallElevation: { value: 1 },
 }
 
 const shaderModifier = (shader) => {
@@ -145,14 +145,13 @@ function Paper(props) {
         <mesh
             {...props}
             ref={oceanRef}
-            rotation-x={0}
+            rotation-x={Math.PI * 0.2}
             receiveShadow={true}
         >
             <planeBufferGeometry
                 args={[30, 30, 40, 40]}
             />
             <meshPhongMaterial
-                color={new THREE.Color(0xa9f6b2)}
                 onBeforeCompile={shaderModifier}
                 flatShading={true}
                 shininess={100}
@@ -173,6 +172,8 @@ export function Background(props) {
             const ratio = 0.014;
             setLightPos([offsetX * ratio, offsetY * ratio, 1]);
         });
+
+        
     }, []);
 
 
@@ -181,12 +182,13 @@ export function Background(props) {
             <Canvas>
                 <ambientLight
                     intensity={0.7}
+                    color={0xe9f6f2}
                 />
                 <pointLight
                     position={lightPos}
-                    intensity={4}
+                    intensity={5}
                     distance={3}
-                    color={0x02ff62}
+                    color={0x00ffa2}
                 />
                 <Paper />
             </Canvas>

@@ -8,7 +8,8 @@ const getPosts = async (req, res) => {
   
     // Database query in collection quotes
     var query = await db.collection("posts");
-    const disease = req.query.disease
+    const disease = req.params.disease;
+    console.log("disease: " + disease);
     query = query.where("disease", "==", disease);
     // Make the query to the database, only 10 so far
     const postsRef = await query.limit(10).get();
@@ -16,10 +17,11 @@ const getPosts = async (req, res) => {
   
     postsRef.forEach((doc) => {data.push(doc.data())})
     
-    if (data.length == 0) {
-      res.status(404).json("No posts found");
-      return;
-    }
+    // we better return an empty list instead of 404 here
+    // if (data.length == 0) {
+    //   res.status(404).json("No posts found");
+    //   return;
+    // }
   
     var numDocs = 0;
     data.forEach((doc) => {

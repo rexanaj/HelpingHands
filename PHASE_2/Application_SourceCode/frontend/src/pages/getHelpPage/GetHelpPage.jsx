@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
@@ -13,21 +13,43 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import "./GetHelpPage.css";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+export default function GetHelpPage() {
 
-export default function GetHelpPage () {
-
-  var cards = [1, 2, 3, 4, 5, 6];
-  var cardTitle = ["Adam Smith", "Dr Ahmad Fawad Masomi", "Noor Hassanien", "Shoker Khan", "Dr Luo Dapeng", "Michael Baker"]
-  var cardBody = ["My children all had a severe fever and my daughter developed a severe infection. We lost hope, she fell unconscious for three days and three nights. She's recovered now after being admitted to a Save the Children clinic. Stay safe everyone.", "The international community needs to segregate funding for medical and humanitarian services from politics. They need to provide immediate technical and financial support for the healthcare system in Afghanistan", "The rise of malnutrition among Afghan children is weakening their immune system to measles and also making them a lot more vulnerable to complications, like pneumonia and brain damage.", "Measles has always been something seasonal, we had some cases last year too, for example. But, in my whole life I have never seen so many cases at once, as this year", "We are seeing this epidemic of measles because there is not enough money to do vaccination campaigns or provide services for those who contract the disease.", "The rise in measles cases in Afghanistan is especially concerning because of the extremely high levels of malnutrition"]
+  // var cards = [1, 2, 3, 4, 5, 6];
+  // var cardTitle = ["Adam Smith", "Dr Ahmad Fawad Masomi", "Noor Hassanien", "Shoker Khan", "Dr Luo Dapeng", "Michael Baker"]
+  // var cardBody = ["My children all had a severe fever and my daughter developed a severe infection. We lost hope, she fell unconscious for three days and three nights. She's recovered now after being admitted to a Save the Children clinic. Stay safe everyone.", "The international community needs to segregate funding for medical and humanitarian services from politics. They need to provide immediate technical and financial support for the healthcare system in Afghanistan", "The rise of malnutrition among Afghan children is weakening their immune system to measles and also making them a lot more vulnerable to complications, like pneumonia and brain damage.", "Measles has always been something seasonal, we had some cases last year too, for example. But, in my whole life I have never seen so many cases at once, as this year", "We are seeing this epidemic of measles because there is not enough money to do vaccination campaigns or provide services for those who contract the disease.", "The rise in measles cases in Afghanistan is especially concerning because of the extremely high levels of malnutrition"]
 
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [advice, setAdvice] = useState('');
   const [disease, setDisease] = useState('');
+
+  // advice cards
+  const [responses, setResponses] = useState([]);
+
+  const getAdvice = async () => {
+    const res = await fetch(`http://localhost:5555/posts/${disease}`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+
+    const responses = await res.json();
+    setResponses(responses);
+    setLoading(true);
+  }
+
+  // job board is updated here
   const submitDisease = () => {
     console.log("test")
-    setLoading(true);
+    setLoading(false);
+
+    // update the advice section
+    getAdvice();
   };
 
   const addAdvice = async () => {
@@ -50,7 +72,9 @@ export default function GetHelpPage () {
     if (body.error) {
       alert(body.error)
     } else {
-      console.log("Success")
+      toast(`Advice from ${name} added successfully!`);
+      setAdvice("");
+      setName("");
     }
   }
 
@@ -89,7 +113,7 @@ export default function GetHelpPage () {
               id="search"
               value={disease}
               options={options}
-              onChange={(event, value)=>{setDisease(value)}}
+              onChange={(event, value) => { setDisease(value) }}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} label="Select a disease" />}
             />
@@ -98,31 +122,47 @@ export default function GetHelpPage () {
         </Container>
       </Box>
 
+      <ToastContainer />
+
       {
         loading ? <Container sx={{ py: 8 }} maxWidth="md" id="gethelp-card-container">
           {/* End hero unit */}
           <h1 className="gethelp-header">Advice from our users</h1>
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
+          {responses.length > 0 ? <Grid id="card-list" container spacing={4}>
+            {responses.map((card, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4} className="card-list">
+                <div className="card">
+                  <div className="header">
+                    <h2>{card.name}</h2>
+                  </div>
+                  <div className="content">
+                    <p className="quotation-mark">&ldquo;</p>
+                    <div className="quote">
+                      <p>{card.content}</p>
+                    </div>
+                    <p className="quotation-mark end">&rdquo;</p>
+                    <button>Contact</button>
+                  </div>
+                </div>
+                {/* <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {cardTitle[card - 1]}
+                      {card.name}
                     </Typography>
                     <Typography>
-                      {cardBody[card - 1]}
+                      {card.content}
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small">Contact</Button>
                   </CardActions>
-                </Card>
+                </Card> */}
               </Grid>
             ))}
-          </Grid>
+          </Grid> : <h1>No posts yet</h1>
+          }
           <h1 className="gethelp-header">Add some advice for anybody affected</h1>
           <div id="enterForm">
             <h2 className="subtitle">Enter your name</h2>
