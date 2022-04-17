@@ -8,7 +8,8 @@ const getPosts = async (req, res) => {
   
     // Database query in collection quotes
     var query = await db.collection("posts");
-  
+    const disease = req.query.disease
+    query = query.where("disease", "==", disease);
     // Make the query to the database, only 10 so far
     const postsRef = await query.limit(10).get();
     var data = [];
@@ -41,13 +42,15 @@ const makePost = (req, res) => {
 
     const name = req.body.name;
     const content = req.body.content
+    const disease = req.body.disease
     console.log(name);
     console.log(content);
     db.collection("posts")
         .doc()
         .set({
           name: name,
-          content: content
+          content: content,
+          disease: disease
         })
         .then(function () {
           console.log("post added successfully!");
