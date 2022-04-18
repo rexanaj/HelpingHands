@@ -13,7 +13,7 @@ import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
-export default function GiveHelpPage(props) {
+export default function GiveHelpPage (props) {
   const [disease, setDisease] = useState("");
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
