@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { Bubbles } from "../../components/Bubbles/Bubbles";
 
-export default function GetHelpPage() {
+export default function GetHelpPage () {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [advice, setAdvice] = useState('');
@@ -56,13 +56,13 @@ export default function GetHelpPage() {
   const addAdvice = async () => {
     // validate form
     switch (true) {
-      case name == "":
+      case name === "":
         alert("Please fill out your name");
         return;
-      case advice == "":
+      case advice === "":
         alert("Please fill out your advice");
         return;
-      case check1 == false || check2 == false:
+      case check1 === false || check2 === false:
         alert("Please check both checkboxes");
         return;
       default:

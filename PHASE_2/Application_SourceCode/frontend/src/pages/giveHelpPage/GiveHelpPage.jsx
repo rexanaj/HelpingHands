@@ -10,6 +10,18 @@ import Spinner from "react-bootstrap/Spinner";
 import "./GiveHelpPage.css";
 import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
 import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
+import Marquee from "react-fast-marquee";
+import img1 from "../../assets/img/givehelp_img1.jpeg";
+import img2 from "../../assets/img/givehelp_img2.jpg";
+import img3 from "../../assets/img/givehelp_img3.jpeg";
+import img4 from "../../assets/img/givehelp_img4.jpeg";
+import img5 from "../../assets/img/givehelp_img5.jpeg";
+import img6 from "../../assets/img/givehelp_img6.jpeg";
+import img7 from "../../assets/img/givehelp_img7.jpeg";
+import img8 from "../../assets/img/givehelp_img8.jpeg";
+import img9 from "../../assets/img/givehelp_img9.jpeg";
+import img10 from "../../assets/img/givehelp_img10.jpeg";
+import img11 from "../../assets/img/givehelp_img11.jpeg";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
@@ -78,22 +90,45 @@ export default function GiveHelpPage (props) {
   }
   return (
     <div id="givehelp-container">
-      <h1 id="givehelp-title">Support those in need</h1>
-      <div className="searchBar">
-        <Autocomplete
-          disablePortal
-          id="search"
-          value={disease}
-          options={options}
-          onChange={(event, value) => setDisease(value)}
-          sx={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Select a disease" />
-          )}
-        />
-        <Button id="searchButton" variant="contained" onClick={submitDisease}>
-          Give help
-        </Button>
+
+      <div id="givehelp-title-container">
+        <h1 id="givehelp-title">Support those in need</h1>
+        <p className="givehelp-description">Our CharityAPI sources only the most relevant and up-to-date</p>
+        <p className="givehelp-description">charities, so you can make the most informed decision on who to support. </p>
+        <div id="marquee">
+          <Marquee
+            speed={10}
+            gradientColor={[55, 142, 112]}
+          >
+            <img className="marquee-image" src={img1} alt="Poster wall" />
+            <img className="marquee-image" src={img2} alt="Poster wall" />
+            <img className="marquee-image" src={img3} alt="Poster wall" />
+            <img className="marquee-image" src={img4} alt="Poster wall" />
+            <img className="marquee-image" src={img5} alt="Poster wall" />
+            <img className="marquee-image" src={img6} alt="Poster wall" />
+            <img className="marquee-image" src={img7} alt="Poster wall" />
+            <img className="marquee-image" src={img8} alt="Poster wall" />
+            <img className="marquee-image" src={img9} alt="Poster wall" />
+            <img className="marquee-image" src={img10} alt="Poster wall" />
+            <img className="marquee-image" src={img11} alt="Poster wall" />
+          </Marquee>
+        </div>
+        <div className="searchBar">
+          <Autocomplete
+            disablePortal
+            id="search"
+            value={disease}
+            options={options}
+            onChange={(event, value) => setDisease(value)}
+            sx={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField {...params} label="Select a disease" />
+            )}
+          />
+          <Button id="searchButton" variant="contained" onClick={submitDisease}>
+            Give help
+          </Button>
+        </div>
       </div>
 
       <div>

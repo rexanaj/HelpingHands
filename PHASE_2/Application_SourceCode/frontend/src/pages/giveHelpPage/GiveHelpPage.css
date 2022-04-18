@@ -1,9 +1,33 @@
+#givehelp-title-container {
+  background: #378e70;
+}
+
+
 #givehelp-title {
+  color: white;
   font-size: 34px;
-  color: #378e70;
-  font-family: "arita";
+  font-family: 'Maragsa';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 43px;
   text-align: center;
+  letter-spacing: 0.04em;
   padding-top: 96px;
+}
+
+.givehelp-description {
+  color: white;
+  font-family: 'graphik';
+  font-style: normal;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  text-align: center;
+}
+
+.givehelp-description:first-of-type {
+  margin-top: 16px;
 }
 
 .givehelp-header {
@@ -14,6 +38,15 @@
   padding: 36px 0px 10px 5%;
 }
 
+#marquee {
+  margin: 32px 0;
+}
+
+.marquee-image {
+  height: 200px;
+  margin-right: 50px;
+}
+
 .searchBar {
   display: flex;
   flex-direction: row;
@@ -22,11 +55,12 @@
   height: 50px;
   margin-bottom: 50px;
   margin-top: 30px;
+  padding-bottom: 96px;
 }
 
 #searchButton {
   height: 54px;
-  background-color: #378e70;
+  background-color: #e9f6f2;
 }
 
 .givehelp-content {
