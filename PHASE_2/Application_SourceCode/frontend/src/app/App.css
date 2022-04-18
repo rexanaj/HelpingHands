@@ -1,3 +1,10 @@
+/* Global colours */
+:root {
+  --medium-green: #0E7762;
+  --dark-green: #378E70;
+  --light-blue: #A5C3FF;
+}
+
 /* Global fonts */
 @font-face {
   font-family: 'sans-serif';
@@ -13,7 +20,14 @@
     url('../assets/fonts/arita-burib-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
 
+@font-face {
+  font-family: 'maragsa';
+  src: url('../assets/fonts/maragsa-webfont.woff2') format('woff2'),
+    url('../assets/fonts/maragsa-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
@@ -22,7 +36,7 @@
 
 .App {
   text-align: center;
-  font-family: "sans-serif", Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
