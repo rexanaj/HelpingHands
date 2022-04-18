@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 
-import NewsCard from "../../components/NewsCard";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import options from "../../components/Diseases";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Spinner from "react-bootstrap/Spinner";
-import "./GiveHelpPage.css";
-import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
-import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
 import Marquee from "react-fast-marquee";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+import "./GiveHelpPage.css";
+import options from "../../components/Diseases";
+import NewsCard from "../../components/NewsCard";
+import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
+import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
 import img1 from "../../assets/img/givehelp_img1.jpeg";
 import img2 from "../../assets/img/givehelp_img2.jpg";
 import img3 from "../../assets/img/givehelp_img3.jpeg";
@@ -88,6 +91,109 @@ export default function GiveHelpPage (props) {
     );
     i += 1;
   }
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#fff',
+        dark: '#fff',
+        light: '#fff',
+        contrastText: '#fff',
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            fontSize: '14px',
+            fontFamily: '"graphik", Arial, Helvetica, sans-serif',
+            textTransform: 'none',
+            borderRadius: '4px',
+            color: '#378e70',
+            backgroundColor: '#e9f6f2',
+            '&:hover': {
+              backgroundColor: '#fff',
+            },
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            color: 'white',
+            borderColor: 'white',
+            '& label.Mui-focused': {
+              color: 'white',
+            },
+            '& .MuiInput-underline:after': {
+              borderBottomColor: 'white',
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'white',
+              },
+              '&:hover fieldset': {
+                borderColor: 'white',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'white',
+              },
+            },
+            "&.subvariant-hovered": {
+              "& fieldset": {
+                border: "none"
+              },
+              "& .MuiInputBase-input:hover + fieldset": {
+                border: `2px solid blue`
+              },
+              "& .MuiInputBase-input:focus + fieldset": {
+                border: `2px solid blue`
+              }
+            }
+          }
+        }
+      },
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            // this is styles for the new variants
+            color: '#fff',
+            "&.textfield-search": {
+              "& fieldset": {
+                color: 'white',
+                borderColor: "white"
+              },
+            },
+            "&.textfield-search:hover": {
+              "& fieldset": {
+                color: 'white',
+                borderColor: "white"
+              },
+            },
+          }
+        }
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            color: '#fff',
+            '&$focused': {
+              color: '#fff'
+            }
+          }
+        }
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: '#fff',
+          }
+        }
+      }
+    },
+
+  })
+
   return (
     <div id="givehelp-container">
       <div id="givehelp-title-container">
@@ -113,20 +219,22 @@ export default function GiveHelpPage (props) {
           </Marquee>
         </div>
         <div className="searchBar">
-          <Autocomplete
-            disablePortal
-            id="search"
-            value={disease}
-            options={options}
-            onChange={(event, value) => setDisease(value)}
-            sx={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField {...params} label="Select a disease" />
-            )}
-          />
-          <Button id="searchButton" variant="contained" onClick={submitDisease}>
-            Give help
-          </Button>
+          <ThemeProvider theme={theme}>
+            <Autocomplete
+              disablePortal
+              id="search"
+              value={disease}
+              options={options}
+              onChange={(event, value) => setDisease(value)}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} className="textfield-search" color="primary" label="Select a disease" />
+              )}
+            />
+            <Button className="givehelp-search-button" color="primary" onClick={submitDisease}>
+              Give help
+            </Button>
+          </ThemeProvider>
         </div>
       </div>
 
@@ -163,7 +271,7 @@ export default function GiveHelpPage (props) {
             </div>
           </div>
         ) : (
-          <Button className="spinner" variant="success" disabled>
+          <Button className="spinner" color="primary" variant="success" disabled>
             <Spinner
               as="span"
               animation="grow"
