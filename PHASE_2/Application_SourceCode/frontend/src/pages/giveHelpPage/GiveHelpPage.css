@@ -1,4 +1,6 @@
 #givehelp-title-container {
+  width: 100%;
+  height: 100%;
   background: #378e70;
 }
 
@@ -33,8 +35,11 @@
 .givehelp-header {
   font-size: 28px;
   color: #378e70;
-  font-family: "arita";
-  text-align: left;
+  font-family: "graphik";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: center;
   padding: 36px 0px 10px 5%;
 }
 
@@ -53,7 +58,6 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  margin-bottom: 50px;
   margin-top: 30px;
   padding-bottom: 96px;
 }
@@ -63,6 +67,8 @@
   background-color: #e9f6f2;
 }
 
+
+/*Remaining content*/
 .givehelp-content {
   display: flex;
   flex-direction: column;
@@ -71,8 +77,21 @@
   margin-bottom: 25px;
 }
 
+#givehelp-who-container {
+  padding: 36px 0px 64px 0px;
+}
+
 #givehelp-who-articles {
   width: 90%;
+}
+
+#givehelp-tweets-container {
+  background-color: #F8F5EE;
+  padding: 64px 0px;
+}
+
+#givehelp-charities-container {
+  padding: 64px 0px 128px 0px;
 }
 
 #givehelp-charities {

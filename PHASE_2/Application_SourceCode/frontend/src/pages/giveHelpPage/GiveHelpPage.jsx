@@ -90,7 +90,6 @@ export default function GiveHelpPage (props) {
   }
   return (
     <div id="givehelp-container">
-
       <div id="givehelp-title-container">
         <h1 id="givehelp-title">Support those in need</h1>
         <p className="givehelp-description">Our CharityAPI sources only the most relevant and up-to-date</p>
@@ -134,25 +133,33 @@ export default function GiveHelpPage (props) {
       <div>
         {loading ? (
           <div>
-            <h1 className="givehelp-header">
-              Find the most recent news from WHO
-            </h1>
-            <div className="givehelp-content">
-              <Grid id="givehelp-who-articles" container spacing={3}>
-                {articles_holder}
-              </Grid>
+            <div id="givehelp-who-container">
+              <h1 className="givehelp-header">
+                The most recent news from WHO
+              </h1>
+              <div className="givehelp-content">
+                <Grid id="givehelp-who-articles" container spacing={3}>
+                  {articles_holder}
+                </Grid>
+              </div>
             </div>
-            <h1 className="givehelp-header">
-              See what people are saying on Twitter
-            </h1>
-            <div className="givehelp-content">
-              <TwitterCarousel keyword={disease} />
+
+            <div id="givehelp-tweets-container">
+              <h1 className="givehelp-header">
+                See what people are saying on Twitter
+              </h1>
+              <div className="givehelp-content">
+                <TwitterCarousel keyword={disease} />
+              </div>
             </div>
-            <h1 className="givehelp-header">
-              Make a difference and donate today
-            </h1>
-            <div className="givehelp-content" id="givehelp-charities">
-              <NgoCardsGrid diseases={disease} />
+
+            <div id="givehelp-charities-container">
+              <h1 className="givehelp-header">
+                Make a difference and donate today
+              </h1>
+              <div className="givehelp-content" id="givehelp-charities">
+                <NgoCardsGrid diseases={disease} />
+              </div>
             </div>
           </div>
         ) : (
