@@ -15,13 +15,10 @@ import "./GetHelpPage.css";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { Bubbles } from "../../components/Bubbles/Bubbles";
 
 export default function GetHelpPage() {
-
-  // var cards = [1, 2, 3, 4, 5, 6];
-  // var cardTitle = ["Adam Smith", "Dr Ahmad Fawad Masomi", "Noor Hassanien", "Shoker Khan", "Dr Luo Dapeng", "Michael Baker"]
-  // var cardBody = ["My children all had a severe fever and my daughter developed a severe infection. We lost hope, she fell unconscious for three days and three nights. She's recovered now after being admitted to a Save the Children clinic. Stay safe everyone.", "The international community needs to segregate funding for medical and humanitarian services from politics. They need to provide immediate technical and financial support for the healthcare system in Afghanistan", "The rise of malnutrition among Afghan children is weakening their immune system to measles and also making them a lot more vulnerable to complications, like pneumonia and brain damage.", "Measles has always been something seasonal, we had some cases last year too, for example. But, in my whole life I have never seen so many cases at once, as this year", "We are seeing this epidemic of measles because there is not enough money to do vaccination campaigns or provide services for those who contract the disease.", "The rise in measles cases in Afghanistan is especially concerning because of the extremely high levels of malnutrition"]
-
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [advice, setAdvice] = useState('');
@@ -29,6 +26,10 @@ export default function GetHelpPage() {
 
   // advice cards
   const [responses, setResponses] = useState([]);
+
+  // checkboxes
+  const [check1, setCheck1] = useState(false);
+  const [check2, setCheck2] = useState(false);
 
   const getAdvice = async () => {
     const res = await fetch(`http://localhost:5555/posts/${disease}`, {
@@ -53,9 +54,21 @@ export default function GetHelpPage() {
   };
 
   const addAdvice = async () => {
-    console.log(name);
-    console.log(advice)
-    console.log(disease)
+    // validate form
+    switch (true) {
+      case name == "":
+        alert("Please fill out your name");
+        return;
+      case advice == "":
+        alert("Please fill out your advice");
+        return;
+      case check1 == false || check2 == false:
+        alert("Please check both checkboxes");
+        return;
+      default:
+        break;
+    }
+
     const res = await fetch(`http://localhost:5555/posts/makePost`, {
       method: 'POST',
       headers: {
@@ -75,12 +88,16 @@ export default function GetHelpPage() {
       toast(`Advice from ${name} added successfully!`);
       setAdvice("");
       setName("");
+      setCheck1(false);
+      setCheck2(false);
     }
   }
 
 
   return (
     <div>
+      <Bubbles />
+
       {/* Hero unit */}
       <Box
         sx={{
@@ -184,6 +201,10 @@ export default function GetHelpPage() {
               label="add some advice"
               onChange={(e) => { setAdvice(e.target.value) }}
             />
+            <div id="checkbox-area">
+              <FormControlLabel className="checkbox" control={<Checkbox checked={check1} onChange={(v) => setCheck1(v.target.checked)} />} label="I acknowledge that all messages on this site are posted in good faith." />
+              <FormControlLabel className="checkbox" control={<Checkbox checked={check2} onChange={(v) => setCheck2(v.target.checked)} />} label="This message contains truthful information." />
+            </div>
             <Button variant="contained" onClick={addAdvice} id="adviceButton">Add advice</Button>
           </div>
         </Container> : <div></div>

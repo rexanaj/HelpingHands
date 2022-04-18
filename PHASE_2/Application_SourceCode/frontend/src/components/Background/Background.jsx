@@ -145,7 +145,7 @@ function Paper(props) {
         <mesh
             {...props}
             ref={oceanRef}
-            rotation-x={Math.PI * 0.2}
+            rotation-x={0}
             receiveShadow={true}
         >
             <planeBufferGeometry
@@ -173,7 +173,7 @@ export function Background(props) {
             setLightPos([offsetX * ratio, offsetY * ratio, 1]);
         });
 
-        
+
     }, []);
 
 

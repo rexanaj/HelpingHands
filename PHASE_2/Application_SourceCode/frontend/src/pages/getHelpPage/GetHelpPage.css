@@ -18,7 +18,18 @@
   font-size: 20px;
   color: #378e70;
   font-family: "arita";
-  padding: 36px 0px 10px 5%;
+  padding: 36px 0 10px 0;
+}
+
+#checkbox-area {
+  display: flex;
+  flex-direction: column;
+  margin-top: 36px;
+  /* width: 80%; */
+}
+
+.checkbox {
+  margin-right: 0 !important;
 }
 
 .searchBar {
@@ -57,11 +68,15 @@
 }
 
 #enterForm {
-  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   margin: auto;
 }
 
 .textField {
+  width: 40% !important;
   margin-bottom: 50px;
   margin: auto;
 }
@@ -87,8 +102,8 @@
 .card .header {
   height: 50px;
   width: 100%;
-  background-color: #eeeeee;
-  color: #016a45;
+  color: #eeeeee;
+  background-color: #378e70;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,10 +116,10 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: start;
-  background-color: #378e70;
   flex-grow: 1;
   overflow: hidden;
-  color: #eeeeee;
+  color: #016a45;
+  background-color: #eeeeee;
   padding: 10px;
   box-sizing: border-box;
   text-overflow: ellipsis;
@@ -141,24 +156,24 @@
 
 .card .content button {
   border: none;
-  background: #eeeeee;
+  background: #378e70;
+  color: #eeeeee;
   border-radius: 30px;
   height: 26px;
   flex-shrink: 0;
   padding: 0;
   font-size: 12px;
   padding: 5px 8px;
-  color: #378e70;
   font-weight: 600;
   cursor: pointer;
 }
 
 #card-list {
-    margin-top: 20px;
-    margin-bottom: 140px;
+  margin-top: 20px;
+  margin-bottom: 140px;
 }
 
-.card-list:nth-child(2n) .header {
+/* .card-list:nth-child(2n) .header {
   color: #eeeeee;
   background-color: #378e70;
 }
@@ -171,4 +186,4 @@
 .card-list:nth-child(2n) button {
   background: #378e70;
   color: #eeeeee;
-}
+} */
