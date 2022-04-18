@@ -1,25 +1,27 @@
 .frontPageButtonImage {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .frontPageButton {
-    border: 0;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: 1s ease;
 }
 
 .frontPageButton::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 
 .frontPageButton:hover {
-    cursor: pointer;
-    transform: translateY(-3px);
+  cursor: pointer;
+  transform: scale(1.2, 1.2);
+  transition-duration: 0.5s;
 }

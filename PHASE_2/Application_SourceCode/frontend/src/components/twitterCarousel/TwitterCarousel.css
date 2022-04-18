@@ -1,9 +1,9 @@
 #twitter-carousel img {
   width: fit-content;
   height: 250px;
-  border-radius: 5px;
-  padding: 3px;
-  background-color: green;
+  border-radius: 8px;
+  padding: 6px;
+  background-image: linear-gradient(to bottom right, #aafaa6, #378e70);
 }
 
 #tweet-text {
@@ -24,10 +24,22 @@
 
 #twitter-carousel #tweet-text {
   width: 50%;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-style: italic;
+  background-color: #378e70;
+  padding: 20px;
+  letter-spacing: 0.2px;
+  word-spacing: 1px;
+  line-height: 30px;
+  text-align: start;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .react-3d-carousel .slider-container .slider-right div,
 .react-3d-carousel .slider-container .slider-left div {
   border: none;
-  color: green;
+  color: rgb(72, 190, 100);
 }

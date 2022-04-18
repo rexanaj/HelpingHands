@@ -1,42 +1,46 @@
 .home {
-    height: 100vh;
-    overflow: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .home-content {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .header-text {
-    color: white;
-    margin-top: 20px;
-    margin-bottom: 20%;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20%;
 }
 
 /* Split the screen in half */
 .home-content-half {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Control the left side */
 .left {
-    background-image: url("../../assets/img/bggivehelp.jpg");
+  background-image: url("../../assets/img/bggivehelp.jpg");
+  background-size: cover;
+  background-position: left;
 }
 
 /* Control the right side */
 .right {
-    background-image: url("../../assets/img/bggethelp.jpg");
+  background-image: url("../../assets/img/bggethelp.jpg");
+  background-size: cover;
+  background-position: left;
 }
 
 /* Style the image inside the centered container, if needed */
 .centered img {
-    width: 150px;
-    border-radius: 50%;
+  width: 150px;
+  border-radius: 50%;
 }

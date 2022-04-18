@@ -26,7 +26,7 @@ export default function NgoCardsGrid({ diseases, locations }) {
     <Grid container spacing={4}>
       {ngos.map((ngo, index) => {
         return (
-          <Grid key={index} item sm={12} md={6} lg={4}>
+          <Grid key={index} item sm={12} md={6} lg={4} xl={3}>
             <FlipCard cardDetails={ngo} />
           </Grid>
         );
