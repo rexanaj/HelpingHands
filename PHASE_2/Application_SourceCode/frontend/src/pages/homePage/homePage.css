@@ -162,15 +162,24 @@
 }
 
 .home-link {
-    
     font-family: 'Graphik';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 22px;
     text-align: center;
     letter-spacing: 0.015em;
 
     color: #000000;
+}
+
+.home-header {
+    position:absolute;
+    top:80px;
+    right:100px;
+    display:flex;
+    flex-direction: row;
+    width:300px;
+    justify-content: space-around;
 }
 
