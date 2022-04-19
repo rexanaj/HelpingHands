@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { Bubbles } from "../../components/Bubbles/Bubbles";
+import Header from "../../components/header/Header"
 
 export default function GetHelpPage() {
   const [loading, setLoading] = useState(false);
@@ -96,6 +97,7 @@ export default function GetHelpPage() {
 
   return (
     <div>
+      <Header></Header>
       <Bubbles />
 
       {/* Hero unit */}

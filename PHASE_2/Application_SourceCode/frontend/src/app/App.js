@@ -5,7 +5,6 @@ import { Route, Routes } from "react-router-dom";
 
 /////////// COMPONENTS /////////////
 import HomePage from "../pages/homePage/HomePage";
-import { Header } from "../components/header/Header";
 import GiveHelpPage from "../pages/giveHelpPage/GiveHelpPage.jsx";
 import GetHelpPage from "../pages/getHelpPage/GetHelpPage";
 ////////////////////////////////////
@@ -13,7 +12,6 @@ import GetHelpPage from "../pages/getHelpPage/GetHelpPage";
 export default function App () {
   return (
     <div className="App">
-      <Header />
       <Routes>
         <Route exact path="/">
           <Route index element={<HomePage />} />

@@ -10,6 +10,7 @@ import Spinner from "react-bootstrap/Spinner";
 import "./GiveHelpPage.css";
 import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
 import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
+import Header from "../../components/header/Header"
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
@@ -78,6 +79,7 @@ export default function GiveHelpPage (props) {
   }
   return (
     <div id="givehelp-container">
+      <Header></Header>
       <h1 id="givehelp-title">Support those in need</h1>
       <div className="searchBar">
         <Autocomplete

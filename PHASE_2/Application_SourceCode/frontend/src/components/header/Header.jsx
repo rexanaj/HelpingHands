@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import './header.css'
 
-export const Header = () => {
+function Header () {
     return (
         <header id="header-container">
             <Link to={"/"} id="header-link">
@@ -11,3 +11,5 @@ export const Header = () => {
         </header>
     )
 }
+
+export default Header;
