@@ -1,8 +1,13 @@
 #header-container {
-    background: #e9f6f2;
+    background: #F8F5EE;
     display: flex;
     width: 100%;
     justify-content: center;
+    height: 120px;
+}
+
+a:link {
+    text-decoration: none !important;
 }
 
 #header-link {
@@ -17,4 +22,30 @@
     line-height: 30px;
     padding: 15px 50px;
     cursor: pointer;
+}
+
+#header-aboutus-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.header-aboutus {
+    font-family: 'Graphik';
+    font-weight: normal;
+    width: 120px;
+    vertical-align: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.header-link-obj {
+    color: black;
+    transition: all 0.1s ease-in-out;
+}
+
+.header-link-obj:hover {
+    opacity: 0.5;
 }

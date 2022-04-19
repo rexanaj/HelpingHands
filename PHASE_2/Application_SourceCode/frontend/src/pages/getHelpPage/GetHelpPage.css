@@ -1,14 +1,23 @@
+#gethelp-search-area-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #gethelp-search-area {
   margin-top: 80px;
   height: 500px;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: center;
+  width: 90%;
+  ;
 }
 
 #gethelp-box {
-  position: absolute;
+  /* position: absolute; */
   width: 580px;
   height: 240px;
   right: 800px;
@@ -16,11 +25,17 @@
   border-radius: 0px 200px 200px 0px;
   display: flex;
   align-items: center;
+  z-index: 100;
+  margin-right: -150px;
+  padding: 20px 20px;
 }
 
 .gethelp-slide {
-  width: 891px;
+  /* width: 891px; */
+  width: 60vw;
   height: 486px;
+  object-fit: cover;
+  max-width: 1080px;
   opacity: 1;
   border-radius: 50px 0px 0px 50px;
   animation: fadein 0.5s linear;
@@ -29,7 +44,13 @@
 @keyframes fadein {
   from {
     opacity: 0;
+<<<<<<< HEAD
   } to {
+=======
+  }
+
+  to {
+>>>>>>> aacdfc9e52f1a73afef7d415002d1c1312ba8a7e
     opacity: 1;
   }
 }
