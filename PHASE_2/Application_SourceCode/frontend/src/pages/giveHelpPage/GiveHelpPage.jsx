@@ -95,9 +95,9 @@ export default function GiveHelpPage (props) {
         <Button id="searchButton" variant="contained" onClick={submitDisease}>
           Give help
         </Button>
-        
+
       </div>
-      {!loading ? (<div><WhoCarousel></WhoCarousel><NgoCardsGrid keyword={'measles'}/></div>) : (<div></div>)}
+      {!loading ? (<div><WhoPlaceholder /></div>) : (<div></div>)}
       <div>
         {loading ? (
           <div>

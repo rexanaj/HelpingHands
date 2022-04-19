@@ -1,10 +1,26 @@
 .home {
-    height: 100vh;
-    overflow: hidden;
+    height: 85vh;
+    display:flex;
+    flex-direction: row;
+}
+
+.home-wrapper {
+    display:flex;
+    flex-direction: column;
+}
+
+.footer {
+    background-color: #378e70;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height:200px;
+    align-content: center;
+    align-items: center;
 }
 
 .home-content {
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: row;
 }
@@ -26,17 +42,144 @@
 }
 
 /* Control the left side */
-.left {
+/* .left {
     background-image: url("../../assets/img/bggivehelp.jpg");
-}
+} */
 
 /* Control the right side */
-.right {
+/* .right {
     background-image: url("../../assets/img/bggethelp.jpg");
-}
+} */
 
 /* Style the image inside the centered container, if needed */
 .centered img {
     width: 150px;
     border-radius: 50%;
 }
+
+.home-photo {
+    position: relative;
+    width: 592px;
+    height: 651px;
+    background-image: url("../../assets/images/homePageImage.png");
+}
+
+.home-title {
+    width: 560px;
+    height: 98px;
+    margin-bottom:30px;
+
+    font-family: 'Maragsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 49px;
+    letter-spacing: 0.065em;
+
+    color: #000000;
+}
+
+.home-text {
+    width: 494px;
+    height: 54px;
+    
+    margin-bottom:50px;
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: 0.015em;
+
+    color: #000000;
+}
+
+.home-subtext {
+    width: 288px;
+    height: 31px;
+    margin-bottom: 30px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 138.96%;
+
+    /* identical to box height, or 31px */
+    letter-spacing: 0.02em;
+
+    color: #000000;
+}
+
+.left {
+    background-color: #F8F5EE;
+}
+
+.right {
+    background-color: #A5C3FF;
+}
+
+.home-buttons {
+    display:flex;
+    flex-direction: row;
+    width:40%;
+    justify-content: space-around;
+}
+
+.logo {
+    position: absolute;
+    width: 123px;
+    height: 79.54px;
+    left: 77px;
+    top: 58px;
+    background-image: url("../../assets/images/helpingHandsLogo.svg");
+}
+
+.stats {
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 40px;
+
+    /* identical to box height */
+    text-align: center;
+    letter-spacing: 0.015em;
+
+    color: #F8F5EE;
+}
+
+.stats-inner {
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.015em;
+
+    color: #F8F5EE;
+}
+
+.home-link {
+    font-family: 'Graphik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.015em;
+
+    color: #000000;
+}
+
+.home-header {
+    position:absolute;
+    top:80px;
+    right:100px;
+    display:flex;
+    flex-direction: row;
+    width:300px;
+    justify-content: space-around;
+}
+
