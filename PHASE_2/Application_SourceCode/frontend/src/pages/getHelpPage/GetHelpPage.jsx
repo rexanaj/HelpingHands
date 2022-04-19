@@ -27,22 +27,12 @@ export default function GetHelpPage() {
   const [advice, setAdvice] = useState('');
   const [disease, setDisease] = useState('');
 
-  // images for display
-  // const images = [img1, img2, img3];
-  // const [slideIndex, setSlideIndex] = useState(0);
-
   // advice cards
   const [responses, setResponses] = useState([]);
 
   // checkboxes
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setSlideIndex((slideIndex + 1) % 3);
-  //   }, 1000);
-  // }, []);
 
   const getAdvice = async () => {
     const res = await fetch(`http://localhost:5555/posts/${disease}`, {
@@ -59,7 +49,9 @@ export default function GetHelpPage() {
 
   // job board is updated here
   const submitDisease = () => {
+    console.log("test")
     setLoading(false);
+
     // update the advice section
     getAdvice();
   };
@@ -147,6 +139,8 @@ export default function GetHelpPage() {
         </Box>
         <img className="gethelp-slide" src={img1} />
       </div>
+
+      <ToastContainer />
 
       <ToastContainer />
 
