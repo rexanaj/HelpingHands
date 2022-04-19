@@ -13,12 +13,11 @@ import "./GetHelpPage.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { Bubbles } from "../../components/Bubbles/Bubbles";
 import img1 from "../../assets/img/img1.png";
 // import img2 from "../../assets/img/img2.jpg";
 // import img3 from "../../assets/img/img3.jpeg";
 
-export default function GetHelpPage() {
+export default function GetHelpPage () {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [advice, setAdvice] = useState('');
@@ -96,45 +95,45 @@ export default function GetHelpPage() {
 
   return (
     <div>
-      <Bubbles />
-
       {/* Hero unit */}
-      <div id="gethelp-search-area">
-        <Box id="gethelp-box">
-          <Container id="gethelp-container" maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-              id="gethelp-title"
-            >
-              Find Help Here
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph >
-              See what others in your situation are saying.
-            </Typography>
-            <Stack
-              sx={{ pt: 1 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Autocomplete
-                disablePortal
-                id="search"
-                value={disease}
-                options={options}
-                onChange={(event, value) => { setDisease(value) }}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Select a disease" />}
-              />
-              <Button id="searchButton" variant="contained" onClick={submitDisease}>Get help</Button>
-            </Stack>
-          </Container>
-        </Box>
-        <img className="gethelp-slide" src={img1} />
+      <div id="gethelp-search-area-container">
+        <div id="gethelp-search-area">
+          <Box id="gethelp-box">
+            <Container id="gethelp-container" maxWidth="sm">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="text.primary"
+                gutterBottom
+                id="gethelp-title"
+              >
+                Find Help Here
+              </Typography>
+              <Typography variant="h5" align="center" color="text.secondary" paragraph >
+                See what others in your situation are saying.
+              </Typography>
+              <Stack
+                sx={{ pt: 1 }}
+                direction="row"
+                spacing={2}
+                justifyContent="center"
+              >
+                <Autocomplete
+                  disablePortal
+                  id="search"
+                  value={disease}
+                  options={options}
+                  onChange={(event, value) => { setDisease(value) }}
+                  sx={{ width: 300 }}
+                  renderInput={(params) => <TextField {...params} label="Select a disease" />}
+                />
+                <Button id="searchButton" variant="contained" onClick={submitDisease}>Get help</Button>
+              </Stack>
+            </Container>
+          </Box>
+          <img className="gethelp-slide" src={img1} />
+        </div>
       </div>
 
       <ToastContainer />
