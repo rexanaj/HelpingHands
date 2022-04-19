@@ -44,13 +44,9 @@
 @keyframes fadein {
   from {
     opacity: 0;
-<<<<<<< HEAD
-  } to {
-=======
   }
 
   to {
->>>>>>> aacdfc9e52f1a73afef7d415002d1c1312ba8a7e
     opacity: 1;
   }
 }
