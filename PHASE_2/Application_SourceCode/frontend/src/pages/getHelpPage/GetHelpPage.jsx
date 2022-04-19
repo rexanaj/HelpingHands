@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 // import Card from '@mui/material/Card';
 // import CardActions from '@mui/material/CardActions';
@@ -19,7 +19,22 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import { Bubbles } from "../../components/Bubbles/Bubbles";
 import AdviceCard from "../../components/AdviceCard/AdviceCard";
 
+import auth from "../../firebase/firebase";
+import { signInAnonymously, onAuthStateChanged } from "firebase/auth";
+
 export default function GetHelpPage() {
+  const [userId, setUserId] = useState();
+
+  useEffect(() => {
+    signInAnonymously(auth);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setUserId(uid);
+      }
+    });
+  }, []);
+
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [advice, setAdvice] = useState("");
@@ -92,6 +107,7 @@ export default function GetHelpPage() {
     if (body.error) {
       alert(body.error);
     } else {
+      getAdvice();
       toast(`Advice from ${name} added successfully!`);
       setAdvice("");
       setName("");
@@ -168,9 +184,16 @@ export default function GetHelpPage() {
           <h1 className="gethelp-header">Advice from our users</h1>
           {responses.length > 0 ? (
             <Grid id="card-list" container spacing={4}>
-              {responses.map((card, index) => (
-                <AdviceCard key={index} card={card} />
-              ))}
+              {responses
+                .sort(
+                  (a, b) =>
+                    b.upvotes.length -
+                    b.downvotes.length -
+                    (a.upvotes.length - a.downvotes.length)
+                )
+                .map((card, index) => (
+                  <AdviceCard key={index} card={card} userId={userId} />
+                ))}
             </Grid>
           ) : (
             <h1>No posts yet</h1>

@@ -3,19 +3,21 @@ import PropTypes from "prop-types";
 
 import Grid from "@mui/material/Grid";
 
-export default function AdviceCard({ card }) {
-  const initialVoteTotal = 0;
-  const [upvote, setUpvote] = useState(card.upvotes.includes(card.id));
-  const [downvote, setDownvote] = useState(card.downvotes.includes(card.id));
-  const [voteTotal, setVoteTotal] = useState(
-    card.upvotes.length - card.downvotes.length
-  );
+export default function AdviceCard({ card, userId }) {
+  const initialVoteTotal = card.upvotes.length - card.downvotes.length;
+  const [upvote, setUpvote] = useState(card.upvotes.includes(userId));
+  const [downvote, setDownvote] = useState(card.downvotes.includes(userId));
+  const [voteTotal, setVoteTotal] = useState(initialVoteTotal);
 
   const onUpvote = async () => {
     if (!upvote) {
       setUpvote(true);
-      setDownvote(false);
-      setVoteTotal(initialVoteTotal + 1);
+      if (downvote) {
+        setDownvote(false);
+        setVoteTotal(voteTotal + 2);
+      } else {
+        setVoteTotal(voteTotal + 1);
+      }
 
       await fetch(`http://localhost:5555/posts/upvotePost`, {
         method: "POST",
@@ -24,7 +26,7 @@ export default function AdviceCard({ card }) {
         },
         body: JSON.stringify({
           id: card.id,
-          uid: card.id,
+          uid: userId,
         }),
       });
     }
@@ -33,8 +35,12 @@ export default function AdviceCard({ card }) {
   const onDownvote = async () => {
     if (!downvote) {
       setDownvote(true);
-      setUpvote(false);
-      setVoteTotal(initialVoteTotal - 1);
+      if (upvote) {
+        setUpvote(false);
+        setVoteTotal(voteTotal - 2);
+      } else {
+        setVoteTotal(voteTotal - 1);
+      }
 
       await fetch(`http://localhost:5555/posts/downvotePost`, {
         method: "POST",
@@ -43,7 +49,7 @@ export default function AdviceCard({ card }) {
         },
         body: JSON.stringify({
           id: card.id,
-          uid: card.id,
+          uid: userId,
         }),
       });
     }
@@ -91,4 +97,5 @@ export default function AdviceCard({ card }) {
 AdviceCard.propTypes = {
   card: PropTypes.object,
   index: PropTypes.number,
+  userId: PropTypes.string,
 };
