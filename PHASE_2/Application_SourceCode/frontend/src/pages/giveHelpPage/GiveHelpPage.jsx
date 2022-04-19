@@ -13,9 +13,6 @@ import "./GiveHelpPage.css";
 import options from "../../components/Diseases";
 import NewsCard from "../../components/NewsCard";
 import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
-<<<<<<< HEAD
-import { Background } from "../../components/Background/Background";
-=======
 import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
 import img1 from "../../assets/img/givehelp_img1.jpeg";
 import img2 from "../../assets/img/givehelp_img2.jpg";
@@ -28,7 +25,6 @@ import img8 from "../../assets/img/givehelp_img8.jpeg";
 import img9 from "../../assets/img/givehelp_img9.jpeg";
 import img10 from "../../assets/img/givehelp_img10.jpeg";
 import img11 from "../../assets/img/givehelp_img11.jpeg";
->>>>>>> b69fcc193995043848d8f45df36bb140d1401163
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
@@ -200,25 +196,6 @@ export default function GiveHelpPage (props) {
 
   return (
     <div id="givehelp-container">
-<<<<<<< HEAD
-      <Background />
-      <h1 id="givehelp-title">Support those in need</h1>
-      <div className="searchBar">
-        <Autocomplete
-          disablePortal
-          id="search"
-          value={disease}
-          options={options}
-          onChange={(event, value) => setDisease(value)}
-          sx={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Select a disease" />
-          )}
-        />
-        <Button id="searchButton" variant="contained" onClick={submitDisease}>
-          Give help
-        </Button>
-=======
       <div id="givehelp-title-container">
         <h1 id="givehelp-title">Support those in need</h1>
         <p className="givehelp-description">Our CharityAPI sources only the most relevant and up-to-date</p>
@@ -259,7 +236,6 @@ export default function GiveHelpPage (props) {
             </Button>
           </ThemeProvider>
         </div>
->>>>>>> b69fcc193995043848d8f45df36bb140d1401163
       </div>
 
       <div>
