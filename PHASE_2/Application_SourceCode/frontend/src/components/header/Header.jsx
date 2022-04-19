@@ -33,7 +33,17 @@ function Header () {
                 </Link>
             </div>
             <div id="header-aboutus-container">
-                <h3 id="header-aboutus" onClick={handleOpen}>About Us</h3>
+                <Link to={"/giveHelp"} className="header-link-obj">
+                    <h3 className="header-aboutus">Give Help</h3>
+                </Link>
+            </div>
+            <div id="header-aboutus-container">
+                <Link to={"/getHelp"} className="header-link-obj">
+                    <h3 className="header-aboutus">Get Help</h3>
+                </Link>
+            </div>
+            <div id="header-aboutus-container">
+                <h3 className="header-aboutus" onClick={handleOpen}>About Us</h3>
             </div>
             <Modal
                 open={open}
