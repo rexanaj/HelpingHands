@@ -1,9 +1,55 @@
+#gethelp-search-area {
+  margin-top: 80px;
+  height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+#gethelp-box {
+  position: absolute;
+  width: 580px;
+  height: 240px;
+  right: 800px;
+  background: #f8f5ee;
+  border-radius: 0px 200px 200px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.gethelp-slide {
+  width: 891px;
+  height: 486px;
+  opacity: 1;
+  border-radius: 50px 0px 0px 50px;
+  animation: fadein 0.5s linear;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+#gethelp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.slide-container {
+  height: 400px;
+  width: 600px;
+}
+
 #gethelp-title {
   font-size: 34px;
   color: #378e70;
   font-family: "arita";
   text-align: center;
-  padding-top: 30px;
 }
 
 .gethelp-header {

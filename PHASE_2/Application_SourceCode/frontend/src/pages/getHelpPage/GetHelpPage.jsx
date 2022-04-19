@@ -17,6 +17,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { Bubbles } from "../../components/Bubbles/Bubbles";
+import img1 from "../../assets/img/img1.png";
+// import img2 from "../../assets/img/img2.jpg";
+// import img3 from "../../assets/img/img3.jpeg";
 
 export default function GetHelpPage() {
   const [loading, setLoading] = useState(false);
@@ -24,12 +27,22 @@ export default function GetHelpPage() {
   const [advice, setAdvice] = useState('');
   const [disease, setDisease] = useState('');
 
+  // images for display
+  // const images = [img1, img2, img3];
+  // const [slideIndex, setSlideIndex] = useState(0);
+
   // advice cards
   const [responses, setResponses] = useState([]);
 
   // checkboxes
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
+
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setSlideIndex((slideIndex + 1) % 3);
+  //   }, 1000);
+  // }, []);
 
   const getAdvice = async () => {
     const res = await fetch(`http://localhost:5555/posts/${disease}`, {
@@ -46,9 +59,7 @@ export default function GetHelpPage() {
 
   // job board is updated here
   const submitDisease = () => {
-    console.log("test")
     setLoading(false);
-
     // update the advice section
     getAdvice();
   };
@@ -56,13 +67,13 @@ export default function GetHelpPage() {
   const addAdvice = async () => {
     // validate form
     switch (true) {
-      case name == "":
+      case name === "":
         alert("Please fill out your name");
         return;
-      case advice == "":
+      case advice === "":
         alert("Please fill out your advice");
         return;
-      case check1 == false || check2 == false:
+      case check1 === false || check2 === false:
         alert("Please check both checkboxes");
         return;
       default:
@@ -99,45 +110,43 @@ export default function GetHelpPage() {
       <Bubbles />
 
       {/* Hero unit */}
-      <Box
-        sx={{
-          pt: 8,
-          pb: 6,
-        }}
-      >
-        <Container maxWidth="sm">
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="text.primary"
-            gutterBottom
-            id="gethelp-title"
-          >
-            Find Help Here
-          </Typography>
-          <Typography variant="h5" align="center" color="text.secondary" paragraph >
-            See what others in your situation are saying.
-          </Typography>
-          <Stack
-            sx={{ pt: 4 }}
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-          >
-            <Autocomplete
-              disablePortal
-              id="search"
-              value={disease}
-              options={options}
-              onChange={(event, value) => { setDisease(value) }}
-              sx={{ width: 300 }}
-              renderInput={(params) => <TextField {...params} label="Select a disease" />}
-            />
-            <Button id="searchButton" variant="contained" onClick={submitDisease}>Get help</Button>
-          </Stack>
-        </Container>
-      </Box>
+      <div id="gethelp-search-area">
+        <Box id="gethelp-box">
+          <Container id="gethelp-container" maxWidth="sm">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+              id="gethelp-title"
+            >
+              Find Help Here
+            </Typography>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph >
+              See what others in your situation are saying.
+            </Typography>
+            <Stack
+              sx={{ pt: 1 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+              <Autocomplete
+                disablePortal
+                id="search"
+                value={disease}
+                options={options}
+                onChange={(event, value) => { setDisease(value) }}
+                sx={{ width: 300 }}
+                renderInput={(params) => <TextField {...params} label="Select a disease" />}
+              />
+              <Button id="searchButton" variant="contained" onClick={submitDisease}>Get help</Button>
+            </Stack>
+          </Container>
+        </Box>
+        <img className="gethelp-slide" src={img1} />
+      </div>
 
       <ToastContainer />
 
