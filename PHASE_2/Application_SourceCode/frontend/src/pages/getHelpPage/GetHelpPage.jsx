@@ -16,7 +16,6 @@ import "./GetHelpPage.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { Bubbles } from "../../components/Bubbles/Bubbles";
 import AdviceCard from "../../components/AdviceCard/AdviceCard";
 
 import auth from "../../firebase/firebase";
@@ -118,8 +117,6 @@ export default function GetHelpPage() {
 
   return (
     <div>
-      <Bubbles />
-
       {/* Hero unit */}
       <Box
         sx={{

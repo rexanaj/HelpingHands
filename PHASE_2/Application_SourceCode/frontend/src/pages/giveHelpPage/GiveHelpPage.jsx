@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 
-import NewsCard from "../../components/NewsCard";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import options from "../../components/Diseases";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Spinner from "react-bootstrap/Spinner";
+import Marquee from "react-fast-marquee";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import WhoPlaceholder from '../../components/PlaceHolder/PlaceHolder';
+
 import "./GiveHelpPage.css";
-import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
+import options from "../../components/Diseases";
+import NewsCard from "../../components/NewsCard";
 import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
+import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
+import img1 from "../../assets/img/givehelp_img1.jpeg";
+import img2 from "../../assets/img/givehelp_img2.jpg";
+import img3 from "../../assets/img/givehelp_img3.jpeg";
+import img4 from "../../assets/img/givehelp_img4.jpeg";
+import img5 from "../../assets/img/givehelp_img5.jpeg";
+import img6 from "../../assets/img/givehelp_img6.jpeg";
+import img7 from "../../assets/img/givehelp_img7.jpeg";
+import img8 from "../../assets/img/givehelp_img8.jpeg";
+import img9 from "../../assets/img/givehelp_img9.jpeg";
+import img10 from "../../assets/img/givehelp_img10.jpeg";
+import img11 from "../../assets/img/givehelp_img11.jpeg";
+
+import backgroundimg2 from "../../assets/img/plant_sprout.jpeg";
+import backgroundimg1 from "../../assets/img/church-giving.jpg";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
-export default function GiveHelpPage (props) {
+export default function GiveHelpPage(props) {
   const [disease, setDisease] = useState("");
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -76,52 +94,194 @@ export default function GiveHelpPage (props) {
     );
     i += 1;
   }
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#fff',
+        dark: '#fff',
+        light: '#fff',
+        contrastText: '#fff',
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            fontSize: '14px',
+            fontFamily: '"graphik", Arial, Helvetica, sans-serif',
+            textTransform: 'none',
+            borderRadius: '4px',
+            color: '#378e70',
+            backgroundColor: '#e9f6f2',
+            '&:hover': {
+              backgroundColor: '#fff',
+            },
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            color: 'white',
+            borderColor: 'white',
+            '& label.Mui-focused': {
+              color: 'white',
+            },
+            '& .MuiInput-underline:after': {
+              borderBottomColor: 'white',
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'white',
+              },
+              '&:hover fieldset': {
+                borderColor: 'white',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'white',
+              },
+            },
+            "&.subvariant-hovered": {
+              "& fieldset": {
+                border: "none"
+              },
+              "& .MuiInputBase-input:hover + fieldset": {
+                border: `2px solid blue`
+              },
+              "& .MuiInputBase-input:focus + fieldset": {
+                border: `2px solid blue`
+              }
+            }
+          }
+        }
+      },
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            // this is styles for the new variants
+            color: '#fff',
+            "&.textfield-search": {
+              "& fieldset": {
+                color: 'white',
+                borderColor: "white"
+              },
+            },
+            "&.textfield-search:hover": {
+              "& fieldset": {
+                color: 'white',
+                borderColor: "white"
+              },
+            },
+          }
+        }
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            color: '#fff',
+            '&$focused': {
+              color: '#fff'
+            }
+          }
+        }
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: '#fff',
+          }
+        }
+      }
+    },
+
+  })
+
   return (
     <div id="givehelp-container">
-      <h1 id="givehelp-title">Support those in need</h1>
-      <div className="searchBar">
-        <Autocomplete
-          disablePortal
-          id="search"
-          value={disease}
-          options={options}
-          onChange={(event, value) => setDisease(value)}
-          sx={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Select a disease" />
-          )}
-        />
-        <Button id="searchButton" variant="contained" onClick={submitDisease}>
-          Give help
-        </Button>
+      <div id="givehelp-title-container">
+        <h1 id="givehelp-title">Support those in need</h1>
+        <p className="givehelp-description">Our CharityAPI sources only the most relevant and up-to-date</p>
+        <p className="givehelp-description">charities, so you can make the most informed decision on who to support. </p>
+        <div id="marquee">
+          <Marquee
+            speed={10}
+            gradientColor={[55, 142, 112]}
+          >
+            <img className="marquee-image" src={img1} alt="Poster wall" />
+            <img className="marquee-image" src={img2} alt="Poster wall" />
+            <img className="marquee-image" src={img3} alt="Poster wall" />
+            <img className="marquee-image" src={img4} alt="Poster wall" />
+            <img className="marquee-image" src={img5} alt="Poster wall" />
+            <img className="marquee-image" src={img6} alt="Poster wall" />
+            <img className="marquee-image" src={img7} alt="Poster wall" />
+            <img className="marquee-image" src={img8} alt="Poster wall" />
+            <img className="marquee-image" src={img9} alt="Poster wall" />
+            <img className="marquee-image" src={img10} alt="Poster wall" />
+            <img className="marquee-image" src={img11} alt="Poster wall" />
+          </Marquee>
+        </div>
+        <div className="searchBar">
+          <ThemeProvider theme={theme}>
+            <Autocomplete
+              disablePortal
+              id="search"
+              value={disease}
+              options={options}
+              onChange={(event, value) => setDisease(value)}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} className="textfield-search" color="primary" label="Select a disease" />
+              )}
+            />
+            <Button className="givehelp-search-button" color="primary" onClick={submitDisease}>
+              Give help
+            </Button>
+          </ThemeProvider>
+        </div>
       </div>
+      {!loading ? (
+        <div>
+          <WhoPlaceholder></WhoPlaceholder>
 
+        </div>
+      ) : (<div></div>)}
       <div>
         {loading ? (
           <div>
-            <h1 className="givehelp-header">
-              Find the most recent news from WHO
-            </h1>
-            <div className="givehelp-content">
-              <Grid id="givehelp-who-articles" container spacing={3}>
-                {articles_holder}
-              </Grid>
+            <div id="givehelp-who-container">
+              <h1 className="givehelp-header">
+                The most recent news from WHO
+              </h1>
+              <div className="givehelp-content">
+                <Grid id="givehelp-who-articles" container spacing={3}>
+                  {articles_holder}
+                </Grid>
+              </div>
             </div>
-            <h1 className="givehelp-header">
-              See what people are saying on Twitter
-            </h1>
-            <div className="givehelp-content">
-              <TwitterCarousel keyword={disease} />
+
+            <div id="givehelp-tweets-container">
+              <h1 className="givehelp-header">
+                See what people are saying on Twitter
+              </h1>
+              <div className="givehelp-content">
+                <TwitterCarousel keyword={disease} />
+              </div>
             </div>
-            <h1 className="givehelp-header">
-              Make a difference and donate today
-            </h1>
-            <div className="givehelp-content" id="givehelp-charities">
-              <NgoCardsGrid diseases={disease} />
+
+            <img className="background-img1" src={backgroundimg1} />
+            <div id="givehelp-charities-container">
+              <img className="background-img2" src={backgroundimg2} />
+              <h1 className="givehelp-header">
+                Make a difference and donate today
+              </h1>
+              <div className="givehelp-content" id="givehelp-charities">
+                <NgoCardsGrid diseases={disease} />
+              </div>
             </div>
           </div>
         ) : (
-          <Button className="spinner" variant="success" disabled>
+          <Button className="spinner" color="primary" variant="success" disabled>
             <Spinner
               as="span"
               animation="grow"
