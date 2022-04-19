@@ -1,22 +1,21 @@
 #header-container {
-    background: #378e70;
+    background: #F8F5EE;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 120px;
 }
 
 #header-link {
     text-decoration: none;
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    cursor: default;
 }
 
-#header-text {
-    font-family: 'maragsa', 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 28px;
-    color: #e9f6f2;
-    text-align: left;
-    transition: color 0.08s ease-in;
+#header-image {
     line-height: 30px;
-    padding: 15px 5%;
-}
-
-#header-text:hover {
-    color: #8fbfb1;
+    padding: 15px 50px;
+    cursor: pointer;
 }

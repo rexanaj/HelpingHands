@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 
 export const GiveHelpButton = () => {
     return (
-        <Link to={"/giveHelp"}>
+        <Link className="frontPageButtonLink" to={"/giveHelp"} style={{ textDecoration: 'none' }}>
             <button className="frontPageButton giveHelpButton">
                 <img className="frontPageButtonImage" src={GiveHelp} alt="Give help" />
                 <div className="button-text">
-                    Give Help 
+                    Give Help
                 </div>
             </button>
         </Link>
@@ -19,11 +19,11 @@ export const GiveHelpButton = () => {
 
 export const GetHelpButton = () => {
     return (
-        <Link to={"/getHelp"}>
+        <Link to={"/getHelp"} style={{ textDecoration: 'none' }}>
             <button className="frontPageButton getHelpButton">
                 <img className="frontPageButtonImage" src={GetHelp} alt="Get help" />
                 <div className="button-text">
-                    Get Help 
+                    Get Help
                 </div>
             </button>
         </Link>

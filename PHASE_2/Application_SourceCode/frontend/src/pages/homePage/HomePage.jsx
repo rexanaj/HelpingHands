@@ -2,7 +2,7 @@ import React from "react";
 import { GiveHelpButton, GetHelpButton } from "../../components/frontPageButtons/FrontPageButton";
 import "./homePage.css";
 import { Link } from 'react-router-dom'
-
+import homePageImage from '../../assets/images/homePageImage.png';
 
 export default function HomePage () {
   return (
@@ -14,30 +14,22 @@ export default function HomePage () {
             Find a place to help others or seek to help yourself
           </div>
           <div className="home-text">
-            We help you to discover at-risk communities and a platform to share your voice
+            We help you to discover at-risk communities and provide a platform to share your voice.
           </div>
           <div className="home-subtext">
             Explore what we offer now
           </div>
           <div className="home-buttons">
-            <Link to={"/giveHelp"}>
-                <GiveHelpButton />
+            <Link to={"/giveHelp"} id="home-givehelp-button" >
+              <GiveHelpButton />
             </Link>
             <Link to={"/giveHelp"}>
               <GetHelpButton />
             </Link>
           </div>
         </div>
-        <div className="right home-content-half">
-          <div className="home-header">
-            <div className="home-link">
-              About us
-            </div>
-            <div className="home-link">
-              Contact us
-            </div>
-          </div>
-          <div className="home-photo"></div>
+        <div className="right home-content-half home-image-container">
+          <img id="home-image" src={homePageImage} alt="man from Fight Malaria holding up phone" />
         </div>
       </div>
       <div className="footer">
@@ -55,6 +47,6 @@ export default function HomePage () {
         </div>
       </div>
     </div>
-    
+
   );
 }

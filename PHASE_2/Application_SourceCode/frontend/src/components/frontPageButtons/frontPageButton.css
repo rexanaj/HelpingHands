@@ -1,27 +1,37 @@
 .frontPageButtonImage {
-    width: 80px;
-   
+    width: 56px;
+    padding-left: 24px;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+.frontPageButtonLink {
+    text-decoration: none !important;
 }
 
 .frontPageButton {
-    height:100px;
+    height: 100px;
     width: 250px;
     border: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius:30%;
+    border-radius: 30%;
 }
 
 .button-text {
     font-family: 'Maragsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 26px;
     line-height: 138.96%;
     text-decoration: none;
     /* or 42px */
     letter-spacing: 0.065em;
+    text-align: center;
+    width: 80%;
 }
 
 .giveHelpButton {
@@ -47,4 +57,3 @@
     cursor: pointer;
     transform: translateY(-3px);
 }
-
