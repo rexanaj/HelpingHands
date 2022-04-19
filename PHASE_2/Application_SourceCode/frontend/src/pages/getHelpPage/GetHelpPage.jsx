@@ -17,7 +17,7 @@ import img1 from "../../assets/img/img1.png";
 // import img2 from "../../assets/img/img2.jpg";
 // import img3 from "../../assets/img/img3.jpeg";
 
-export default function GetHelpPage () {
+export default function GetHelpPage() {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [advice, setAdvice] = useState('');
