@@ -11,6 +11,7 @@ import "./GiveHelpPage.css";
 import { TwitterCarousel } from "../../components/twitterCarousel/TwitterCarousel";
 import NgoCardsGrid from "../../components/NgoCardsGrid/NgoCardsGrid.jsx";
 import Header from "../../components/header/Header"
+import WhoPlaceholder from "../../components/PlaceHolder/PlaceHolder";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
@@ -96,8 +97,14 @@ export default function GiveHelpPage (props) {
         <Button id="searchButton" variant="contained" onClick={submitDisease}>
           Give help
         </Button>
+        
       </div>
-
+      {!loading ? (
+      <div>
+        <WhoPlaceholder></WhoPlaceholder>
+        
+      </div>
+      ) : (<div></div>)}
       <div>
         {loading ? (
           <div>
