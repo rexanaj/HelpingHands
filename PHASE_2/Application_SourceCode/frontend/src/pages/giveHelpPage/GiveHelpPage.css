@@ -4,11 +4,18 @@
   background: #378e70;
 }
 
+.article {
+  border-radius: 20px !important;
+}
+
+.card-button {
+  color: #378e70 !important;
+}
 
 #givehelp-title {
   color: white;
   font-size: 34px;
-  font-family: 'Maragsa';
+  font-family: "Maragsa";
   font-style: normal;
   font-weight: normal;
   font-size: 42px;
@@ -20,7 +27,7 @@
 
 .givehelp-description {
   color: white;
-  font-family: 'graphik';
+  font-family: "graphik";
   font-style: normal;
   font-size: 20px;
   line-height: 26px;
@@ -66,7 +73,6 @@
   height: 54px;
 }
 
-
 /*Remaining content*/
 .givehelp-content {
   display: flex;
@@ -85,12 +91,29 @@
 }
 
 #givehelp-tweets-container {
-  background-color: #F8F5EE;
+  background-color: #f8f5ee;
   padding: 64px 0px;
 }
 
 #givehelp-charities-container {
   padding: 64px 0px 128px 0px;
+  position: relative;
+}
+
+.background-img1 {
+  z-index: -999;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  left: 0;
+}
+
+#givehelp-charities-container .background-img2 {
+  z-index: -999;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 #givehelp-charities {
