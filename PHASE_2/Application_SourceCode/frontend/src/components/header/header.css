@@ -19,3 +19,18 @@
     padding: 15px 50px;
     cursor: pointer;
 }
+
+#header-aboutus-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-aboutus {
+    font-family: 'Graphik';
+    font-weight: normal;
+    width: 120px;
+    vertical-align: center;
+    cursor: pointer;
+}
