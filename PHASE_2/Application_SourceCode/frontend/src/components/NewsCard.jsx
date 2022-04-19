@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 export default function NewsCard(props) {
     return (
-      <Card sx={{ minWidth: 275 }}>
+      <Card className={props.className} sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {props.publication}
@@ -20,12 +20,13 @@ export default function NewsCard(props) {
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             WHO Report
           </Typography>
-          <Typography variant="body2">
+          <hr />
+          <Typography className="who-main-text" variant="body2">
             {props.mainText}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" href={props.url} target="_blank" rel="noopener noreferrer">Read More</Button>
+          <Button className="card-button" size="small" href={props.url} target="_blank" rel="noopener noreferrer">Read More</Button>
         </CardActions>
       </Card>
     );
@@ -36,4 +37,5 @@ NewsCard.propTypes = {
     headline: PropTypes.string,
     mainText: PropTypes.string,
     url: PropTypes.string,
+    className: PropTypes.string,
 };
