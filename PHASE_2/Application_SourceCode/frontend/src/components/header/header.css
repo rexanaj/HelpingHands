@@ -3,11 +3,12 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    height: 120px;
 }
 
 #header-link {
     text-decoration: none;
-    max-width: 1240px;
+    max-width: 1600px;
     width: 100%;
     display: flex;
     cursor: default;
@@ -16,5 +17,20 @@
 #header-image {
     line-height: 30px;
     padding: 15px 50px;
+    cursor: pointer;
+}
+
+#header-aboutus-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-aboutus {
+    font-family: 'Graphik';
+    font-weight: normal;
+    width: 120px;
+    vertical-align: center;
     cursor: pointer;
 }

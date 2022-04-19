@@ -7,7 +7,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Spinner from "react-bootstrap/Spinner";
 import Marquee from "react-fast-marquee";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import WhoPlaceholder from '../../components/PlaceHolder/PlaceHolder';
 
 import "./GiveHelpPage.css";
 import options from "../../components/Diseases";
@@ -237,7 +237,12 @@ export default function GiveHelpPage (props) {
           </ThemeProvider>
         </div>
       </div>
+      {!loading ? (
+        <div>
+          <WhoPlaceholder></WhoPlaceholder>
 
+        </div>
+      ) : (<div></div>)}
       <div>
         {loading ? (
           <div>
