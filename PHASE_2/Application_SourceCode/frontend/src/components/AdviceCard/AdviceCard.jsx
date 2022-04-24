@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Grid from "@mui/material/Grid";
 
-export default function AdviceCard({ card, userId }) {
+export default function AdviceCard ({ card, userId }) {
   const initialVoteTotal = card.upvotes.length - card.downvotes.length;
   const [upvote, setUpvote] = useState(card.upvotes.includes(userId));
   const [downvote, setDownvote] = useState(card.downvotes.includes(userId));
@@ -19,7 +19,7 @@ export default function AdviceCard({ card, userId }) {
         setVoteTotal(voteTotal + 1);
       }
 
-      await fetch(`http://localhost:5555/posts/upvotePost`, {
+      await fetch(`https://seng3011-dwen.herokuapp.com/posts/upvotePost`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -42,7 +42,7 @@ export default function AdviceCard({ card, userId }) {
         setVoteTotal(voteTotal - 1);
       }
 
-      await fetch(`http://localhost:5555/posts/downvotePost`, {
+      await fetch(`https://seng3011-dwen.herokuapp.com/posts/downvotePost`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
