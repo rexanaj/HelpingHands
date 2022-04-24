@@ -47,7 +47,7 @@ export default function GetHelpPage () {
   const [check2, setCheck2] = useState(false);
 
   const getAdvice = async () => {
-    const res = await fetch(`http://localhost:5555/posts/${disease}`, {
+    const res = await fetch(`https://seng3011-dwen.herokuapp.com/posts/${disease}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -88,7 +88,7 @@ export default function GetHelpPage () {
     const date = `${current.getDate()}/${current.getMonth() + 1
       }/${current.getFullYear()}`;
 
-    const res = await fetch(`http://localhost:5555/posts/makePost`, {
+    const res = await fetch(`https://seng3011-dwen.herokuapp.com/posts/makePost`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

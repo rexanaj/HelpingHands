@@ -31,7 +31,7 @@ import backgroundimg1 from "../../assets/img/church-giving.jpg";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
-export default function GiveHelpPage(props) {
+export default function GiveHelpPage (props) {
   const [disease, setDisease] = useState("");
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -48,7 +48,7 @@ export default function GiveHelpPage(props) {
   const fetchArticles = async () => {
     let formatDisease = disease.replace(/ /g, "%20");
     const res = await fetch(
-      `http://localhost:5555/articles?limit=4&keyterms=${formatDisease}`
+      `https://seng3011-dwen.herokuapp.com/articles?limit=4&keyterms=${formatDisease}`
     );
     setLoading(true);
     setArticles(await res.json());

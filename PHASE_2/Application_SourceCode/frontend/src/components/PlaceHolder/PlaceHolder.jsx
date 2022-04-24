@@ -1,22 +1,22 @@
-import {React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 
 import Grid from "@mui/material/Grid";
 import NewsCard from "../NewsCard";
 
-function WhoPlaceholder() {
+function WhoPlaceholder () {
   const [articles, setArticles] = useState([]);
 
 
   const fetchArticles = async () => {
     const res = await fetch(
-      `http://localhost:5555/articles?limit=4`
+      `https://seng3011-dwen.herokuapp.com/articles?limit=4`
     );
     setArticles(await res.json());
   };
 
   // // only call it once
   useEffect(() => {
-      fetchArticles();
+    fetchArticles();
   }, []);
   // console.log(articles)
   const articles_holder = [];
@@ -54,13 +54,13 @@ function WhoPlaceholder() {
     );
     i += 1;
   }
-    return (
-        <div className="givehelp-content">
-              <Grid id="givehelp-who-articles" container spacing={3}>
-                {articles_holder}
-              </Grid>
-        </div>
-    )
+  return (
+    <div className="givehelp-content">
+      <Grid id="givehelp-who-articles" container spacing={3}>
+        {articles_holder}
+      </Grid>
+    </div>
+  )
 }
 
 export default WhoPlaceholder;
