@@ -48,7 +48,7 @@ export default function GiveHelpPage(props) {
   const fetchArticles = async () => {
     let formatDisease = disease.replace(/ /g, "%20");
     const res = await fetch(
-      `http://localhost:5555/articles?limit=4&keyterms=${formatDisease}`
+      `https://seng3011-dwen.herokuapp.com/articles?limit=4&keyterms=${formatDisease}`
     );
     setLoading(true);
     setArticles(await res.json());
