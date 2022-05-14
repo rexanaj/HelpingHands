@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./TwitterCarousel.css";
 
-export function TwitterCarousel(props) {
+export function TwitterCarousel (props) {
     const [images, setImages] = useState([]);
     const [tweets, setTweets] = useState([]);
     const [index, setIndex] = useState(0);
@@ -13,7 +13,7 @@ export function TwitterCarousel(props) {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5555/twitter/" + props.keyword)
+        fetch("https://seng3011-dwen.herokuapp.com/twitter/" + props.keyword)
             .then(res => res.json())
             .then((res) => {
                 setImages(res.includes.media.map((res, index) => {
