@@ -11,23 +11,68 @@
 }
 
 #twitter-carousel {
-  width: 90%;
-  height: 300px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 #twitter-carousel #carousel-container {
-  width: 50%;
+  overflow: hidden;
+  width: 900px;
 }
 
-#twitter-carousel #tweet-text {
-  width: 50%;
+.tweet-wrapper {
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+#inner-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: 0;
+  transition: margin 0.3s;
+}
+
+#twitter-carousel .row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#twitter-carousel button {
+  font-size: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#twitter-carousel .row .dot {
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  border: solid 2px black;
+  margin: 5px;
+}
+
+#twitter-carousel .row .dot.filled{
+  background-color: black;
 }
 
 .react-3d-carousel .slider-container .slider-right div,
 .react-3d-carousel .slider-container .slider-left div {
   border: none;
   color: green;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
 }
