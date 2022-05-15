@@ -4,7 +4,8 @@ import "./TwitterCarousel.css";
 
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 
-export function TwitterCarousel(props) {
+export function TwitterCarousel (props) {
+    console.log(props.keyword);
     const [tweets, setTweets] = useState([]);
     const [pageIndex, setPageIndex] = useState(0);
 

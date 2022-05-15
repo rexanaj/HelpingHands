@@ -50,6 +50,22 @@
   padding: 36px 0px 10px 5%;
 }
 
+.givehelp-prompt {
+  color: white;
+  font-family: "graphik";
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.givehelp-prompt-disease {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 #marquee {
   margin: 32px 0;
 }
@@ -59,18 +75,22 @@
   margin-right: 50px;
 }
 
-.searchBar {
+.givehelp-searchBar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 50px;
-  margin-top: 30px;
+  margin-top: 8px;
   padding-bottom: 96px;
 }
 
 .givehelp-search-button {
   height: 54px;
+}
+
+.givehelp-who-placeholder {
+  margin-top: 32px;
 }
 
 /*Remaining content*/
