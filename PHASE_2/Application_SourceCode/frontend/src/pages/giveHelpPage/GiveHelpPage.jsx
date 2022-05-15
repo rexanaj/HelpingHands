@@ -51,7 +51,7 @@ export default function GiveHelpPage (props) {
     );
     const articles = await res.json();
     const articles_holder = [];
-
+    let i = 0;
     for (var index in articles) {
       console.log(articles[index].headline);
       let seconds = articles[index].date_of_publication._seconds;
@@ -72,14 +72,18 @@ export default function GiveHelpPage (props) {
       main_text = main_text.slice(0, 300);
       main_text += " ...";
       articles_holder.push(
-        <NewsCard
-          className="article"
-          headline={articles[index].headline}
-          mainText={main_text}
-          publication={publication}
-          url={articles[index].url}
-        />
+        <Grid key={i} item xs={3}>
+          <NewsCard
+            className="article"
+            headline={articles[index].headline}
+            mainText={main_text}
+            publication={publication}
+            url={articles[index].url}
+          />
+        </Grid>
       );
+
+      i += 1;
     }
 
     setArticlesHolder(articles_holder);
@@ -251,7 +255,7 @@ export default function GiveHelpPage (props) {
                 The most recent news from WHO
               </h1>
               <div className="givehelp-content">
-                <Grid id="givehelp-who-articles" container spacing={3}>
+                <Grid id="givehelp-who-articles" container spacing={2}>
                   {articlesHolder}
                 </Grid>
               </div>

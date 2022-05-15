@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 export default function NewsCard (props) {
   return (
-    <Card className={props.className} sx={{ minWidth: 275, maxWidth: 400 }}>
+    <Card className={props.className} sx={{ minWidth: 275, maxWidth: 380 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {props.publication}
