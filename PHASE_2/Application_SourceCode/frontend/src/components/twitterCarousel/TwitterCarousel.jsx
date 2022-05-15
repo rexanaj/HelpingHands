@@ -1,36 +1,60 @@
-import { Carousel } from '3d-react-carousal';
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./TwitterCarousel.css";
 
-export function TwitterCarousel (props) {
-    const [images, setImages] = useState([]);
-    const [tweets, setTweets] = useState([]);
-    const [index, setIndex] = useState(0);
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
-    const updateIndex = (index) => {
-        setIndex(index);
+export function TwitterCarousel (props) {
+    console.log(props.keyword);
+    const [tweets, setTweets] = useState([]);
+    const [pageIndex, setPageIndex] = useState(0);
+
+    const updatePage = (increment) => {
+        const newOffset = (((pageIndex + increment) % 3) + 3) % 3;
+        document.getElementById("inner-slider").style.marginLeft = "-" + newOffset * 900 + "px";
+        const dots = document.getElementsByClassName("dot");
+        Array.from(dots).forEach(element => element.classList.remove("filled"));
+        dots[newOffset].classList.add("filled");
+        setPageIndex(newOffset);
     }
 
     useEffect(() => {
         fetch("https://seng3011-dwen.herokuapp.com/twitter/" + props.keyword)
             .then(res => res.json())
             .then((res) => {
-                setImages(res.includes.media.map((res, index) => {
-                    return <img key={index} src={res.url} alt={index} />
-                }));
-                setTweets(res.data.map((res) => res.text));
-                setIndex(0);
+                setTweets(res.data.slice(0, 9).map((res) =>
+                    <div key={res.id} className="tweet-wrapper">
+                        <TwitterTweetEmbed
+                            options={{
+                                cards: 'hidden',
+                                conversation: 'none',
+                                hideCard: true,
+                                hideThread: true,
+                            }}
+                            id="tweet-card"
+                            tweetId={res.id}
+                        />
+                    </div>
+                ));
             });
     }, []);
 
     return (
-        <div id='twitter-carousel'>
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous"></link>
-            <div id='carousel-container'>
-                <Carousel slides={images} arrows={true} onSlideChange={updateIndex} />
+        <div {...props} id='twitter-carousel'>
+            <div className="row">
+                <button onClick={() => updatePage(-1)}>&lt;</button>
+                <div id='carousel-container'>
+                    <div id='inner-slider'>
+                        {tweets}
+                    </div>
+                </div>
+                <button onClick={() => updatePage(1)}>&gt;</button>
             </div>
-            <p id='tweet-text'>{tweets[index]}</p>
+            <div className="row">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div>
         </div>
     )
 }
