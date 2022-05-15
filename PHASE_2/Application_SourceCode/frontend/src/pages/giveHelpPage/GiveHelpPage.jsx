@@ -29,6 +29,7 @@ import img11 from "../../assets/img/givehelp_img11.jpeg";
 import backgroundimg2 from "../../assets/img/plant_sprout.jpeg";
 import backgroundimg1 from "../../assets/img/church-giving.jpg";
 
+
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
 export default function GiveHelpPage (props) {
