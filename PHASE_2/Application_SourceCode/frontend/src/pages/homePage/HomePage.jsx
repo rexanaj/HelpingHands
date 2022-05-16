@@ -11,10 +11,10 @@ export default function HomePage () {
         <div className="left home-content-half">
           <div className="logo"></div>
           <div className="home-title">
-            Find a place to help others or seek to help yourself
+            Find a place to help others or seek help yourself
           </div>
           <div className="home-text">
-            We help you to discover at-risk communities and provide a platform to share your voice.
+            We help you discover at-risk communities and provide a platform to share your voice.
           </div>
           <div className="home-subtext">
             Explore what we offer now
