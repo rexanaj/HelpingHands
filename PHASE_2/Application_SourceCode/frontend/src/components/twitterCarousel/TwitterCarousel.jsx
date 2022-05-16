@@ -50,7 +50,7 @@ export function TwitterCarousel(props) {
                 <button onClick={() => updatePage(1)}>&gt;</button>
             </div>
             <div className="row">
-                <div className="dot"></div>
+                <div className="dot filled"></div>
                 <div className="dot"></div>
                 <div className="dot"></div>
             </div>
