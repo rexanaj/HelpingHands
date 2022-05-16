@@ -7,7 +7,6 @@ import "./NgoCardsGrid.css";
 
 export default function NgoCardsGrid ({ diseases, locations }) {
   const [ngos, setNgos] = useState([]);
-  console.log(diseases);
 
   useEffect(() => {
     const fetchNgos = async () => {

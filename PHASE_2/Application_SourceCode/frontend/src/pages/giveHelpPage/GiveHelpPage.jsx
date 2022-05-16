@@ -32,17 +32,15 @@ import backgroundimg2 from "../../assets/img/cuteplane.jpg";
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
 // BTW, don't put your code in the pages, create seperate components and import those
-export default function GiveHelpPage(props) {
+export default function GiveHelpPage (props) {
   const [disease, setDisease] = useState("");
-  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [articlesHolder, setArticlesHolder] = useState(null);
   const submitDisease = () => {
-    // if (ingredientName === '' || ingredientName === null) {
-    //     alert("Please select a disease")
-    //     return
-    // }
-    console.log("test");
-    console.log(disease);
+    if (disease.trim() === '') {
+      alert("Enter a disease");
+      return;
+    }
     fetchArticles();
   };
 
@@ -51,50 +49,46 @@ export default function GiveHelpPage(props) {
     const res = await fetch(
       `https://seng3011-dwen.herokuapp.com/articles?limit=4&keyterms=${formatDisease}`
     );
+    const articles = await res.json();
+    const articles_holder = [];
+    let i = 0;
+    for (var index in articles) {
+      console.log(articles[index].headline);
+      let seconds = articles[index].date_of_publication._seconds;
+      let pub_date = new Date(seconds * 1000);
+
+      // format date
+      let month = String(pub_date.getMonth() + 1);
+      let day = String(pub_date.getDate());
+      const year = String(pub_date.getFullYear());
+
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+
+      let publication = `${day}/${month}/${year}`;
+      console.log(publication);
+      // const headline = articles[index]
+      let main_text = articles[index].main_text;
+      main_text = main_text.slice(0, 300);
+      main_text += " ...";
+      articles_holder.push(
+        <Grid key={i} item xs={3}>
+          <NewsCard
+            className="article"
+            headline={articles[index].headline}
+            mainText={main_text}
+            publication={publication}
+            url={articles[index].url}
+          />
+        </Grid>
+      );
+
+      i += 1;
+    }
+
+    setArticlesHolder(articles_holder);
     setLoading(true);
-    setArticles(await res.json());
   };
-
-  // // only call it once
-  // useEffect(() => {
-  //     fetchArticles();
-  // }, []);
-  // console.log(articles)
-  const articles_holder = [];
-  var i = 0;
-  for (var index in articles) {
-    console.log(articles[index].headline);
-    let seconds = articles[index].date_of_publication._seconds;
-    let pub_date = new Date(seconds * 1000);
-
-    // format date
-    let month = String(pub_date.getMonth() + 1);
-    let day = String(pub_date.getDate());
-    const year = String(pub_date.getFullYear());
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    let publication = `${day}/${month}/${year}`;
-    console.log(publication);
-    // const headline = articles[index]
-    let main_text = articles[index].main_text;
-    main_text = main_text.slice(0, 300);
-    main_text += " ...";
-    articles_holder.push(
-      <Grid key={i} item xs={3}>
-        {/* headline={articles[i].headline} mainText={articles[i].main_text} publication={publication} */}
-        <NewsCard
-          className="article"
-          headline={articles[index].headline}
-          mainText={main_text}
-          publication={publication}
-          url={articles[index].url}
-        />
-      </Grid>
-    );
-    i += 1;
-  }
 
   const theme = createTheme({
     palette: {
@@ -222,17 +216,26 @@ export default function GiveHelpPage(props) {
             <img className="marquee-image" src={img11} alt="Poster wall" />
           </Marquee>
         </div>
-        <div className="searchBar">
+        <p className="givehelp-prompt">I want to help support communities suffering from&nbsp;
+          {disease === ""
+            ? <span className="givehelp-prompt-none">...</span>
+            : <span className="givehelp-prompt-disease">{disease}</span>}
+        </p>
+        <div className="givehelp-searchBar">
           <ThemeProvider theme={theme}>
             <Autocomplete
               disablePortal
               id="search"
-              value={disease}
               options={options}
-              onChange={(event, value) => setDisease(value)}
+              onInputChange={(event, value) => {
+                setDisease(value);
+              }}
               sx={{ width: 300 }}
               renderInput={(params) => (
-                <TextField {...params} className="textfield-search" color="primary" label="Select a disease" />
+                <TextField {...params}
+                  label="Select a disease"
+                  className="textfield-search"
+                  color="primary" />
               )}
             />
             <Button className="givehelp-search-button" color="primary" onClick={submitDisease}>
@@ -241,12 +244,9 @@ export default function GiveHelpPage(props) {
           </ThemeProvider>
         </div>
       </div>
-      {!loading ? (
-        <div>
-          <WhoPlaceholder></WhoPlaceholder>
 
-        </div>
-      ) : (<div></div>)}
+      {!loading ? <div className="givehelp-who-placeholder"><WhoPlaceholder /></div> : null}
+
       <div>
         {loading ? (
           <div>
@@ -255,8 +255,8 @@ export default function GiveHelpPage(props) {
                 The most recent news from WHO
               </h1>
               <div className="givehelp-content">
-                <Grid id="givehelp-who-articles" container spacing={3}>
-                  {articles_holder}
+                <Grid id="givehelp-who-articles" container spacing={2}>
+                  {articlesHolder}
                 </Grid>
               </div>
             </div>
