@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   width: 90%;
+  ;
 }
 
 #gethelp-box {
@@ -205,12 +206,15 @@
   flex-grow: 1;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .card .content .quote p {
   text-align: justify;
-  overflow-y: scroll;
+}
+
+.card .content .quote p::-webkit-scrollbar {
+  display: none;
 }
 
 .card .content button {
@@ -225,12 +229,6 @@
   padding: 5px 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: ease 300ms;
-  justify-self: flex-start;
-}
-
-.card .content button:hover {
-  transform: scale(1.1);
 }
 
 #card-list {
@@ -238,48 +236,75 @@
   margin-bottom: 140px;
 }
 
-.card .advice-card-footer {
+#advice-button {
+  position:fixed;
+  bottom:70px;
+  right:70px;
+  background-color: #016a45;
+  color:white;
+  border-radius: 28px;
+  width: 200px;
+  height: 77px;
+}
+
+.government-hotline {
+  height: 300px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.advice-card-footer .advice-card-date {
-  justify-self: flex-end;
-}
-
-.advice-card-footer .advice-votes {
-  display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #378e70;
+  margin-top: 100px;
   align-items: center;
 }
 
-.advice-votes .voting-options {
+.gov-box {
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-right: 6px;
-  font-size: 20px;
+  align-items: center;
 }
 
-.voting-options span:nth-of-type(1) {
-  color: #4ab38e;
+.gov-name {
+  padding-top: 20px;
+  color:#016a45;
+  font-weight: 800;
 }
 
-.voting-options span:nth-of-type(2) {
-  color: #c74747;
+.icon-text {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  padding-top: 20px;
 }
 
-.voting-options span:hover {
-  opacity: 40%;
-  cursor: pointer;
+/* .card-list:nth-child(2n) .header {
+  color: #eeeeee;
+  background-color: #378e70;
 }
 
-.voting-options .vote-selected {
-  opacity: 40%;
+.card-list:nth-child(2n) .content {
+  color: #016a45;
+  background-color: #eeeeee;
 }
 
 .card-list:nth-child(2n) button {
   background: #378e70;
   color: #eeeeee;
+} */
+
+#icon {
+  border-radius: 0;
+}
+
+.gov-body {
+  position: absolute;
+  bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }

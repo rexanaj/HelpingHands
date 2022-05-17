@@ -5,13 +5,14 @@ import { Grid } from "@mui/material";
 import FlipCard from "../FlipCard/FlipCard";
 import "./NgoCardsGrid.css";
 
-export default function NgoCardsGrid ({ diseases, locations }) {
+export default function NgoCardsGrid({ diseases, locations }) {
   const [ngos, setNgos] = useState([]);
+  console.log(diseases);
 
   useEffect(() => {
     const fetchNgos = async () => {
       const res = await fetch(
-        `https://seng3011-dwen.herokuapp.com/ngos?diseases=${diseases}`
+        `http://localhost:5555/ngos?diseases=${diseases}`
       );
       const body = await res.json();
 

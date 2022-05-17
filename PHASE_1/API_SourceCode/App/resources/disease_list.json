@@ -1,5 +1,11 @@
 [
     {
+        "name": "unknown"
+    },
+    {
+        "name": "other"
+    },
+    {
         "name": "anthrax cutaneous"
     },
     {
@@ -220,11 +226,5 @@
     },
     {
         "name": "meningitis"
-    },
-    {
-        "name": "unknown"
-    },
-    {
-        "name": "other"
     }
 ]

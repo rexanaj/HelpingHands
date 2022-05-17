@@ -4,18 +4,11 @@
   background: #378e70;
 }
 
-.article {
-  border-radius: 20px !important;
-}
-
-.card-button {
-  color: #378e70 !important;
-}
 
 #givehelp-title {
   color: white;
   font-size: 34px;
-  font-family: "Maragsa";
+  font-family: 'Maragsa';
   font-style: normal;
   font-weight: normal;
   font-size: 42px;
@@ -27,7 +20,7 @@
 
 .givehelp-description {
   color: white;
-  font-family: "graphik";
+  font-family: 'graphik';
   font-style: normal;
   font-size: 20px;
   line-height: 26px;
@@ -50,22 +43,6 @@
   padding: 36px 0px 10px 5%;
 }
 
-.givehelp-prompt {
-  color: white;
-  font-family: "graphik";
-  font-style: normal;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 40px;
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.givehelp-prompt-disease {
-  font-weight: 600;
-  text-decoration: underline;
-}
-
 #marquee {
   margin: 32px 0;
 }
@@ -75,23 +52,20 @@
   margin-right: 50px;
 }
 
-.givehelp-searchBar {
+.searchBar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 50px;
-  margin-top: 8px;
+  margin-top: 30px;
   padding-bottom: 96px;
 }
 
-.givehelp-search-button {
+.givehelp-search-Button {
   height: 54px;
 }
 
-.givehelp-who-placeholder {
-  margin-top: 32px;
-}
 
 /*Remaining content*/
 .givehelp-content {
@@ -107,34 +81,16 @@
 }
 
 #givehelp-who-articles {
-  margin-top: 16px;
   width: 90%;
 }
 
 #givehelp-tweets-container {
-  background-color: #f8f5ee;
+  background-color: #F8F5EE;
   padding: 64px 0px;
 }
 
 #givehelp-charities-container {
   padding: 64px 0px 128px 0px;
-  position: relative;
-}
-
-.background-img1 {
-  z-index: -999;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
-  left: 0;
-}
-
-#givehelp-charities-container .background-img2 {
-  z-index: -999;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
 }
 
 #givehelp-charities {
