@@ -176,10 +176,10 @@ export default function GetHelpPage () {
           </div>
         </div>
         <div className='gov-box'>
-          <div className='gov-name'>Department of Health</div>
+          <div className='gov-name'>Doctors Without Borders</div>
           <div className='gov-body'>
-            <div className="icon-text"><img src={callIcon}></img>Call 1800 020 103</div>
-            <div className="icon-text"><img src={emailIcon}></img>https://www.health.gov.au/about-us/contact-us</div>
+            <div className="icon-text"><img src={callIcon}></img>Call 2 8570 2600</div>
+            <div className="icon-text"><img src={emailIcon}></img>https://www.msf.org/contact-us</div>
           </div>
         </div>
       </div>

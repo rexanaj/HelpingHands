@@ -262,6 +262,10 @@
   background-color: white;
   width: 400px;
   height: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gov-name {
@@ -296,4 +300,11 @@
 
 #icon {
   border-radius: 0;
+}
+
+.gov-body {
+  position: absolute;
+  bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
