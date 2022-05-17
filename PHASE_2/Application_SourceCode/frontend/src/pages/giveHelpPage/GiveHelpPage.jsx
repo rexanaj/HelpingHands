@@ -26,8 +26,8 @@ import img9 from "../../assets/img/givehelp_img9.jpeg";
 import img10 from "../../assets/img/givehelp_img10.jpeg";
 import img11 from "../../assets/img/givehelp_img11.jpeg";
 
-import backgroundimg1 from "../../assets/img/happyface.jpg";
-import backgroundimg2 from "../../assets/img/cuteplane.jpg";
+import backgroundimg1 from "../../assets/img/givehelp-1.jpg";
+import backgroundimg2 from "../../assets/img/givehelp-2.jpg";
 
 
 // This is an example of fetching from the api to get the sydnromes of a specific disease (in this case "Lassa Fever")
