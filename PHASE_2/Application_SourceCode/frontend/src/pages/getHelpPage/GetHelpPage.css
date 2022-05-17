@@ -13,7 +13,6 @@
   align-items: center;
   justify-content: center;
   width: 90%;
-  ;
 }
 
 #gethelp-box {
@@ -69,6 +68,10 @@
   text-align: center;
 }
 
+#gethelp-subtitle {
+  text-align: left;
+}
+
 .gethelp-header {
   font-size: 28px;
   color: #378e70;
@@ -118,8 +121,11 @@
   margin-bottom: 25px;
 }
 
-.gethelp-card-container {
-  padding-bottom: 50px;
+#gethelp-card-container {
+  background-color: #eaf6f2;
+  width: 100%;
+  margin: 0;
+  max-width: none;
 }
 
 #gethelp-who-articles {
@@ -237,11 +243,11 @@
 }
 
 #advice-button {
-  position:fixed;
-  bottom:70px;
-  right:70px;
-  background-color: #016a45;
-  color:white;
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  background-color: #378e70;
+  color: white;
   border-radius: 28px;
   width: 200px;
   height: 77px;
@@ -270,12 +276,12 @@
 
 .gov-name {
   padding-top: 20px;
-  color:#016a45;
+  color: #016a45;
   font-weight: 800;
 }
 
 .icon-text {
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
