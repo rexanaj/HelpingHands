@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import options from "../../components/Diseases"
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { Modal } from "@mui/material";
 import "./GetHelpPage.css";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,6 +17,10 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import img1 from "../../assets/img/img1.png";
 // import img2 from "../../assets/img/img2.jpg";
 // import img3 from "../../assets/img/img3.jpeg";
+import addIcon from "../../assets/img/add-icon.png"
+import callIcon from "../../assets/img/call-icon.png"
+import emailIcon from "../../assets/img/Message_alt_fill.png"
+import { Avatar } from "@mui/material";
 
 export default function GetHelpPage () {
   const [loading, setLoading] = useState(false);
@@ -29,6 +34,22 @@ export default function GetHelpPage () {
   // checkboxes
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
+
+  // modal
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 700,
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+  }
+
 
   const getAdvice = async () => {
     const res = await fetch(`http://localhost:5555/posts/${disease}`, {
@@ -139,7 +160,29 @@ export default function GetHelpPage () {
       <ToastContainer />
 
       <ToastContainer />
-
+      <div className='government-hotline'>
+        <div className='gov-box'>
+          <div className='gov-name'>World Health Organisation</div>
+          <div className='gov-body'>
+            <div className="icon-text"><img src={callIcon}></img>Call +41 22 791 21 11</div>
+            <div className="icon-text"><img src={emailIcon}></img>https://www.who.int/about/contact-us</div>
+          </div>
+        </div>
+        <div className='gov-box'>
+          <div className='gov-name'>The Center for Disease Control and Prevention</div>
+          <div className='gov-body'>
+            <div className="icon-text"><img src={callIcon}></img>Call 800 232 4636</div>
+            <div className="icon-text"><img src={emailIcon}></img>https://wwwn.cdc.gov/DCS/ContactUs/Form</div>
+          </div>
+        </div>
+        <div className='gov-box'>
+          <div className='gov-name'>Department of Health</div>
+          <div className='gov-body'>
+            <div className="icon-text"><img src={callIcon}></img>Call 1800 020 103</div>
+            <div className="icon-text"><img src={emailIcon}></img>https://www.health.gov.au/about-us/contact-us</div>
+          </div>
+        </div>
+      </div>
       {
         loading ? <Container sx={{ py: 8 }} maxWidth="md" id="gethelp-card-container">
           {/* End hero unit */}
@@ -179,33 +222,43 @@ export default function GetHelpPage () {
             ))}
           </Grid> : <h1>No posts yet</h1>
           }
-          <h1 className="gethelp-header">Add some advice for anybody affected</h1>
-          <div id="enterForm">
-            <h2 className="subtitle">Enter your name</h2>
-            <TextField
-              className="textField"
-              value={name}
-              id="outlined-textarea"
-              label="Username"
-              placeholder="Enter your name"
-              onChange={(e) => { setName(e.target.value) }}
-            />
-            <h2 className="subtitle">Enter some advice</h2>
-            <TextField
-              className="textField"
-              value={advice}
-              fullWidth
-              id="outlined-multiline-static"
-              rows={4}
-              label="add some advice"
-              onChange={(e) => { setAdvice(e.target.value) }}
-            />
-            <div id="checkbox-area">
-              <FormControlLabel className="checkbox" control={<Checkbox checked={check1} onChange={(v) => setCheck1(v.target.checked)} />} label="I acknowledge that all messages on this site are posted in good faith." />
-              <FormControlLabel className="checkbox" control={<Checkbox checked={check2} onChange={(v) => setCheck2(v.target.checked)} />} label="This message contains truthful information." />
-            </div>
-            <Button variant="contained" onClick={addAdvice} id="adviceButton">Add advice</Button>
-          </div>
+          <Button id="advice-button" startIcon={<Avatar src={addIcon}/>} onClick={handleOpen}>Add advice</Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <h1 className="gethelp-header">Add some advice for anybody affected</h1>
+              <div id="enterForm">
+                <h2 className="subtitle">Enter your name</h2>
+                <TextField
+                  className="textField"
+                  value={name}
+                  id="outlined-textarea"
+                  label="Username"
+                  placeholder="Enter your name"
+                  onChange={(e) => { setName(e.target.value) }}
+                />
+                <h2 className="subtitle">Enter some advice</h2>
+                <TextField
+                  className="textField"
+                  value={advice}
+                  fullWidth
+                  id="outlined-multiline-static"
+                  rows={4}
+                  label="add some advice"
+                  onChange={(e) => { setAdvice(e.target.value) }}
+                />
+                <div id="checkbox-area">
+                  <FormControlLabel className="checkbox" control={<Checkbox checked={check1} onChange={(v) => setCheck1(v.target.checked)} />} label="I acknowledge that all messages on this site are posted in good faith." />
+                  <FormControlLabel className="checkbox" control={<Checkbox checked={check2} onChange={(v) => setCheck2(v.target.checked)} />} label="This message contains truthful information." />
+                </div>
+              <Button variant="contained" onClick={addAdvice} id="adviceButton">Add advice</Button>
+              </div>
+            </Box>
+          </Modal>
         </Container> : <div></div>
       }
 
