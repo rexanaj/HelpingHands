@@ -222,7 +222,7 @@ export default function GetHelpPage () {
             ))}
           </Grid> : <h1>No posts yet</h1>
           }
-          <Button id="advice-button" startIcon={<Avatar src={addIcon}/>} onClick={handleOpen}>Add advice</Button>
+          <Button id="advice-button" startIcon={<Avatar src={addIcon} id="icon"/>} onClick={handleOpen}>Add advice</Button>
           <Modal
             open={open}
             onClose={handleClose}

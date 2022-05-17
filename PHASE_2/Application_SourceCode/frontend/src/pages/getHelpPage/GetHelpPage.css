@@ -293,3 +293,7 @@
   background: #378e70;
   color: #eeeeee;
 } */
+
+#icon {
+  border-radius: 0;
+}
