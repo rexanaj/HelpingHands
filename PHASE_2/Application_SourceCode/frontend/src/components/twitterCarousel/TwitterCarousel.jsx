@@ -37,6 +37,7 @@ export function TwitterCarousel (props) {
                     </div>
                 ));
             });
+        updatePage(0);
     }, []);
 
     return (
