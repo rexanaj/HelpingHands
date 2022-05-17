@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import options from "../../components/Diseases";
 import TextField from "@mui/material/TextField";
@@ -24,7 +23,7 @@ import img1 from "../../assets/img/img1.png";
 // import img2 from "../../assets/img/img2.jpg";
 // import img3 from "../../assets/img/img3.jpeg";
 
-export default function GetHelpPage() {
+export default function GetHelpPage () {
   const [userId, setUserId] = useState();
 
   useEffect(() => {
@@ -105,9 +104,8 @@ export default function GetHelpPage() {
     }
 
     const current = new Date();
-    const date = `${current.getDate()}/${
-      current.getMonth() + 1
-    }/${current.getFullYear()}`;
+    const date = `${current.getDate()}/${current.getMonth() + 1
+      }/${current.getFullYear()}`;
 
     const res = await fetch(
       `https://seng3011-dwen.herokuapp.com/posts/makePost`,
@@ -151,25 +149,8 @@ export default function GetHelpPage() {
             }}
           >
             <Container id="gethelp-container" maxWidth="sm">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="text.primary"
-                gutterBottom
-                id="gethelp-title"
-              >
-                Find Help Here
-              </Typography>
-              <Typography
-                variant="h5"
-                align="center"
-                color="text.secondary"
-                paragraph
-                id="gethelp-subtitle"
-              >
-                See what others in your situation are saying.
-              </Typography>
+              <h2 id="gethelp-title">Find help here</h2>
+              <p id="gethelp-p">See what others in your situation are saying.</p>
               <Stack
                 sx={{ pt: 4 }}
                 direction="row"
